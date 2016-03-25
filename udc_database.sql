@@ -1,10 +1,10 @@
 CREATE DATABASE  IF NOT EXISTS `udc_database` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `udc_database`;
--- MySQL dump 10.13  Distrib 5.6.24, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.9, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: udc_database
 -- ------------------------------------------------------
--- Server version	5.6.26-log
+-- Server version	5.7.9-log
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,6 +16,30 @@ USE `udc_database`;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `appointment`
+--
+
+DROP TABLE IF EXISTS `appointment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `appointment` (
+  `apptno` int(11) NOT NULL AUTO_INCREMENT,
+  `slotno` int(5) NOT NULL,
+  PRIMARY KEY (`apptno`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `appointment`
+--
+
+LOCK TABLES `appointment` WRITE;
+/*!40000 ALTER TABLE `appointment` DISABLE KEYS */;
+INSERT INTO `appointment` VALUES (1,2),(2,1);
+/*!40000 ALTER TABLE `appointment` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `doctors`
@@ -43,60 +67,32 @@ INSERT INTO `doctors` VALUES (11101,'Dr. Aikenhead','aiken'),(11102,'Dr. Abell',
 UNLOCK TABLES;
 
 --
--- Table structure for table `reservations`
+-- Table structure for table `time_slots`
 --
 
-DROP TABLE IF EXISTS `reservations`;
+DROP TABLE IF EXISTS `time_slots`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `reservations` (
-  `resnum` int(11) NOT NULL AUTO_INCREMENT,
-  `startTime` datetime NOT NULL,
-  `endTime` datetime NOT NULL,
-  `docid` int(5) NOT NULL,
-  `status` enum('Available','Reserved') NOT NULL DEFAULT 'Available',
-  PRIMARY KEY (`resnum`),
-  KEY `doctorid_idx` (`docid`),
-  CONSTRAINT `docid` FOREIGN KEY (`docid`) REFERENCES `doctors` (`doctorid`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `reservations`
---
-
-LOCK TABLES `reservations` WRITE;
-/*!40000 ALTER TABLE `reservations` DISABLE KEYS */;
-INSERT INTO `reservations` VALUES (1,'2016-03-28 09:00:00','2016-03-28 09:30:00',11102,'Available'),(2,'2016-03-28 14:30:00','2016-03-28 15:00:00',11101,'Reserved'),(3,'2016-03-28 12:00:00','2016-03-28 12:30:00',11104,'Available'),(4,'2016-03-28 09:30:00','2016-03-28 10:00:00',11102,'Available');
-/*!40000 ALTER TABLE `reservations` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `slots`
---
-
-DROP TABLE IF EXISTS `slots`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `slots` (
-  `slotnum` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `time_slots` (
+  `slotno` int(11) NOT NULL AUTO_INCREMENT,
   `doctorid` int(5) NOT NULL,
   `startTime` datetime NOT NULL,
   `endTime` datetime NOT NULL,
-  PRIMARY KEY (`slotnum`),
+  `status` varchar(20) NOT NULL DEFAULT 'Available',
+  PRIMARY KEY (`slotno`),
   KEY `doctorid_idx` (`doctorid`),
   CONSTRAINT `doctorid` FOREIGN KEY (`doctorid`) REFERENCES `doctors` (`doctorid`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `slots`
+-- Dumping data for table `time_slots`
 --
 
-LOCK TABLES `slots` WRITE;
-/*!40000 ALTER TABLE `slots` DISABLE KEYS */;
-INSERT INTO `slots` VALUES (1,11102,'2016-03-28 09:00:00','2016-03-28 10:00:00'),(2,11101,'2016-03-28 14:00:00','2016-03-28 15:00:00'),(3,11104,'2016-03-28 12:00:00','2016-03-28 14:00:00');
-/*!40000 ALTER TABLE `slots` ENABLE KEYS */;
+LOCK TABLES `time_slots` WRITE;
+/*!40000 ALTER TABLE `time_slots` DISABLE KEYS */;
+INSERT INTO `time_slots` VALUES (1,11102,'2016-03-28 09:00:00','2016-03-28 10:00:00','Occupied'),(2,11101,'2016-03-28 14:00:00','2016-03-28 15:00:00','Occupied'),(3,11104,'2016-03-28 12:00:00','2016-03-28 14:00:00','Available');
+/*!40000 ALTER TABLE `time_slots` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -108,4 +104,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-24 12:28:51
+-- Dump completed on 2016-03-25 16:33:56
