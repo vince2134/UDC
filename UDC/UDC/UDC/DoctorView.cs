@@ -65,16 +65,5 @@ namespace UDC {
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            //
-        }
-
-        private void DoctorView_Load(object sender, EventArgs e)
-        {
-            dailyBtn.Checked = true;
-        }
-
     }
 }
