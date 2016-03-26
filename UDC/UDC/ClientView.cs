@@ -23,7 +23,7 @@ namespace UDC {
         }
 
         void ListView.InitializeView() {
-            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.DAY_VIEW);
+            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
@@ -31,8 +31,8 @@ namespace UDC {
 
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
-            this.currentView.Update(this, SubView.DAY_VIEW);
-            this.currentView.Update(this, SubView.AGENDA_VIEW);
+            this.currentView.Update(this, SubView.CALENDAR_VIEW,controller);
+            this.currentView.Update(this, SubView.AGENDA_VIEW, controller);
         }
 
         private void ClientView_FormClosed(object sender, FormClosedEventArgs e) {
@@ -42,7 +42,7 @@ namespace UDC {
         private void dayViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.DAY_VIEW);
+            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();

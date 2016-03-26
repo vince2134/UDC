@@ -10,6 +10,8 @@ namespace UDC {
             this.model = new AppointmentModel();
             this.AttachViews();
             this.ImportAppointments();
+           
+
         }
 
         public void AttachViews() {

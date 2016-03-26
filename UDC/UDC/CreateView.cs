@@ -16,8 +16,8 @@ namespace UDC {
             this.panel = this.viewBuilder.BuildCreateView();
         }
 
-        public override void Update(ListView parentView, String subView) {
-            
+        public override void Update(ListView parentView, String subView, ListController c) {
+            this.viewBuilder.Update(parentView, subView, c);
         }
     }
 }

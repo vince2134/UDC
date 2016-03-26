@@ -33,6 +33,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\MySQL\Connector.NET 6.9\Assemblies\v4.5\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -59,7 +63,7 @@
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateView.cs" />
-    <Compile Include="DayView.cs" />
+    <Compile Include="CalendarView.cs" />
     <Compile Include="DoctorSubViewBuilder.cs" />
     <Compile Include="DoctorView.cs">
       <SubType>Form</SubType>

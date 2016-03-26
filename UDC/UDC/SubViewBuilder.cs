@@ -21,6 +21,6 @@ namespace UDC {
         public abstract Panel BuildCreateView();
         public abstract Panel BuildDayView();
         public abstract Panel BuildAgendaView();
-        public abstract void Update(ListView parentView, String subView);
+        public abstract void Update(ListView parentView, String subView, ListController c);
     }
 }

@@ -38,8 +38,8 @@ namespace UDC {
             return panel;
         }
 
-        public override void Update(ListView parentView, String subView) {
-            if (subView.Equals(SubView.DAY_VIEW)) {
+        public override void Update(ListView parentView, String subView,ListController controller) {
+            if (subView.Equals(SubView.CALENDAR_VIEW)) {
                 /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW DAY VIEW*/
                 foreach (Control c in ((DoctorView)parentView).Controls)
                     if (c is Panel) {
