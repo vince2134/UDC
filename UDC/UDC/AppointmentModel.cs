@@ -16,7 +16,7 @@ namespace UDC {
             this.appointments = new AppointmentList();
             this.views = new List<ListView>();
             String username = "root";
-            String password = "micohalvarez";
+            String password = "mysqldev";
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
             try
