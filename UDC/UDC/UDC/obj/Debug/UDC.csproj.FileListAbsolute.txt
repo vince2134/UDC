@@ -21,15 +21,3 @@ C:\Users\Micoh\Documents\UDC\UDC\UDC\obj\Debug\UDC.Properties.Resources.resource
 C:\Users\Micoh\Documents\UDC\UDC\UDC\obj\Debug\UDC.SecretaryView.resources
 C:\Users\Micoh\Documents\UDC\UDC\UDC\obj\Debug\UDC.csproj.GenerateResource.Cache
 C:\Users\Micoh\Documents\UDC\UDC\UDC\bin\Debug\MySql.Data.dll
-H:\Term 5\SWDESPA\UDC\UDC\UDC\bin\Debug\UDC.exe.config
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.exe
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.pdb
-H:\Term 5\SWDESPA\UDC\UDC\UDC\bin\Debug\UDC.exe
-H:\Term 5\SWDESPA\UDC\UDC\UDC\bin\Debug\UDC.pdb
-H:\Term 5\SWDESPA\UDC\UDC\UDC\bin\Debug\MySql.Data.dll
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.csprojResolveAssemblyReference.cache
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.ClientView.resources
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.DoctorView.resources
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.Properties.Resources.resources
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.SecretaryView.resources
-H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.csproj.GenerateResource.Cache
