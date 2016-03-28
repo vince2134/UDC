@@ -15,7 +15,7 @@ namespace UDC {
         public const String CREATE_VIEW = "CreateView";
 
         protected abstract void InitializeView();
-        public abstract void Update(ListView parentView, String subView, ListController c);
+        public abstract void Update(ListView parentView, String subView,ListController c);
 
         public static SubView MakeView(ListController c, String parentView, String subView) {
             if (subView.Equals(CALENDAR_VIEW)) {

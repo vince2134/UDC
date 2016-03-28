@@ -23,61 +23,182 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.dayViewBtn = new System.Windows.Forms.Button();
-            this.agendaViewBtn = new System.Windows.Forms.Button();
-            this.createViewBtn = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.agendaBtn = new System.Windows.Forms.Button();
+            this.dayBtn = new System.Windows.Forms.Button();
+            this.dateLabel = new System.Windows.Forms.Label();
+            this.todayBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.createBtn = new System.Windows.Forms.Button();
+            this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.dayRadioBtn = new System.Windows.Forms.RadioButton();
+            this.weekRadioBtn = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
-            // dayViewBtn
+            // label4
             // 
-            this.dayViewBtn.Location = new System.Drawing.Point(35, 226);
-            this.dayViewBtn.Name = "dayViewBtn";
-            this.dayViewBtn.Size = new System.Drawing.Size(75, 23);
-            this.dayViewBtn.TabIndex = 0;
-            this.dayViewBtn.Text = "dayView";
-            this.dayViewBtn.UseVisualStyleBackColor = true;
-            this.dayViewBtn.Click += new System.EventHandler(this.dayViewBtn_Click);
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.Location = new System.Drawing.Point(-7, 53);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(732, 2);
+            this.label4.TabIndex = 24;
             // 
-            // agendaViewBtn
+            // agendaBtn
             // 
-            this.agendaViewBtn.Location = new System.Drawing.Point(197, 226);
-            this.agendaViewBtn.Name = "agendaViewBtn";
-            this.agendaViewBtn.Size = new System.Drawing.Size(75, 23);
-            this.agendaViewBtn.TabIndex = 1;
-            this.agendaViewBtn.Text = "agendaView";
-            this.agendaViewBtn.UseVisualStyleBackColor = true;
-            this.agendaViewBtn.Click += new System.EventHandler(this.agendaViewBtn_Click);
+            this.agendaBtn.BackColor = System.Drawing.Color.White;
+            this.agendaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.agendaBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.agendaBtn.ForeColor = System.Drawing.Color.Black;
+            this.agendaBtn.Location = new System.Drawing.Point(630, 10);
+            this.agendaBtn.Name = "agendaBtn";
+            this.agendaBtn.Size = new System.Drawing.Size(82, 33);
+            this.agendaBtn.TabIndex = 23;
+            this.agendaBtn.Text = "Agenda";
+            this.agendaBtn.UseVisualStyleBackColor = false;
+            this.agendaBtn.Click += new System.EventHandler(this.agendaViewBtn_Click);
             // 
-            // createViewBtn
+            // dayBtn
             // 
-            this.createViewBtn.Location = new System.Drawing.Point(116, 226);
-            this.createViewBtn.Name = "createViewBtn";
-            this.createViewBtn.Size = new System.Drawing.Size(75, 23);
-            this.createViewBtn.TabIndex = 2;
-            this.createViewBtn.Text = "createView";
-            this.createViewBtn.UseVisualStyleBackColor = true;
-            this.createViewBtn.Click += new System.EventHandler(this.createViewBtn_Click);
+            this.dayBtn.BackColor = System.Drawing.Color.LightBlue;
+            this.dayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dayBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayBtn.ForeColor = System.Drawing.Color.Black;
+            this.dayBtn.Location = new System.Drawing.Point(549, 10);
+            this.dayBtn.Name = "dayBtn";
+            this.dayBtn.Size = new System.Drawing.Size(82, 33);
+            this.dayBtn.TabIndex = 22;
+            this.dayBtn.Text = "Calendar";
+            this.dayBtn.UseVisualStyleBackColor = false;
+            this.dayBtn.Click += new System.EventHandler(this.calendarViewBtn_Click);
+            // 
+            // dateLabel
+            // 
+            this.dateLabel.AutoSize = true;
+            this.dateLabel.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateLabel.Location = new System.Drawing.Point(331, 16);
+            this.dateLabel.Name = "dateLabel";
+            this.dateLabel.Size = new System.Drawing.Size(42, 20);
+            this.dateLabel.TabIndex = 21;
+            this.dateLabel.Text = "Date";
+            // 
+            // todayBtn
+            // 
+            this.todayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.todayBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.todayBtn.Location = new System.Drawing.Point(250, 10);
+            this.todayBtn.Name = "todayBtn";
+            this.todayBtn.Size = new System.Drawing.Size(75, 32);
+            this.todayBtn.TabIndex = 20;
+            this.todayBtn.Text = "Today";
+            this.todayBtn.UseVisualStyleBackColor = true;
+            this.todayBtn.Click += new System.EventHandler(this.todayBtn_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(75, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(96, 22);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Client View";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 268);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 22);
+            this.label1.TabIndex = 16;
+            this.label1.Text = "View";
+            // 
+            // createBtn
+            // 
+            this.createBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.createBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createBtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createBtn.ForeColor = System.Drawing.Color.White;
+            this.createBtn.Location = new System.Drawing.Point(10, 64);
+            this.createBtn.Name = "createBtn";
+            this.createBtn.Size = new System.Drawing.Size(227, 32);
+            this.createBtn.TabIndex = 15;
+            this.createBtn.Text = "Create";
+            this.createBtn.UseVisualStyleBackColor = false;
+            this.createBtn.Click += new System.EventHandler(this.createViewBtn_Click);
+            // 
+            // monthCalendar
+            // 
+            this.monthCalendar.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.monthCalendar.Location = new System.Drawing.Point(10, 97);
+            this.monthCalendar.Name = "monthCalendar";
+            this.monthCalendar.TabIndex = 14;
+            this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected_1);
+            // 
+            // dayRadioBtn
+            // 
+            this.dayRadioBtn.AutoSize = true;
+            this.dayRadioBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayRadioBtn.Location = new System.Drawing.Point(12, 293);
+            this.dayRadioBtn.Name = "dayRadioBtn";
+            this.dayRadioBtn.Size = new System.Drawing.Size(51, 24);
+            this.dayRadioBtn.TabIndex = 25;
+            this.dayRadioBtn.TabStop = true;
+            this.dayRadioBtn.Text = "Day";
+            this.dayRadioBtn.UseVisualStyleBackColor = true;
+            this.dayRadioBtn.CheckedChanged += new System.EventHandler(this.dayRadioBtn_CheckedChanged);
+            // 
+            // weekRadioBtn
+            // 
+            this.weekRadioBtn.AutoSize = true;
+            this.weekRadioBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weekRadioBtn.Location = new System.Drawing.Point(12, 323);
+            this.weekRadioBtn.Name = "weekRadioBtn";
+            this.weekRadioBtn.Size = new System.Drawing.Size(63, 24);
+            this.weekRadioBtn.TabIndex = 26;
+            this.weekRadioBtn.TabStop = true;
+            this.weekRadioBtn.Text = "Week";
+            this.weekRadioBtn.UseVisualStyleBackColor = true;
+            this.weekRadioBtn.CheckedChanged += new System.EventHandler(this.weekRadioBtn_CheckedChanged);
             // 
             // ClientView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.createViewBtn);
-            this.Controls.Add(this.agendaViewBtn);
-            this.Controls.Add(this.dayViewBtn);
+            this.ClientSize = new System.Drawing.Size(719, 394);
+            this.Controls.Add(this.weekRadioBtn);
+            this.Controls.Add(this.dayRadioBtn);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.agendaBtn);
+            this.Controls.Add(this.dayBtn);
+            this.Controls.Add(this.dateLabel);
+            this.Controls.Add(this.todayBtn);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.createBtn);
+            this.Controls.Add(this.monthCalendar);
             this.Name = "ClientView";
             this.Text = "ClientView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientView_FormClosed);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button dayViewBtn;
-        private System.Windows.Forms.Button agendaViewBtn;
-        private System.Windows.Forms.Button createViewBtn;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button agendaBtn;
+        private System.Windows.Forms.Button dayBtn;
+        private System.Windows.Forms.Label dateLabel;
+        private System.Windows.Forms.Button todayBtn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button createBtn;
+        public System.Windows.Forms.MonthCalendar monthCalendar;
+        public System.Windows.Forms.RadioButton dayRadioBtn;
+        public System.Windows.Forms.RadioButton weekRadioBtn;
     }
 }

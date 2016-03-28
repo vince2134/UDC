@@ -46,7 +46,7 @@ namespace UDC
        private void InitializeDoctors()
         {
             String username = "root";
-            String password = "mysqldev";
+            String password = "micohalvarez";
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
             try
