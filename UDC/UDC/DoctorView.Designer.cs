@@ -135,6 +135,7 @@
             this.dailyBtn.TabStop = true;
             this.dailyBtn.Text = "Daily";
             this.dailyBtn.UseVisualStyleBackColor = true;
+            this.dailyBtn.CheckedChanged += new System.EventHandler(this.dailyBtn_CheckedChanged);
             // 
             // weeklyBtn
             // 
@@ -145,6 +146,7 @@
             this.weeklyBtn.TabIndex = 17;
             this.weeklyBtn.Text = "Weekly";
             this.weeklyBtn.UseVisualStyleBackColor = true;
+            this.weeklyBtn.CheckedChanged += new System.EventHandler(this.weeklyBtn_CheckedChanged);
             // 
             // currentDate
             // 

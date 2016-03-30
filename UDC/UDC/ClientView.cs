@@ -14,6 +14,8 @@ namespace UDC {
         private ListController controller;
         private SubView currentView;
         private Panel currentPanel;
+        private List<String> doctors;
+        private List<DateTime> dates;
         public const String CLIENT_VIEW = "ClientView";
 
         public ClientView(ListController c) {
@@ -24,7 +26,9 @@ namespace UDC {
         }
 
         void ListView.InitializeView() {
-            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.CALENDAR_VIEW);
+            this.doctors = new List<String>();
+            this.dates = new List<DateTime>();
+            this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
@@ -34,11 +38,30 @@ namespace UDC {
 
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
-            if(currentView is CalendarView)
-                this.currentView.Update(this, SubView.CALENDAR_VIEW, controller);
-            if(currentView is AgendaView)
-                this.currentView.Update(this, SubView.AGENDA_VIEW, controller);
+            this.currentView.Update(doctors, dates);
             Console.WriteLine("Update");
+        }
+
+        private void UpdateDate() {
+            this.dates.Clear();
+
+            if (this.dayRadioBtn.Checked)
+                this.dates.Add(this.monthCalendar.SelectionRange.Start);
+            else if (this.weekRadioBtn.Checked) {
+                DateTime date = monthCalendar.SelectionRange.Start.Date;
+                DayOfWeek fdow = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+                int offset = fdow - date.DayOfWeek;
+                DateTime startDateOfWeek = date.AddDays(offset);
+                DateTime endDateOfWeek = startDateOfWeek.AddDays(6);
+                this.dates.Add(startDateOfWeek);
+                this.dates.Add(endDateOfWeek);
+            }
+        }
+
+        private void UpdateDoctor() {
+            this.doctors.Clear();
+
+
         }
 
         private void ClientView_FormClosed(object sender, FormClosedEventArgs e) {
@@ -48,27 +71,27 @@ namespace UDC {
         private void calendarViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.CALENDAR_VIEW);
+            this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(this, SubView.CALENDAR_VIEW, controller);
+            this.currentView.Update(doctors, dates);
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.AGENDA_VIEW);
+            this.currentView = SubView.MakeView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(this, SubView.AGENDA_VIEW, controller);
+            this.currentView.Update(doctors, dates);
         }
 
         private void createViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR CREATE VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, CLIENT_VIEW, SubView.CREATE_VIEW);
+            this.currentView = SubView.MakeView(controller, SubView.CREATE_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
@@ -76,9 +99,9 @@ namespace UDC {
 
         private void todayBtn_Click(object sender, EventArgs e) {
             monthCalendar.SetDate(DateTime.Today);
-            if(dayRadioBtn.Checked)
+            if (dayRadioBtn.Checked)
                 dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
-            else if(weekRadioBtn.Checked)
+            else if (weekRadioBtn.Checked)
                 dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar.SelectionRange.Start).ToString();
             ((ListView)this).Update();
         }
@@ -89,14 +112,26 @@ namespace UDC {
             ((ListView)this).Update();
         }
 
+        private void monthCalendar_DateSelected_1(object sender, DateRangeEventArgs e) {
+            DateTime date = monthCalendar.SelectionRange.Start.Date;
+
+            DayOfWeek fdow = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
+            int offset = fdow - date.DayOfWeek;
+            DateTime startDateOfWeek = date.AddDays(offset);
+            DateTime endDateOfWeek = startDateOfWeek.AddDays(6);
+
+            dateLabel.Text = date.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(date).ToString();
+        }
+
         private void dayRadioBtn_CheckedChanged(object sender, EventArgs e) {
-            if(currentView is CalendarView)
-                this.currentView.Update(this, SubView.CALENDAR_VIEW, controller);
+            UpdateDate();
+            this.currentView.Update(doctors, dates);
+
             if (dayRadioBtn.Checked) {
                 this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
                 dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             }
-            if (weekRadioBtn.Checked) {
+            else if (weekRadioBtn.Checked) {
                 DateTime date = monthCalendar.SelectionRange.Start.Date;
                 this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected_1);
                 dateLabel.Text = date.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(date).ToString();
@@ -104,22 +139,8 @@ namespace UDC {
         }
 
         private void weekRadioBtn_CheckedChanged(object sender, EventArgs e) {
-            if(currentView is CalendarView)
-                this.currentView.Update(this, SubView.CALENDAR_VIEW, controller);
-        }
-
-        private void monthCalendar_DateSelected_1(object sender, DateRangeEventArgs e) {
-            DateTime date = monthCalendar.SelectionRange.Start.Date;
-
-            dateLabel.Text = date.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(date).ToString();
-
-            DayOfWeek fdow = CultureInfo.CurrentCulture.DateTimeFormat.FirstDayOfWeek;
-            int offset = fdow - date.DayOfWeek;
-            DateTime startDateOfWeek = date.AddDays(offset);
-            DateTime endDateOfWeek = startDateOfWeek.AddDays(6);
-
-            Console.WriteLine(startDateOfWeek.ToString("MMMM d - dddd")); /*GET START OF WEEK*/
-            Console.WriteLine(endDateOfWeek.ToString("MMMM d - dddd"));
+            UpdateDate();
+            this.currentView.Update(doctors, dates);
         }
 
         static int GetWeekNumberOfMonth(DateTime date) {
@@ -130,6 +151,7 @@ namespace UDC {
                 firstMonthDay = firstMonthDay.AddMonths(-1);
                 firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Sunday + 7 - firstMonthDay.DayOfWeek) % 7);
             }
+
             return (date - firstMonthMonday).Days / 7 + 1;
         }
     }
