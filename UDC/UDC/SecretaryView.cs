@@ -112,7 +112,8 @@ namespace UDC
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-     
+            ((ListView)this).Update();
+
         }
 
         private void createViewBtn_Click(object sender, EventArgs e)
