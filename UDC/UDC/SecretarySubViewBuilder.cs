@@ -31,7 +31,6 @@ namespace UDC {
             // 
             this.agendaPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.agendaPanel.Controls.Add(this.agendaGrid);
-            this.createPanel.BackColor = System.Drawing.Color.Black;
             this.agendaPanel.Location = new System.Drawing.Point(248, 84);
             this.agendaPanel.Name = "agendaPanel";
             this.agendaPanel.Size = new System.Drawing.Size(391, 244);
@@ -39,8 +38,6 @@ namespace UDC {
             // 
             // agendaGrid
             // 
-            this.agendaGrid.ColumnHeadersVisible = false;
-            this.agendaGrid.RowHeadersVisible = false;
             this.agendaGrid.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.agendaGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.agendaGrid.GridColor = Color.White;
@@ -50,7 +47,6 @@ namespace UDC {
             this.agendaGrid.Name = "agendaGrid";
             this.agendaGrid.Size = new System.Drawing.Size(391, 244);
             this.agendaGrid.TabIndex = 0;
-           
             ((System.ComponentModel.ISupportInitialize)(this.agendaGrid)).BeginInit();
             this.agendaPanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.agendaGrid)).EndInit();
@@ -160,62 +156,37 @@ namespace UDC {
             }
             else if (subView.Equals(SubView.AGENDA_VIEW))
             {
-                foreach(Control c in ((SecretaryView)parentView).Controls){
-                    if(c is Panel)
-                    {
-                        foreach (Control d in ((Panel)c).Controls)
-                            if (d is DataGridView)
-                            {
-                                ((DataGridView)d).AllowUserToResizeColumns = false;
-                                ((DataGridView)d).AllowUserToResizeRows = false;
-                                ((DataGridView)d).AllowUserToAddRows = false;
-                                ((DataGridView)d).MultiSelect = false;
-                                ((DataGridView)d).ColumnHeadersVisible = false;
-                                ((DataGridView)d).RowHeadersVisible = false;
-                                ((DataGridView)d).AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-                                ((DataGridView)d).GridColor = Color.White;
-                                DataTable dt = new DataTable();
-                                dt.Columns.Add("Time");
-                                dt.Columns.Add("Todo");
-                                /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW AGENDA VIEW*/
-                                AppointmentList apList = ((AppointmentModelController)controller).GetAppointments();
 
+                DataTable dt = new DataTable();
+                dt.Columns.Add("Time");
+                dt.Columns.Add("Todo");
+                /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW AGENDA VIEW*/
+                AppointmentList apList = ((AppointmentModelController)controller).GetAppointments();
+                
+               
+                foreach (Appointment t in apList.GetAppointments())
+                {
+                  
 
-                                foreach (Appointment t in apList.GetAppointments())
-                                {
-
-
-                                    dt.Rows.Add("  ");
-
-                                }
-
-                               ((DataGridView)d).DataSource = dt;
-
-                                AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments();
-
-                                int i = 0;
-                                foreach (Appointment t in apList1.GetAppointments())
-                                {
-                                    ((DataGridView)d).Rows[i].Cells[0].Value = t.GetStartTime().ToString("HH:mm") + " " + t.GetEndTime().ToString("HH:mm");
-
-                                    ((DataGridView)d).Rows[i].Cells[1].Value = t.GetTitle();
-
-
-
-                                    i++;
-
-                                }
-                                agendaGrid = (DataGridView)d;
-                            }
-                       
-
-
-                    }
-
+                    dt.Rows.Add("  ");
 
                 }
 
-              
+                agendaGrid.DataSource = dt;
+                
+                AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments();
+
+                int i = 0;
+                foreach (Appointment t in apList1.GetAppointments())
+                {
+
+ 
+                    
+                 
+                    i++;
+                   
+                }
+
 
 
 
