@@ -7,13 +7,18 @@ using System.Windows.Forms;
 
 namespace UDC {
     public class AgendaView : SubView{
-        public AgendaView(ListController c) {
+        public AgendaView(ListController c, String parentView) {
             this.controller = c;
+            this.viewBuilder = SubViewBuilder.BuildSubView(parentView);
             InitializeView();
         }
 
         protected override void InitializeView() {
-            this.panel = MakeAgendaPanel();
+            this.panel = this.viewBuilder.BuildAgendaView();
+        }
+
+        public override void Update(ListView parentView, String subView, ListController c) {
+            this.viewBuilder.Update(parentView, subView, c);
         }
     }
 }
