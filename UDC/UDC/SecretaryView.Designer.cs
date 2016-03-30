@@ -31,7 +31,7 @@
             this.todayButton = new System.Windows.Forms.Button();
             this.filter = new System.Windows.Forms.Button();
             this.dayRadio = new System.Windows.Forms.RadioButton();
-            this.weekRadio = new System.Windows.Forms.RadioButton();
+            this.weekButton = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
             this.drListBox = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
@@ -134,18 +134,17 @@
             this.dayRadio.TabStop = true;
             this.dayRadio.Text = "Day";
             this.dayRadio.UseVisualStyleBackColor = true;
-            this.dayRadio.CheckedChanged += new System.EventHandler(this.dayRadio_CheckedChanged);
             // 
-            // weekRadio
+            // weekButton
             // 
-            this.weekRadio.AutoSize = true;
-            this.weekRadio.Location = new System.Drawing.Point(12, 320);
-            this.weekRadio.Name = "weekRadio";
-            this.weekRadio.Size = new System.Drawing.Size(54, 17);
-            this.weekRadio.TabIndex = 8;
-            this.weekRadio.TabStop = true;
-            this.weekRadio.Text = "Week";
-            this.weekRadio.UseVisualStyleBackColor = true;
+            this.weekButton.AutoSize = true;
+            this.weekButton.Location = new System.Drawing.Point(12, 320);
+            this.weekButton.Name = "weekButton";
+            this.weekButton.Size = new System.Drawing.Size(54, 17);
+            this.weekButton.TabIndex = 8;
+            this.weekButton.TabStop = true;
+            this.weekButton.Text = "Week";
+            this.weekButton.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -154,7 +153,7 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(21, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 27);
+            this.label1.Size = new System.Drawing.Size(163, 27);
             this.label1.TabIndex = 10;
             this.label1.Text = "Secretary View";
             // 
@@ -175,7 +174,7 @@
             this.ClientSize = new System.Drawing.Size(651, 378);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.weekRadio);
+            this.Controls.Add(this.weekButton);
             this.Controls.Add(this.dayRadio);
             this.Controls.Add(this.filter);
             this.Controls.Add(this.todayButton);
@@ -202,7 +201,7 @@
         private System.Windows.Forms.Button todayButton;
         private System.Windows.Forms.Button filter;
         private System.Windows.Forms.RadioButton dayRadio;
-        private System.Windows.Forms.RadioButton weekRadio;
+        private System.Windows.Forms.RadioButton weekButton;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.CheckedListBox drListBox;
     }
