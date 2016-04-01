@@ -45,7 +45,6 @@ namespace UDC {
 
         private void UpdateDate() {
             this.dates.Clear();
-
             if (this.dayRadioBtn.Checked)
                 this.dates.Add(this.monthCalendar.SelectionRange.Start);
             else if (this.weekRadioBtn.Checked) {

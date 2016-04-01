@@ -31,6 +31,7 @@ namespace UDC {
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
+            addDelete();
             this.currentPanel.Show();
             dailyBtn.Checked = false; 
             dailyBtn.Checked = false;
@@ -133,6 +134,17 @@ namespace UDC {
                 this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected_1);
                 currentDate.Text = date.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(date).ToString();
             }
+        }
+
+        private void addDelete() {
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView)
+                    ((DataGridView)c).CellDoubleClick += new DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
+            }
+        }
+
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            MessageBox.Show("DELEETE");
         }
 
         static int GetWeekNumberOfMonth(DateTime date) {
