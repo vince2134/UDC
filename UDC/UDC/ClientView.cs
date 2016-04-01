@@ -31,6 +31,7 @@ namespace UDC {
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
+            addDelete();
             this.currentPanel.Show();
             dayRadioBtn.Checked = true;
             dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
@@ -141,6 +142,17 @@ namespace UDC {
         private void weekRadioBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
             this.currentView.Update(doctors, dates);
+        }
+
+        private void addDelete() {
+            foreach(Control c in this.currentPanel.Controls) {
+                if(c is DataGridView)
+                    ((DataGridView)c).CellDoubleClick += new DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
+            }
+        }
+
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            MessageBox.Show("DELEETE");
         }
 
         static int GetWeekNumberOfMonth(DateTime date) {

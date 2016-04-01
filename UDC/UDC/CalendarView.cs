@@ -67,5 +67,9 @@ namespace UDC {
         private void tableView_SelectionChanged(object sender, EventArgs e) {
             tableView.ClearSelection();
         }
+
+        public DataGridView getDataGrid() {
+            return this.tableView;
+        }
     }
 }
