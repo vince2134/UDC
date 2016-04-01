@@ -73,7 +73,9 @@ namespace UDC {
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
+            addDelete();
             this.currentPanel.Show();
+            this.currentView.Update(doctors, dates);
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
@@ -83,6 +85,7 @@ namespace UDC {
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
+            this.currentView.Update(doctors, dates);
         }
 
         private void createViewBtn_Click(object sender, EventArgs e) {

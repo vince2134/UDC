@@ -74,6 +74,7 @@ namespace UDC {
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
+            addDelete();
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates);
         }
