@@ -32,7 +32,11 @@ namespace UDC {
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
+<<<<<<< HEAD
             dailyBtn.Checked = false; 
+=======
+            dailyBtn.Checked = false;
+>>>>>>> 19066598e4e0b8509d7b33254b17a72eb0f7f53e
             currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
         }
 
