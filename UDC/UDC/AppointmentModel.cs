@@ -77,15 +77,19 @@ namespace UDC {
 
         public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates) {
             DateTime curDate;
+            foreach (String dr in doctors) {
+              
             foreach(DateTime d in dates) {
                 curDate = d.Date;
             foreach (Appointment t in appointments.GetAppointments())
-            {
-                if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0))
+                    {
+                     
+                        if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0) && dr.Equals(t.GetTitle()))
                 {
                         filteredAppointments.Add(t);
                 }
 
+            }
             }
             }
             return filteredAppointments;

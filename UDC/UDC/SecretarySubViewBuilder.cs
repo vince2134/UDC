@@ -141,57 +141,57 @@ namespace UDC {
             return calendarPanel;
         }
 
-        public override void Update(ListView parentView, String subView, ListController controller)
-        {
+    public override void Update(ListView parentView, String subView, ListController controller)
+       {
 
 
-            if (subView.Equals(SubView.CALENDAR_VIEW))
-            {
+          //  if (subView.Equals(SubView.CALENDAR_VIEW))
+          //  {
 
                 /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW DAY VIEW*/
 
 
 
+            //
+          //  }
+         //   else if (subView.Equals(SubView.AGENDA_VIEW))
+         //   {
 
-            }
-            else if (subView.Equals(SubView.AGENDA_VIEW))
-            {
-
-                DataTable dt = new DataTable();
-                dt.Columns.Add("Time");
-                dt.Columns.Add("Todo");
+            //    DataTable dt = new DataTable();
+            //    dt.Columns.Add("Time");
+             //   dt.Columns.Add("Todo");
                 /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW AGENDA VIEW*/
-                AppointmentList apList = ((AppointmentModelController)controller).GetAppointments();
+          //      AppointmentList apList = ((AppointmentModelController)controller).GetAppointments();
                 
                
-                foreach (Appointment t in apList.GetAppointments())
-                {
-                  
+            //   // foreach (Appointment t in apList.GetAppointments())
+             //   {
+             //     
 
-                    dt.Rows.Add("  ");
+            //        dt.Rows.Add("  ");
 
-                }
+           //     }
 
-                agendaGrid.DataSource = dt;
+        //        agendaGrid.DataSource = dt;
                 
-                AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments();
+            //    AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments();
 
-                int i = 0;
-                foreach (Appointment t in apList1.GetAppointments())
-                {
+          //      int i = 0;
+            //    foreach (Appointment t in apList1.GetAppointments())
+             //   {
 
  
                     
                  
-                    i++;
+                //    i++;
                    
-                }
+          //      }
 
 
 
 
-            }
-        }
+       //     }
+    }
 
         private void appoint_Click(object sender, EventArgs e){
             Appointment appt = null;

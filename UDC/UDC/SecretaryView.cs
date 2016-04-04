@@ -22,6 +22,7 @@ namespace UDC
         public const String SECRETARY_VIEW = "SecretaryView";
         MySqlConnection myConn;
         MySqlDataReader reader;
+        private int doctCount =0;
 
         public SecretaryView(ListController c)
         {
@@ -115,7 +116,10 @@ namespace UDC
             foreach (String t in checkedItems)
             {
                 doctors.Add(t);
+                Console.Write(t);
             }
+            
+            this.currentView.Update(doctors, dates);
 
         }
 
@@ -223,14 +227,18 @@ namespace UDC
 
         private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e)
         {
-            String item;
-            Console.WriteLine("dd");
-            if (this.drListBox.SelectedItems.Count != 0)
+            if (e.NewValue == CheckState.Checked) { doctCount++; }
+            if (e.NewValue == CheckState.Unchecked) { doctCount--; }
+            List<String> names = new List<string>();
+           Console.WriteLine(doctCount);
+           
+          foreach(String j in drListBox.CheckedItems)
             {
-                item = this.drListBox.SelectedItem.ToString();
-             
-                Console.WriteLine("marked " + item);
+                Console.Write(j);
+
             }
+            UpdateDoctor(names);
+           
         }
 
         private void drListBox_SelectedIndexChanged_1(object sender, EventArgs e)
