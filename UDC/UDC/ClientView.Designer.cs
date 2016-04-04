@@ -170,6 +170,7 @@
             this.drListBox.Name = "drListBox";
             this.drListBox.Size = new System.Drawing.Size(120, 94);
             this.drListBox.TabIndex = 27;
+            this.drListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.drListBox_SelectedIndexChanged_1);
             // 
             // ClientView
             // 

@@ -29,9 +29,46 @@ namespace UDC {
             ((AppointmentModel)this.model).Add(a);
         }
 
-        public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates) {
+        public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates, Boolean Availability) {
+            DateTime curDate;
+            AppointmentList filteredAppointments = new AppointmentList();
+            AppointmentList appointments = ((AppointmentModel)this.model).GetAppointments();
+            foreach (String dr in doctors)
+            {
+                if (dates.Count == 1)
+                {
+
+                    curDate = dates[0].Date;
+                    foreach (Appointment t in appointments.GetAppointments())
+                    {
+
+                        if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0) && dr.Equals(t.GetTitle()))
+                        {
+                            filteredAppointments.Add(t);
+                        }
+
+                    }
+                }
+                else
+                {
+                 
+                    foreach (Appointment t in appointments.GetAppointments())
+                    {
+                        if (t.GetStartTime().Date >= dates[0].Date  && t.GetStartTime().Date <= dates[1].Date && dr.Equals(t.GetTitle()))
+                            filteredAppointments.Add(t);
+                        
+
+                    }
+
+
+
+
+
+
+                }
+                }
             
-            return ((AppointmentModel)this.model).GetAppointments( doctors, dates);
+            return filteredAppointments;
         }
 
         public Boolean Overlap(Appointment a) {

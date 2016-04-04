@@ -23,6 +23,7 @@ namespace UDC
         MySqlConnection myConn;
         MySqlDataReader reader;
         private int doctCount =0;
+        List<String> names = new List<string>();
 
         public SecretaryView(ListController c)
         {
@@ -130,6 +131,7 @@ namespace UDC
 
         private void dayViewBtn_Click(object sender, EventArgs e)
         {
+           
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
@@ -141,12 +143,14 @@ namespace UDC
 
         private void agendaViewBtn_Click(object sender, EventArgs e)
         {
+        
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
+            this.currentView.Update(doctors, dates);
         }
 
         private void createViewBtn_Click(object sender, EventArgs e)
@@ -227,16 +231,19 @@ namespace UDC
 
         private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e)
         {
-            if (e.NewValue == CheckState.Checked) { doctCount++; }
-            if (e.NewValue == CheckState.Unchecked) { doctCount--; }
-            List<String> names = new List<string>();
-           Console.WriteLine(doctCount);
-           
-          foreach(String j in drListBox.CheckedItems)
-            {
-                Console.Write(j);
+        
+            if (e.NewValue == CheckState.Checked) {
+                names.Add(drListBox.Items[e.Index].ToString());
 
             }
+            if (e.NewValue == CheckState.Unchecked) {
+
+                names.RemoveAt(e.Index);
+                }
+           
+        
+           
+          
             UpdateDoctor(names);
            
         }

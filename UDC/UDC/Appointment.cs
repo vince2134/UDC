@@ -84,7 +84,7 @@ namespace UDC {
         public void setColor()
         {
             if (this.available)
-                this.color = Color.Teal;
+                this.color = Color.RoyalBlue;
             else
                 this.color = Color.Firebrick;
         }

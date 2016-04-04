@@ -20,6 +20,7 @@ namespace UDC {
         public const String CLIENT_VIEW = "ClientView";
         MySqlConnection myConn;
         MySqlDataReader reader;
+        List<String> names = new List<string>();
 
         public ClientView(ListController c) {
             this.controller = c;
@@ -99,9 +100,16 @@ namespace UDC {
             }
         }
 
-        private void UpdateDoctor() {
+        private void UpdateDoctor(List<String> checkedItems) {
             this.doctors.Clear();
 
+            foreach (String t in checkedItems)
+            {
+                doctors.Add(t);
+                Console.Write(t);
+            }
+
+            this.currentView.Update(doctors, dates);
 
         }
 
@@ -207,6 +215,27 @@ namespace UDC {
             }
 
             return (date - firstMonthMonday).Days / 7 + 1;
+        }
+
+        private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e)
+        {
+
+            if (e.NewValue == CheckState.Checked)
+            {
+                names.Add(drListBox.Items[e.Index].ToString());
+
+            }
+            if (e.NewValue == CheckState.Unchecked)
+            {
+
+                names.RemoveAt(e.Index);
+            }
+
+
+
+
+            UpdateDoctor(names);
+
         }
     }
 }
