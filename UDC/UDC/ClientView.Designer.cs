@@ -34,6 +34,7 @@
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.dayRadioBtn = new System.Windows.Forms.RadioButton();
             this.weekRadioBtn = new System.Windows.Forms.RadioButton();
+            this.drListBox = new System.Windows.Forms.CheckedListBox();
             this.SuspendLayout();
             // 
             // label4
@@ -155,12 +156,20 @@
             this.weekRadioBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weekRadioBtn.Location = new System.Drawing.Point(12, 323);
             this.weekRadioBtn.Name = "weekRadioBtn";
-            this.weekRadioBtn.Size = new System.Drawing.Size(63, 24);
+            this.weekRadioBtn.Size = new System.Drawing.Size(64, 24);
             this.weekRadioBtn.TabIndex = 26;
             this.weekRadioBtn.TabStop = true;
             this.weekRadioBtn.Text = "Week";
             this.weekRadioBtn.UseVisualStyleBackColor = true;
             this.weekRadioBtn.CheckedChanged += new System.EventHandler(this.weekRadioBtn_CheckedChanged);
+            // 
+            // drListBox
+            // 
+            this.drListBox.FormattingEnabled = true;
+            this.drListBox.Location = new System.Drawing.Point(94, 268);
+            this.drListBox.Name = "drListBox";
+            this.drListBox.Size = new System.Drawing.Size(120, 94);
+            this.drListBox.TabIndex = 27;
             // 
             // ClientView
             // 
@@ -168,6 +177,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(719, 394);
+            this.Controls.Add(this.drListBox);
             this.Controls.Add(this.weekRadioBtn);
             this.Controls.Add(this.dayRadioBtn);
             this.Controls.Add(this.label4);
@@ -200,5 +210,6 @@
         public System.Windows.Forms.MonthCalendar monthCalendar;
         public System.Windows.Forms.RadioButton dayRadioBtn;
         public System.Windows.Forms.RadioButton weekRadioBtn;
+        private System.Windows.Forms.CheckedListBox drListBox;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +18,8 @@ namespace UDC {
         private List<String> doctors;
         private List<DateTime> dates;
         public const String CLIENT_VIEW = "ClientView";
+        MySqlConnection myConn;
+        MySqlDataReader reader;
 
         public ClientView(ListController c) {
             this.controller = c;
@@ -35,8 +38,46 @@ namespace UDC {
             this.currentPanel.Show();
             dayRadioBtn.Checked = true;
             dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
+            InitializeDoctors();
         }
+        private void InitializeDoctors()
+        {
+            String username = "root";
+            String password = "micohalvarez";
+            String dbname = "udc_database";
+            String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
+            try
+            {
+                myConn = new MySqlConnection(myConnection);
+                Console.WriteLine("Success");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Connection Failed");
+            }
+            try
+            {
+                MySqlCommand command = myConn.CreateCommand();
+                command.CommandText = "select * from doctors";
 
+                myConn.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    drListBox.Items.Add(reader["name"].ToString());
+
+
+                }
+                myConn.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+        }
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
             this.currentView.Update(doctors, dates);
@@ -110,6 +151,7 @@ namespace UDC {
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e) {
             dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             monthCalendar.SelectionRange.Start = DateTime.Today;
+            UpdateDate();
             ((ListView)this).Update();
         }
 

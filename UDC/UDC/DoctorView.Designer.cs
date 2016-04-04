@@ -30,7 +30,6 @@
             this.doctorName = new System.Windows.Forms.Label();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.dailyBtn = new System.Windows.Forms.RadioButton();
             this.weeklyBtn = new System.Windows.Forms.RadioButton();
             this.currentDate = new System.Windows.Forms.Label();
@@ -116,14 +115,6 @@
             this.label4.Size = new System.Drawing.Size(732, 68);
             this.label4.TabIndex = 14;
             // 
-            // label3
-            // 
-            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label3.Location = new System.Drawing.Point(-1, -7);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(264, 422);
-            this.label3.TabIndex = 15;
-            // 
             // dailyBtn
             // 
             this.dailyBtn.AutoSize = true;
@@ -142,7 +133,7 @@
             this.weeklyBtn.AutoSize = true;
             this.weeklyBtn.Location = new System.Drawing.Point(141, 293);
             this.weeklyBtn.Name = "weeklyBtn";
-            this.weeklyBtn.Size = new System.Drawing.Size(80, 26);
+            this.weeklyBtn.Size = new System.Drawing.Size(81, 26);
             this.weeklyBtn.TabIndex = 17;
             this.weeklyBtn.Text = "Weekly";
             this.weeklyBtn.UseVisualStyleBackColor = true;
@@ -185,7 +176,6 @@
             this.Controls.Add(this.dayViewBtn);
             this.Controls.Add(this.agendaViewBtn);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DoctorView";
@@ -206,7 +196,6 @@
         private System.Windows.Forms.Label doctorName;
         private System.Windows.Forms.MonthCalendar monthCalendar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.RadioButton dailyBtn;
         private System.Windows.Forms.RadioButton weeklyBtn;
         private System.Windows.Forms.Label currentDate;

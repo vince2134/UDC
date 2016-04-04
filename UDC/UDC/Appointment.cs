@@ -23,8 +23,7 @@ namespace UDC {
 
         public Appointment(String title, DateTime startTime, DateTime endTime) {
             this.title = title;
-            this.DEFAULT_COLOR = Color.RoyalBlue;
-            this.color = DEFAULT_COLOR;
+            setColor();
             this.startTime = startTime;
             this.endTime = endTime;
         }
@@ -79,6 +78,17 @@ namespace UDC {
 
         public void SetAvailability(Boolean a) {
             this.available = a;
+            setColor();
+            
         }
+        public void setColor()
+        {
+            if (this.available)
+                this.color = Color.Teal;
+            else
+                this.color = Color.Firebrick;
+        }
+        
+       
     }
 }

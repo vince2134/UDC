@@ -19,11 +19,15 @@ namespace UDC {
         protected abstract void InitializeView();
         
         public void Update(List<String> doctors, List<DateTime> dates) {
+            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates);
+
             if (this is CalendarView) {
                 if (dates.Count == 1) {
+                   
                     this.tableView.ColumnHeadersVisible = false;
                     DataTable dt = new DataTable();
-
+                    DateTime curDate = dates[0];
+                    Console.WriteLine(curDate);
                     this.tableView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.tableView_CellPainting_1);
 
                     dt.Columns.Add("Time");
@@ -33,10 +37,10 @@ namespace UDC {
                         dt.Rows.Add(i.ToString("00") + ":00");
                         dt.Rows.Add(i.ToString("00") + ":30");
                     }
-
+                   
                     tableView.DataSource = dt;
 
-                    tableView.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[1].DefaultCellStyle.ForeColor = Color.Black;
                     tableView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                     tableView.Columns[0].Width = 70;
                     tableView.Columns[1].Width = 360;
@@ -44,6 +48,32 @@ namespace UDC {
                     tableView.AllowUserToResizeColumns = false;
                     tableView.AllowUserToResizeRows = false;
                     tableView.AllowUserToAddRows = false;
+             
+                    foreach (Appointment t in apList1.GetAppointments())
+                    {
+                            String startTime = t.GetStartTime().ToString("HH:mm");
+                            for (int i = 0; i < 48; i++)
+                            {
+                             
+                                if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) { 
+                                    tableView.Rows[i].Cells[1].Value = t.GetTitle();
+                                int j = i;
+                                    String endTime = (t.GetEndTime().ToString("HH:mm"));
+                                    while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString()))
+                                    {
+                                        tableView.Rows[j].Cells[1].Style.BackColor = t.GetColor();
+                                        j++;
+
+                                    }
+
+                                }
+                            }
+
+
+
+
+                        
+                    }
                 }
                 else {
                     this.tableView.ColumnHeadersVisible = true;

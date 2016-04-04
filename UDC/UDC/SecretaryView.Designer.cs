@@ -41,7 +41,7 @@
             this.calendarViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calendarViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calendarViewBtn.ForeColor = System.Drawing.Color.Firebrick;
-            this.calendarViewBtn.Location = new System.Drawing.Point(483, 35);
+            this.calendarViewBtn.Location = new System.Drawing.Point(519, 13);
             this.calendarViewBtn.Name = "calendarViewBtn";
             this.calendarViewBtn.Size = new System.Drawing.Size(75, 35);
             this.calendarViewBtn.TabIndex = 0;
@@ -54,7 +54,7 @@
             this.agendaViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.agendaViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agendaViewBtn.ForeColor = System.Drawing.Color.Firebrick;
-            this.agendaViewBtn.Location = new System.Drawing.Point(564, 35);
+            this.agendaViewBtn.Location = new System.Drawing.Point(600, 12);
             this.agendaViewBtn.Name = "agendaViewBtn";
             this.agendaViewBtn.Size = new System.Drawing.Size(75, 35);
             this.agendaViewBtn.TabIndex = 1;
@@ -68,11 +68,11 @@
             this.appointBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.appointBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.appointBtn.Location = new System.Drawing.Point(12, 258);
+            this.appointBtn.Location = new System.Drawing.Point(22, 46);
             this.appointBtn.Name = "appointBtn";
-            this.appointBtn.Size = new System.Drawing.Size(75, 33);
+            this.appointBtn.Size = new System.Drawing.Size(131, 33);
             this.appointBtn.TabIndex = 2;
-            this.appointBtn.Text = "Appoint";
+            this.appointBtn.Text = "Set Appointment";
             this.appointBtn.UseVisualStyleBackColor = false;
             this.appointBtn.Click += new System.EventHandler(this.createViewBtn_Click);
             // 
@@ -89,7 +89,7 @@
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.ForeColor = System.Drawing.Color.Firebrick;
-            this.dateLabel.Location = new System.Drawing.Point(332, 46);
+            this.dateLabel.Location = new System.Drawing.Point(356, 24);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(51, 24);
             this.dateLabel.TabIndex = 4;
@@ -102,7 +102,7 @@
             this.todayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.todayButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.todayButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.todayButton.Location = new System.Drawing.Point(248, 38);
+            this.todayButton.Location = new System.Drawing.Point(251, 16);
             this.todayButton.Name = "todayButton";
             this.todayButton.Size = new System.Drawing.Size(75, 32);
             this.todayButton.TabIndex = 5;
@@ -116,7 +116,7 @@
             this.filter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.filter.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.filter.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.filter.Location = new System.Drawing.Point(248, 334);
+            this.filter.Location = new System.Drawing.Point(22, 367);
             this.filter.Name = "filter";
             this.filter.Size = new System.Drawing.Size(135, 32);
             this.filter.TabIndex = 6;
@@ -152,9 +152,9 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(21, 30);
+            this.label1.Location = new System.Drawing.Point(29, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 27);
+            this.label1.Size = new System.Drawing.Size(163, 27);
             this.label1.TabIndex = 10;
             this.label1.Text = "Secretary View";
             // 
@@ -166,13 +166,15 @@
             this.drListBox.Name = "drListBox";
             this.drListBox.Size = new System.Drawing.Size(120, 94);
             this.drListBox.TabIndex = 11;
+            this.drListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.drListBox_SelectedIndexChanged_1);
+            this.drListBox.SelectedIndexChanged += new System.EventHandler(this.drListBox_SelectedIndexChanged_1);
             // 
             // SecretaryView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.ClientSize = new System.Drawing.Size(651, 378);
+            this.ClientSize = new System.Drawing.Size(728, 411);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.weekRadio);

@@ -52,7 +52,7 @@ namespace UDC
        private void InitializeDoctors()
         {
             String username = "root";
-            String password = "mysqldev";
+            String password = "micohalvarez";
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
             try
@@ -109,9 +109,13 @@ namespace UDC
             }
         }
 
-        private void UpdateDoctor() {
+        private void UpdateDoctor(List<String> checkedItems) {
             this.doctors.Clear();
-
+           
+            foreach (String t in checkedItems)
+            {
+                doctors.Add(t);
+            }
 
         }
 
@@ -152,7 +156,7 @@ namespace UDC
         }
 
         private void todayButton_Click(object sender, EventArgs e){
-
+            
             dateLabel.Text = DateTime.Today.ToString("MMM d, yyyy");
             
         }
@@ -168,7 +172,8 @@ namespace UDC
 
         private void drListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+          
+        
         }
 
         private void dayRadio_CheckedChanged(object sender, EventArgs e) {
@@ -189,6 +194,7 @@ namespace UDC
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e) {
             dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMM d, yyyy");
             monthCalendar1.SelectionRange.Start = DateTime.Today;
+            UpdateDate();
             ((ListView)this).Update();
         }
 
@@ -213,6 +219,23 @@ namespace UDC
             }
 
             return (date - firstMonthMonday).Days / 7 + 1;
+        }
+
+        private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e)
+        {
+            String item;
+            Console.WriteLine("dd");
+            if (this.drListBox.SelectedItems.Count != 0)
+            {
+                item = this.drListBox.SelectedItem.ToString();
+             
+                Console.WriteLine("marked " + item);
+            }
+        }
+
+        private void drListBox_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

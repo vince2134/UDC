@@ -110,6 +110,7 @@ namespace UDC {
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e) {
             currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             monthCalendar.SelectionRange.Start = DateTime.Today;
+            UpdateDate();
             ((ListView)this).Update();
         }
 

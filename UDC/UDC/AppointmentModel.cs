@@ -8,14 +8,16 @@ using System.Threading.Tasks;
 namespace UDC {
     public class AppointmentModel : ListModel {
         private AppointmentList appointments;
+        private AppointmentList filteredAppointments;
         MySqlConnection myConn;
         MySqlDataReader reader;
 
         public AppointmentModel() {
             this.appointments = new AppointmentList();
+            this.filteredAppointments = new AppointmentList();
             this.views = new List<ListView>();
             String username = "root";
-            String password = "mysqldev";
+            String password = "micohalvarez";
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
             try {
@@ -73,8 +75,21 @@ namespace UDC {
             this.Notify();
         }
 
-        public AppointmentList GetAppointments() {
-            return this.appointments;
+        public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates) {
+            DateTime curDate;
+            foreach(DateTime d in dates) {
+                curDate = d.Date;
+            foreach (Appointment t in appointments.GetAppointments())
+            {
+                if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0))
+                {
+                        filteredAppointments.Add(t);
+                }
+
+            }
+            }
+            return filteredAppointments;
+                    
         }
 
         public int GetAppointmentSize() {

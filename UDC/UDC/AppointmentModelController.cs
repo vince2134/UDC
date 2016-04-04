@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace UDC {
     public class AppointmentModelController : ListController{
+
         public AppointmentModelController() {
             this.model = new AppointmentModel();
             this.AttachViews();
@@ -28,8 +29,9 @@ namespace UDC {
             ((AppointmentModel)this.model).Add(a);
         }
 
-        public AppointmentList GetAppointments() {
-            return ((AppointmentModel)this.model).GetAppointments();
+        public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates) {
+            
+            return ((AppointmentModel)this.model).GetAppointments( doctors, dates);
         }
 
         public Boolean Overlap(Appointment a) {
