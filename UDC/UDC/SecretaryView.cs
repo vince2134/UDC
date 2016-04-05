@@ -237,8 +237,12 @@ namespace UDC
 
             }
             if (e.NewValue == CheckState.Unchecked) {
-
-                names.RemoveAt(e.Index);
+                for(int i = 0; i < names.Count; i ++)
+                {
+                    if (drListBox.Items[e.Index].ToString().Equals(names[i]))
+                        names.RemoveAt(i);
+                }
+                
                 }
            
         
