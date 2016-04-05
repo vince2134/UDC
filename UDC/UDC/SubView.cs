@@ -19,20 +19,19 @@ namespace UDC {
         private List<DateTime> dates;
         protected abstract void InitializeView();
         int k = 1;
-      
-   
 
-        public void Update(List<String> doctors, List<DateTime> dates) {
-            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates,false);
+        public void Update(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
+            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, availableOnly);
             this.doctors = doctors;
             this.dates = dates;
+
             if (this is CalendarView) {
                 if (dates.Count == 1) {
-                   
+
                     this.tableView.ColumnHeadersVisible = false;
                     DataTable dt = new DataTable();
                     DateTime curDate = dates[0];
-                
+
                     this.tableView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.tableView_CellPainting_1);
 
                     dt.Columns.Add("Time");
@@ -42,7 +41,7 @@ namespace UDC {
                         dt.Rows.Add(i.ToString("00") + ":00");
                         dt.Rows.Add(i.ToString("00") + ":30");
                     }
-                   
+
                     tableView.DataSource = dt;
 
                     tableView.Columns[1].DefaultCellStyle.ForeColor = Color.White;
@@ -53,21 +52,17 @@ namespace UDC {
                     tableView.AllowUserToResizeColumns = false;
                     tableView.AllowUserToResizeRows = false;
                     tableView.AllowUserToAddRows = false;
-             
-                    foreach (Appointment t in apList1.GetAppointments())
-                    {
-                            String startTime = t.GetStartTime().ToString("HH:mm");
-                       
-                        for (int i = 0; i < 48; i++)
-                        {
 
-                            if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString())))
-                            {
-                                tableView.Rows[i].Cells[1].Value = t.GetTitle();
+                    foreach (Appointment t in apList1.GetAppointments()) {
+                        String startTime = t.GetStartTime().ToString("HH:mm");
+
+                        for (int i = 0; i < 48; i++) {
+
+                            if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) {
+                                tableView.Rows[i].Cells[1].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                 int j = i;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
-                                while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString()))
-                                {
+                                while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString())) {
                                     tableView.Rows[j].Cells[1].Style.BackColor = t.GetColor();
                                     j++;
 
@@ -75,14 +70,14 @@ namespace UDC {
 
                             }
                         }
-                        
+
                     }
                 }
-                else if(dates.Count>1){
+                else if (dates.Count > 1) {
                     this.tableView.ColumnHeadersVisible = true;
-                   
+
                     DataTable dt = new DataTable();
-                   
+
                     this.tableView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.tableView_CellPainting_1);
 
                     DateTime d = dates[0];
@@ -110,30 +105,33 @@ namespace UDC {
                     }
 
                     tableView.DataSource = dt;
-                    
+
 
                     tableView.Columns[1].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[2].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[3].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[4].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[5].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[6].DefaultCellStyle.ForeColor = Color.White;
+                    tableView.Columns[7].DefaultCellStyle.ForeColor = Color.White;
 
-                    foreach (Appointment t in apList1.GetAppointments())
-                    {
+                    foreach (Appointment t in apList1.GetAppointments()) {
                         String startTime = t.GetStartTime().ToString("HH:mm");
-                        for (int i = 0; i < 48; i++)
-                        {
+                        for (int i = 0; i < 48; i++) {
 
-                            if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString())))
-                            {
-                                
+                            if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) {
+
                                 String day = t.GetStartTime().ToString("ddd");
-                               
-                                while (!day.Contains(tableView.Rows[0].Cells[k].Value.ToString()) && k < 7){
+
+                                while (!day.Contains(tableView.Rows[0].Cells[k].Value.ToString()) && k < 7) {
                                     k++;
                                 }
-                                tableView.Rows[i].Cells[k+1].Value = t.GetTitle();
+
+                                tableView.Rows[i].Cells[k + 1].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                 int j = i;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
-                                while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString()))
-                                {
-                                    tableView.Rows[j].Cells[k+1].Style.BackColor = t.GetColor();
+                                while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString())) {
+                                    tableView.Rows[j].Cells[k + 1].Style.BackColor = t.GetColor();
                                     j++;
 
                                 }
@@ -218,41 +216,31 @@ namespace UDC {
             for (int j = 1; j < 48; j += 2) {
                 tableView.Rows[j].Cells[0].Style.ForeColor = Color.White;
 
-
-
                 AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
-              
 
-                foreach (Appointment t in apList1.GetAppointments())
-                {
-                 
+                foreach (Appointment t in apList1.GetAppointments()) {
                     String day = t.GetStartTime().ToString("ddd");
-                  
-      
-                        if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) &&(day.Contains("Sun") && e.ColumnIndex==1))
+
+                    if (e.ColumnIndex != 0) {
+                        if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Sun") && e.ColumnIndex == 1))
                             e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
 
-                        else if(((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Mon") && e.ColumnIndex == 2))
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-                        else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Tue") && e.ColumnIndex ==3))
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                        else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Mon") && e.ColumnIndex == 2))
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                        else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Tue") && e.ColumnIndex == 3))
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
                         else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Wed") && e.ColumnIndex == 4))
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
                         else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Thu") && e.ColumnIndex == 5))
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
                         else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Fri") && e.ColumnIndex == 6))
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
                         else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && (day.Contains("Sat") && e.ColumnIndex == 7))
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-                        else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && dates.Count  <2)
-                           e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
-
-                } 
-              
-
-
-
-
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                        else if (((e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 - 1 && t.GetEndTime().Minute == 0) || (e.RowIndex >= t.GetStartTime().Hour * 2 && e.RowIndex < t.GetEndTime().Hour * 2 && t.GetEndTime().Minute == 30)) && dates.Count < 2)
+                            e.AdvancedBorderStyle.Bottom = DataGridViewAdvancedCellBorderStyle.None;
+                    }
+                }
             }
         }
 

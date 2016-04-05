@@ -63,6 +63,7 @@
     </Compile>
     <Compile Include="CreateView.cs" />
     <Compile Include="CalendarView.cs" />
+    <Compile Include="DatabaseSingleton.cs" />
     <Compile Include="DoctorSubViewBuilder.cs" />
     <Compile Include="DoctorView.cs">
       <SubType>Form</SubType>

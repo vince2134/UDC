@@ -40,7 +40,7 @@ namespace UDC {
 
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void UpdateDate() {
@@ -75,7 +75,7 @@ namespace UDC {
             this.Controls.Add(currentPanel);
             addDelete();
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
@@ -85,7 +85,7 @@ namespace UDC {
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void createViewBtn_Click(object sender, EventArgs e) {
@@ -127,7 +127,7 @@ namespace UDC {
 
         private void dailyBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
 
             if (dailyBtn.Checked) {
                 this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
@@ -165,7 +165,7 @@ namespace UDC {
 
         private void weeklyBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
     }
 }

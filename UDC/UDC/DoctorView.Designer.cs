@@ -66,6 +66,7 @@
             // createViewBtn
             // 
             this.createViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
+            this.createViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.createViewBtn.ForeColor = System.Drawing.Color.White;
             this.createViewBtn.Location = new System.Drawing.Point(20, 75);
@@ -133,7 +134,7 @@
             this.weeklyBtn.AutoSize = true;
             this.weeklyBtn.Location = new System.Drawing.Point(141, 293);
             this.weeklyBtn.Name = "weeklyBtn";
-            this.weeklyBtn.Size = new System.Drawing.Size(81, 26);
+            this.weeklyBtn.Size = new System.Drawing.Size(80, 26);
             this.weeklyBtn.TabIndex = 17;
             this.weeklyBtn.Text = "Weekly";
             this.weeklyBtn.UseVisualStyleBackColor = true;

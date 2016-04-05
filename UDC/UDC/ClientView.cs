@@ -21,6 +21,7 @@ namespace UDC {
         MySqlConnection myConn;
         MySqlDataReader reader;
         List<String> names = new List<string>();
+        DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
 
         public ClientView(ListController c) {
             this.controller = c;
@@ -41,47 +42,37 @@ namespace UDC {
             dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             InitializeDoctors();
         }
-        private void InitializeDoctors()
-        {
-            String username = "root";
-            String password = "micohalvarez";
+        private void InitializeDoctors() {
+            String username = dbSettings.GetUsername();
+            String password = dbSettings.GetPassword();
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
-            try
-            {
+            try {
                 myConn = new MySqlConnection(myConnection);
                 Console.WriteLine("Success");
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Console.WriteLine("Connection Failed");
             }
-            try
-            {
+            try {
                 MySqlCommand command = myConn.CreateCommand();
                 command.CommandText = "select * from doctors";
 
                 myConn.Open();
                 reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-
+                while (reader.Read()) {
                     drListBox.Items.Add(reader["name"].ToString());
-
-
                 }
+
                 myConn.Close();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Console.WriteLine(e.Message);
             }
-
-
         }
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, true);
             Console.WriteLine("Update");
         }
 
@@ -103,14 +94,12 @@ namespace UDC {
         private void UpdateDoctor(List<String> checkedItems) {
             this.doctors.Clear();
 
-            foreach (String t in checkedItems)
-            {
+            foreach (String t in checkedItems) {
                 doctors.Add(t);
                 Console.Write(t);
             }
 
-            this.currentView.Update(doctors, dates);
-
+            this.currentView.Update(doctors, dates, true);
         }
 
         private void ClientView_FormClosed(object sender, FormClosedEventArgs e) {
@@ -125,7 +114,7 @@ namespace UDC {
             this.Controls.Add(currentPanel);
             addDelete();
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, true);
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
@@ -135,7 +124,7 @@ namespace UDC {
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, true);
         }
 
         private void createViewBtn_Click(object sender, EventArgs e) {
@@ -176,7 +165,7 @@ namespace UDC {
 
         private void dayRadioBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, true);
 
             if (dayRadioBtn.Checked) {
                 this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
@@ -191,18 +180,21 @@ namespace UDC {
 
         private void weekRadioBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, true);
         }
 
         private void addDelete() {
-            foreach(Control c in this.currentPanel.Controls) {
-                if(c is DataGridView)
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView)
                     ((DataGridView)c).CellDoubleClick += new DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
             }
         }
 
         private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            MessageBox.Show("DELEETE");
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView)
+                    MessageBox.Show(((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString());
+            }
         }
 
         static int GetWeekNumberOfMonth(DateTime date) {
@@ -217,22 +209,16 @@ namespace UDC {
             return (date - firstMonthMonday).Days / 7 + 1;
         }
 
-        private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e)
-        {
-
+        private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e) {
             if (e.NewValue == CheckState.Checked)
-            {
                 names.Add(drListBox.Items[e.Index].ToString());
 
+            if (e.NewValue == CheckState.Unchecked) {
+                for (int i = 0; i < names.Count; i++) {
+                    if (drListBox.Items[e.Index].ToString().Equals(names[i]))
+                        names.RemoveAt(i);
+                }
             }
-            if (e.NewValue == CheckState.Unchecked)
-            {
-
-                names.RemoveAt(e.Index);
-            }
-
-
-
 
             UpdateDoctor(names);
 

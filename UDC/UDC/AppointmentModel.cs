@@ -11,15 +11,17 @@ namespace UDC {
         private AppointmentList filteredAppointments;
         MySqlConnection myConn;
         MySqlDataReader reader;
+        DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
 
         public AppointmentModel() {
             this.appointments = new AppointmentList();
             this.filteredAppointments = new AppointmentList();
             this.views = new List<ListView>();
-            String username = "root";
-            String password = "micohalvarez";
+            String username = dbSettings.GetUsername();
+            String password = dbSettings.GetPassword();
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
+
             try {
                 myConn = new MySqlConnection(myConnection);
                 Console.WriteLine("Success");
@@ -128,10 +130,9 @@ namespace UDC {
             this.Notify();
 
         }
+
         public void AddFromDatabase(Appointment a) {
             int index = 0;
-
-
 
             if (appointments.Count() == 0) {
                 this.appointments.Add(a);
@@ -161,7 +162,6 @@ namespace UDC {
                         }
                         else
                             index++;
-
                     }
                 }
             }

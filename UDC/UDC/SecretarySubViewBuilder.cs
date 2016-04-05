@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace UDC {
-    public class SecretarySubViewBuilder : SubViewBuilder
-    {
+    public class SecretarySubViewBuilder : SubViewBuilder {
         private System.Windows.Forms.Panel createPanel = new System.Windows.Forms.Panel();
         private System.Windows.Forms.Button appoint = new System.Windows.Forms.Button();
         private System.Windows.Forms.Button discard = new System.Windows.Forms.Button();
-        private System.Windows.Forms.ListView listView1= new System.Windows.Forms.ListView();
+        private System.Windows.Forms.ListView listView1 = new System.Windows.Forms.ListView();
         private System.Windows.Forms.Panel agendaPanel = new System.Windows.Forms.Panel();
         private System.Windows.Forms.DataGridView agendaGrid = new System.Windows.Forms.DataGridView();
         private System.Windows.Forms.Panel calendarPanel = new System.Windows.Forms.Panel();
@@ -52,13 +51,13 @@ namespace UDC {
             ((System.ComponentModel.ISupportInitialize)(this.agendaGrid)).EndInit();
 
 
-      
+
             this.agendaPanel.SuspendLayout();
             return agendaPanel;
         }
 
         public override Panel BuildCreateView() {
-         
+
             // createPanel
             // 
             this.createPanel.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -141,71 +140,59 @@ namespace UDC {
             return calendarPanel;
         }
 
-    public override void Update(ListView parentView, String subView, ListController controller)
-       {
+        public override void Update(ListView parentView, String subView, ListController controller) {
 
 
-          //  if (subView.Equals(SubView.CALENDAR_VIEW))
-          //  {
+            //  if (subView.Equals(SubView.CALENDAR_VIEW))
+            //  {
 
-                /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW DAY VIEW*/
+            /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW DAY VIEW*/
 
 
 
             //
-          //  }
-         //   else if (subView.Equals(SubView.AGENDA_VIEW))
-         //   {
+            //  }
+            //   else if (subView.Equals(SubView.AGENDA_VIEW))
+            //   {
 
             //    DataTable dt = new DataTable();
             //    dt.Columns.Add("Time");
-             //   dt.Columns.Add("Todo");
-                /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW AGENDA VIEW*/
-          //      AppointmentList apList = ((AppointmentModelController)controller).GetAppointments();
-                
-               
+            //   dt.Columns.Add("Todo");
+            /*(TEST CODE) REPLACE WITH REAL UPDATE OF DOCTOR VIEW AGENDA VIEW*/
+            //      AppointmentList apList = ((AppointmentModelController)controller).GetAppointments();
+
+
             //   // foreach (Appointment t in apList.GetAppointments())
-             //   {
-             //     
+            //   {
+            //     
 
             //        dt.Rows.Add("  ");
 
-           //     }
+            //     }
 
-        //        agendaGrid.DataSource = dt;
-                
+            //        agendaGrid.DataSource = dt;
+
             //    AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments();
 
-          //      int i = 0;
+            //      int i = 0;
             //    foreach (Appointment t in apList1.GetAppointments())
-             //   {
-
- 
-                    
-                 
-                //    i++;
-                   
-          //      }
+            //   {
 
 
 
 
-       //     }
-    }
+            //    i++;
 
-        private void appoint_Click(object sender, EventArgs e){
-            Appointment appt = null;
+            //      }
 
 
 
 
-
+            //     }
         }
 
-
-
-
-
-        
+        private void appoint_Click(object sender, EventArgs e) {
+            Appointment appt = null;
+        }
     }
 }

@@ -10,10 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace UDC
-{
-    public partial class SecretaryView : Form, ListView
-    {
+namespace UDC {
+    public partial class SecretaryView : Form, ListView {
         private ListController controller;
         private SubView currentView;
         private Panel currentPanel;
@@ -22,23 +20,18 @@ namespace UDC
         public const String SECRETARY_VIEW = "SecretaryView";
         MySqlConnection myConn;
         MySqlDataReader reader;
-        private int doctCount =0;
+        private int doctCount = 0;
         List<String> names = new List<string>();
+        DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
 
-        public SecretaryView(ListController c)
-        {
+        public SecretaryView(ListController c) {
             this.controller = c;
             InitializeComponent();
-           
             ((ListView)this).InitializeView();
-           
-                
             Show();
-            
         }
 
-        void ListView.InitializeView()
-        {
+        void ListView.InitializeView() {
             this.doctors = new List<String>();
             this.dates = new List<DateTime>();
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
@@ -51,48 +44,39 @@ namespace UDC
 
         }
 
-       private void InitializeDoctors()
-        {
-            String username = "root";
-            String password = "micohalvarez";
+        private void InitializeDoctors() {
+            String username = dbSettings.GetUsername();
+            String password = dbSettings.GetPassword();
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
-            try
-            {
+
+            try {
                 myConn = new MySqlConnection(myConnection);
                 Console.WriteLine("Success");
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Console.WriteLine("Connection Failed");
             }
-            try
-            {
+            try {
                 MySqlCommand command = myConn.CreateCommand();
                 command.CommandText = "select * from doctors";
 
                 myConn.Open();
                 reader = command.ExecuteReader();
-                while (reader.Read())
-                {
-
+                while (reader.Read()) {
                     drListBox.Items.Add(reader["name"].ToString());
-
-
                 }
+
                 myConn.Close();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Console.WriteLine(e.Message);
             }
-          
-
         }
 
-        void ListView.Update(){
+        void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void UpdateDate() {
@@ -113,48 +97,43 @@ namespace UDC
 
         private void UpdateDoctor(List<String> checkedItems) {
             this.doctors.Clear();
-           
-            foreach (String t in checkedItems)
-            {
+
+            foreach (String t in checkedItems) {
                 doctors.Add(t);
                 Console.Write(t);
             }
-            
-            this.currentView.Update(doctors, dates);
+
+            this.currentView.Update(doctors, dates, false);
 
         }
 
-        private void SecretaryView_FormClosed(object sender, FormClosedEventArgs e)
-        {
+        private void SecretaryView_FormClosed(object sender, FormClosedEventArgs e) {
             Application.Exit();
         }
 
-        private void dayViewBtn_Click(object sender, EventArgs e)
-        {
-           
+        private void dayViewBtn_Click(object sender, EventArgs e) {
+
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
 
-        private void agendaViewBtn_Click(object sender, EventArgs e)
-        {
-        
+        private void agendaViewBtn_Click(object sender, EventArgs e) {
+
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
         }
 
-        private void createViewBtn_Click(object sender, EventArgs e)
-        {
+        private void createViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR CREATE VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.CREATE_VIEW);
@@ -163,30 +142,27 @@ namespace UDC
             this.currentPanel.Show();
         }
 
-        private void todayButton_Click(object sender, EventArgs e){
-            
+        private void todayButton_Click(object sender, EventArgs e) {
+
             dateLabel.Text = DateTime.Today.ToString("MMM d, yyyy");
-            
-        }
-
-        private void filter_Click(object sender, EventArgs e)
-        {
 
         }
-        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e)
-        {
+
+        private void filter_Click(object sender, EventArgs e) {
+
+        }
+        private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e) {
             dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMM d, yyyy");
         }
 
-        private void drListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-          
-        
+        private void drListBox_SelectedIndexChanged(object sender, EventArgs e) {
+
+
         }
 
         private void dayRadio_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates);
+            this.currentView.Update(doctors, dates, false);
 
             if (dayRadio.Checked) {
                 this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
@@ -229,31 +205,21 @@ namespace UDC
             return (date - firstMonthMonday).Days / 7 + 1;
         }
 
-        private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e)
-        {
-        
-            if (e.NewValue == CheckState.Checked) {
+        private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e) {
+            if (e.NewValue == CheckState.Checked) 
                 names.Add(drListBox.Items[e.Index].ToString());
 
-            }
             if (e.NewValue == CheckState.Unchecked) {
-                for(int i = 0; i < names.Count; i ++)
-                {
+                for (int i = 0; i < names.Count; i++) {
                     if (drListBox.Items[e.Index].ToString().Equals(names[i]))
                         names.RemoveAt(i);
                 }
-                
-                }
-           
-        
-           
-          
+            }
+
             UpdateDoctor(names);
-           
         }
 
-        private void drListBox_SelectedIndexChanged_1(object sender, EventArgs e)
-        {
+        private void drListBox_SelectedIndexChanged_1(object sender, EventArgs e) {
 
         }
     }
