@@ -55,7 +55,7 @@ namespace UDC {
             DateTime startTime = a1.GetStartTime();
 
             if (startTime.Date == a2.GetStartTime().Date) {
-                DateTime endTime = a2.GetEndTime();
+                DateTime endTime = a1.GetEndTime();
 
                 if (DateTime.Compare(a2.GetStartTime(), startTime) == 0 || (DateTime.Compare(startTime, a2.GetStartTime()) > 0 && DateTime.Compare(startTime, a2.GetEndTime()) < 0) || (DateTime.Compare(endTime, a2.GetStartTime()) > 0 && DateTime.Compare(endTime, a2.GetEndTime()) < 0))
                     return true;
@@ -66,7 +66,7 @@ namespace UDC {
                     return true;
                 }
                 if (endTime.Hour != 0 && a2.GetEndTime().Hour == 0) {
-                    if (DateTime.Compare(endTime, a2.GetEndTime()) > 0)
+                    if (DateTime.Compare(endTime, a2.GetStartTime()) > 0)
                         return true;
                 }
             }
