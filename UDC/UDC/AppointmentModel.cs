@@ -72,15 +72,51 @@ namespace UDC {
         }
 
         public void AddToDatabase(Appointment a) {
-            /*INSERT MYSQL HERE*/
-            Add(a);
+            try {
+                myConn.Close();
+                String docID = null;
+
+                MySqlCommand command = myConn.CreateCommand();
+                command.CommandText = "select * from doctors where name = "+ "'" + a.GetTitle() + "';";
+                myConn.Open();
+
+                reader = command.ExecuteReader();
+                while (reader.Read()) {
+                    docID = reader["doctorid"].ToString();
+                }
+
+                Console.WriteLine(docID);
+                myConn.Close();
+
+                DateTime start = a.GetStartTime();
+                DateTime end = a.GetEndTime();
+                String available = "Available";
+                String startTime = start.Year + "-" + start.Month + "-" + start.Day + " " + start.Hour + ":" + start.Minute + ":" + start.Second;
+                String endTime = end.Year + "-" + end.Month + "-" + end.Day + " " + end.Hour + ":" + end.Minute + ":" + end.Second;
+
+                command.CommandText = "INSERT INTO time_slots (doctorid,startTime,endTime,status) values ('" + docID + "','" + startTime + "','" + endTime + "','" + available + "');";
+
+                Add(a);
+                myConn.Open();
+                reader = command.ExecuteReader();
+
+                myConn.Close();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+
             this.Notify();
         }
 
+        public void ToggleAvailability() {
+
+        }
+
         public AppointmentList GetAppointments() {
-         
+
             return appointments;
-                    
+
         }
 
         public int GetAppointmentSize() {

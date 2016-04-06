@@ -58,6 +58,8 @@
             this.agendaBtn.Text = "Agenda";
             this.agendaBtn.UseVisualStyleBackColor = false;
             this.agendaBtn.Click += new System.EventHandler(this.agendaViewBtn_Click);
+            this.agendaBtn.MouseEnter += new System.EventHandler(this.agendaBtn_MouseEnter);
+            this.agendaBtn.MouseLeave += new System.EventHandler(this.agendaBtn_MouseLeave);
             // 
             // dayBtn
             // 
@@ -72,6 +74,8 @@
             this.dayBtn.Text = "Calendar";
             this.dayBtn.UseVisualStyleBackColor = false;
             this.dayBtn.Click += new System.EventHandler(this.calendarViewBtn_Click);
+            this.dayBtn.MouseEnter += new System.EventHandler(this.dayBtn_MouseEnter);
+            this.dayBtn.MouseLeave += new System.EventHandler(this.dayBtn_MouseLeave);
             // 
             // dateLabel
             // 
@@ -156,7 +160,7 @@
             this.weekRadioBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weekRadioBtn.Location = new System.Drawing.Point(12, 323);
             this.weekRadioBtn.Name = "weekRadioBtn";
-            this.weekRadioBtn.Size = new System.Drawing.Size(64, 24);
+            this.weekRadioBtn.Size = new System.Drawing.Size(63, 24);
             this.weekRadioBtn.TabIndex = 26;
             this.weekRadioBtn.TabStop = true;
             this.weekRadioBtn.Text = "Week";
@@ -165,10 +169,12 @@
             // 
             // drListBox
             // 
+            this.drListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.drListBox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drListBox.FormattingEnabled = true;
             this.drListBox.Location = new System.Drawing.Point(94, 268);
             this.drListBox.Name = "drListBox";
-            this.drListBox.Size = new System.Drawing.Size(120, 94);
+            this.drListBox.Size = new System.Drawing.Size(143, 120);
             this.drListBox.TabIndex = 27;
             this.drListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.drListBox_SelectedIndexChanged_1);
             // 
@@ -177,7 +183,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(719, 394);
+            this.ClientSize = new System.Drawing.Size(728, 411);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.weekRadioBtn);
             this.Controls.Add(this.dayRadioBtn);

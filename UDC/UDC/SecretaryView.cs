@@ -143,9 +143,12 @@ namespace UDC {
         }
 
         private void todayButton_Click(object sender, EventArgs e) {
-
-            dateLabel.Text = DateTime.Today.ToString("MMM d, yyyy");
-
+            monthCalendar1.SetDate(DateTime.Today);
+            if (dayRadio.Checked)
+                dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMM d, yyyy");
+            else if (weekRadio.Checked)
+                dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar1.SelectionRange.Start).ToString();
+            ((ListView)this).Update();
         }
 
         private void filter_Click(object sender, EventArgs e) {

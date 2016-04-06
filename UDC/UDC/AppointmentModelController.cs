@@ -29,54 +29,68 @@ namespace UDC {
             ((AppointmentModel)this.model).Add(a);
         }
 
+        public void AddToDatabase(Appointment a) {
+            ((AppointmentModel)this.model).AddToDatabase(a);
+        }
+
         public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
             DateTime curDate;
             AppointmentList filteredAppointments = new AppointmentList();
             AppointmentList appointments = ((AppointmentModel)this.model).GetAppointments();
 
             if (!availableOnly) {
-                foreach (String dr in doctors) {
-                    if (dates.Count == 1) {
 
-                        curDate = dates[0].Date;
-                        foreach (Appointment t in appointments.GetAppointments()) {
+                if (dates.Count == 1) {
+                    curDate = dates[0].Date;
 
-                            if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0) && dr.Equals(t.GetTitle())) {
-                                filteredAppointments.Add(t);
+                    foreach (Appointment t in appointments.GetAppointments()) {
+                        if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0)) {
+                            foreach (String dr in doctors) {
+                                if (t.GetTitle().Equals(dr))
+                                    filteredAppointments.Add(t);
                             }
+                        }
 
-                        }
-                    }
-                    else {
-                        foreach (Appointment t in appointments.GetAppointments()) {
-                            if (t.GetStartTime().Date >= dates[0].Date && t.GetStartTime().Date <= dates[1].Date && dr.Equals(t.GetTitle()))
-                                filteredAppointments.Add(t);
-                        }
                     }
                 }
+                else {
+                    foreach (Appointment t in appointments.GetAppointments()) {
+                        if (t.GetStartTime().Date >= dates[0].Date && t.GetStartTime().Date <= dates[1].Date)
+                            foreach (String dr in doctors) {
+                                if (t.GetTitle().Equals(dr))
+                                    filteredAppointments.Add(t);
+                            }
+                    }
+                }
+
             }
             else {
-                foreach (String dr in doctors) {
-                    if (dates.Count == 1) {
+                if (dates.Count == 1) {
+                    curDate = dates[0].Date;
 
-                        curDate = dates[0].Date;
-                        foreach (Appointment t in appointments.GetAppointments()) {
-                            if (t.Available()) {
-                                if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0) && dr.Equals(t.GetTitle())) {
-                                    filteredAppointments.Add(t);
+                    foreach (Appointment t in appointments.GetAppointments()) {
+                        if (t.Available()) {
+                            if ((DateTime.Compare(t.GetStartTime().Date, curDate.Date) == 0)) {
+                                foreach (String dr in doctors) {
+                                    if (t.GetTitle().Equals(dr))
+                                        filteredAppointments.Add(t);
                                 }
                             }
                         }
                     }
-                    else {
-                        foreach (Appointment t in appointments.GetAppointments()) {
-                            if (t.Available()) {
-                                if (t.GetStartTime().Date >= dates[0].Date && t.GetStartTime().Date <= dates[1].Date && dr.Equals(t.GetTitle()))
-                                    filteredAppointments.Add(t);
-                            }
+                }
+                else {
+                    foreach (Appointment t in appointments.GetAppointments()) {
+                        if (t.Available()) {
+                            if (t.GetStartTime().Date >= dates[0].Date && t.GetStartTime().Date <= dates[1].Date)
+                                foreach (String dr in doctors) {
+                                    if (t.GetTitle().Equals(dr))
+                                        filteredAppointments.Add(t);
+                                }
                         }
                     }
                 }
+
             }
 
             return filteredAppointments;

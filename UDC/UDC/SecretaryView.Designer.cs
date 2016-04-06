@@ -29,7 +29,6 @@
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.dateLabel = new System.Windows.Forms.Label();
             this.todayButton = new System.Windows.Forms.Button();
-            this.filter = new System.Windows.Forms.Button();
             this.dayRadio = new System.Windows.Forms.RadioButton();
             this.weekRadio = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
@@ -68,7 +67,7 @@
             this.appointBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.appointBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.appointBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.appointBtn.Location = new System.Drawing.Point(22, 46);
+            this.appointBtn.Location = new System.Drawing.Point(59, 45);
             this.appointBtn.Name = "appointBtn";
             this.appointBtn.Size = new System.Drawing.Size(131, 33);
             this.appointBtn.TabIndex = 2;
@@ -110,26 +109,13 @@
             this.todayButton.UseVisualStyleBackColor = false;
             this.todayButton.Click += new System.EventHandler(this.todayButton_Click);
             // 
-            // filter
-            // 
-            this.filter.BackColor = System.Drawing.Color.Firebrick;
-            this.filter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.filter.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.filter.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.filter.Location = new System.Drawing.Point(22, 367);
-            this.filter.Name = "filter";
-            this.filter.Size = new System.Drawing.Size(135, 32);
-            this.filter.TabIndex = 6;
-            this.filter.Text = "Filter Appointments";
-            this.filter.UseVisualStyleBackColor = false;
-            this.filter.Click += new System.EventHandler(this.filter_Click);
-            // 
             // dayRadio
             // 
             this.dayRadio.AutoSize = true;
-            this.dayRadio.Location = new System.Drawing.Point(12, 297);
+            this.dayRadio.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayRadio.Location = new System.Drawing.Point(12, 294);
             this.dayRadio.Name = "dayRadio";
-            this.dayRadio.Size = new System.Drawing.Size(44, 17);
+            this.dayRadio.Size = new System.Drawing.Size(51, 24);
             this.dayRadio.TabIndex = 7;
             this.dayRadio.TabStop = true;
             this.dayRadio.Text = "Day";
@@ -139,9 +125,10 @@
             // weekRadio
             // 
             this.weekRadio.AutoSize = true;
-            this.weekRadio.Location = new System.Drawing.Point(12, 320);
+            this.weekRadio.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weekRadio.Location = new System.Drawing.Point(12, 317);
             this.weekRadio.Name = "weekRadio";
-            this.weekRadio.Size = new System.Drawing.Size(54, 17);
+            this.weekRadio.Size = new System.Drawing.Size(63, 24);
             this.weekRadio.TabIndex = 8;
             this.weekRadio.TabStop = true;
             this.weekRadio.Text = "Week";
@@ -154,17 +141,19 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(29, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 27);
+            this.label1.Size = new System.Drawing.Size(162, 27);
             this.label1.TabIndex = 10;
             this.label1.Text = "Secretary View";
             // 
             // drListBox
             // 
+            this.drListBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.drListBox.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.drListBox.ForeColor = System.Drawing.Color.Firebrick;
             this.drListBox.FormattingEnabled = true;
             this.drListBox.Location = new System.Drawing.Point(93, 258);
             this.drListBox.Name = "drListBox";
-            this.drListBox.Size = new System.Drawing.Size(120, 94);
+            this.drListBox.Size = new System.Drawing.Size(143, 120);
             this.drListBox.TabIndex = 11;
             this.drListBox.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.drListBox_SelectedIndexChanged_1);
             this.drListBox.SelectedIndexChanged += new System.EventHandler(this.drListBox_SelectedIndexChanged_1);
@@ -173,13 +162,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(728, 411);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.weekRadio);
             this.Controls.Add(this.dayRadio);
-            this.Controls.Add(this.filter);
             this.Controls.Add(this.todayButton);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.monthCalendar1);
@@ -202,7 +190,6 @@
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Button todayButton;
-        private System.Windows.Forms.Button filter;
         private System.Windows.Forms.RadioButton dayRadio;
         private System.Windows.Forms.RadioButton weekRadio;
         private System.Windows.Forms.Label label1;

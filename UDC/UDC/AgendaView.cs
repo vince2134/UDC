@@ -14,30 +14,46 @@ namespace UDC {
         }
 
         protected override void InitializeView() {
-            this.panel = new Panel();
-            this.tableView = new DataGridView();
-            this.panel.Controls.Add(this.tableView);
-            this.panel.Location = new System.Drawing.Point(248, 84);
-            this.panel.Name = "agendaPanel";
-            this.panel.Size = new System.Drawing.Size(391, 244);
-            this.panel.TabIndex = 12;
-            // 
-            // agendaGrid
-            // 
-            this.tableView.BackgroundColor = System.Drawing.Color.WhiteSmoke;
-            this.tableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.tableView.GridColor = Color.White;
-            this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.tableView.GridColor = System.Drawing.Color.WhiteSmoke;
-            this.tableView.Location = new System.Drawing.Point(0, 0);
-            this.tableView.Name = "agendaGrid";
-            this.tableView.Size = new System.Drawing.Size(391, 244);
-            this.tableView.TabIndex = 0;
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+
+            this.panel = new System.Windows.Forms.Panel();
+            this.tableView = new System.Windows.Forms.DataGridView();
+            this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
-            this.tableView.ResumeLayout(false);
+            this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
 
-            this.tableView.SuspendLayout();
+            this.tableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.tableView.BackgroundColor = System.Drawing.Color.White;
+            this.tableView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tableView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tableView.ColumnHeadersVisible = false;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Trebuchet MS", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.tableView.DefaultCellStyle = dataGridViewCellStyle1;
+            this.tableView.Location = new System.Drawing.Point(0, 0);
+            this.tableView.Name = "dataGridView1";
+            this.tableView.RowHeadersVisible = false;
+            this.tableView.Size = new System.Drawing.Size(458, 316);
+            this.tableView.TabIndex = 0;
+            this.tableView.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+
+            this.panel.Controls.Add(this.tableView);
+            this.panel.Location = new System.Drawing.Point(251, 66);
+            this.panel.Name = "dayPanel";
+            this.panel.Size = new System.Drawing.Size(458, 316);
+            this.panel.TabIndex = 1;
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e) {
+            tableView.ClearSelection();
         }
     }
 }

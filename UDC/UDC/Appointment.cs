@@ -16,6 +16,7 @@ namespace UDC {
 
         public Appointment(String title, String color, DateTime startTime, DateTime endTime) {
             this.title = title;
+            this.available = true;
             this.color = Color.FromName(color);
             this.startTime = startTime;
             this.endTime = endTime;
@@ -23,6 +24,7 @@ namespace UDC {
 
         public Appointment(String title, DateTime startTime, DateTime endTime) {
             this.title = title;
+            this.available = true;
             setColor();
             this.startTime = startTime;
             this.endTime = endTime;

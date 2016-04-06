@@ -14,7 +14,7 @@ namespace UDC {
         private DatabaseSingleton() {
             List<String> acc = new List<String>();
 
-            var lines = File.ReadLines(@"C:\Users\avggo\Documents\UDC\db_account.txt");
+            var lines = File.ReadLines(@"..\..\db_account.txt");
             foreach (var line in lines) {
                 acc.Add(line);
             }

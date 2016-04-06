@@ -42,11 +42,13 @@ namespace UDC {
             dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             InitializeDoctors();
         }
+
         private void InitializeDoctors() {
             String username = dbSettings.GetUsername();
             String password = dbSettings.GetPassword();
             String dbname = "udc_database";
             String myConnection = "datasource=localhost;database=" + dbname + ";port=3306;username=" + username + ";password=" + password;
+
             try {
                 myConn = new MySqlConnection(myConnection);
                 Console.WriteLine("Success");
@@ -107,6 +109,11 @@ namespace UDC {
         }
 
         private void calendarViewBtn_Click(object sender, EventArgs e) {
+            dayBtn.BackColor = Color.LightBlue;
+            agendaBtn.BackColor = Color.White;
+            dayBtn.Enabled = false;
+            agendaBtn.Enabled = true;
+
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
@@ -118,11 +125,17 @@ namespace UDC {
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
+            agendaBtn.BackColor = Color.LightBlue;
+            dayBtn.BackColor = Color.White;
+            agendaBtn.Enabled = false;
+            dayBtn.Enabled = true;
+
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = SubView.MakeView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
+            addDelete();
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, true);
         }
@@ -219,9 +232,25 @@ namespace UDC {
                         names.RemoveAt(i);
                 }
             }
-
             UpdateDoctor(names);
+        }
 
+        private void agendaBtn_MouseEnter(object sender, EventArgs e) {
+            agendaBtn.BackColor = Color.LightBlue;
+        }
+
+        private void agendaBtn_MouseLeave(object sender, EventArgs e) {
+            if (agendaBtn.Enabled)
+                agendaBtn.BackColor = Color.White;
+        }
+
+        private void dayBtn_MouseEnter(object sender, EventArgs e) {
+            dayBtn.BackColor = Color.LightBlue;
+        }
+
+        private void dayBtn_MouseLeave(object sender, EventArgs e) {
+            if (dayBtn.Enabled)
+                dayBtn.BackColor = Color.White;
         }
     }
 }
