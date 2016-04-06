@@ -32,7 +32,7 @@ namespace UDC {
         void ListView.InitializeView() {
             this.doctors = new List<String>();
             this.dates = new List<DateTime>();
-            this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             addDelete();
@@ -95,7 +95,7 @@ namespace UDC {
         private void dayViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             addDelete();
@@ -106,7 +106,7 @@ namespace UDC {
         private void agendaViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, SubView.AGENDA_VIEW);
+            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             addDelete();
