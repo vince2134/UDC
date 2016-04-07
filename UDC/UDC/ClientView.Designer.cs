@@ -30,7 +30,6 @@
             this.todayBtn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.createBtn = new System.Windows.Forms.Button();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
             this.dayRadioBtn = new System.Windows.Forms.RadioButton();
             this.weekRadioBtn = new System.Windows.Forms.RadioButton();
@@ -119,20 +118,6 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "View";
             // 
-            // createBtn
-            // 
-            this.createBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.createBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createBtn.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createBtn.ForeColor = System.Drawing.Color.White;
-            this.createBtn.Location = new System.Drawing.Point(10, 64);
-            this.createBtn.Name = "createBtn";
-            this.createBtn.Size = new System.Drawing.Size(227, 32);
-            this.createBtn.TabIndex = 15;
-            this.createBtn.Text = "Create";
-            this.createBtn.UseVisualStyleBackColor = false;
-            this.createBtn.Click += new System.EventHandler(this.createViewBtn_Click);
-            // 
             // monthCalendar
             // 
             this.monthCalendar.Font = new System.Drawing.Font("Trebuchet MS", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -194,7 +179,6 @@
             this.Controls.Add(this.todayBtn);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.createBtn);
             this.Controls.Add(this.monthCalendar);
             this.Name = "ClientView";
             this.Text = "ClientView";
@@ -213,7 +197,6 @@
         private System.Windows.Forms.Button todayBtn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button createBtn;
         public System.Windows.Forms.MonthCalendar monthCalendar;
         public System.Windows.Forms.RadioButton dayRadioBtn;
         public System.Windows.Forms.RadioButton weekRadioBtn;

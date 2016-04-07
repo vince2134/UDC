@@ -10,3 +10,15 @@ C:\Users\Vince\Documents\UDC\UDC\UDC\obj\Debug\UDC.SecretaryView.resources
 C:\Users\Vince\Documents\UDC\UDC\UDC\obj\Debug\UDC.csproj.GenerateResource.Cache
 C:\Users\Vince\Documents\UDC\UDC\UDC\obj\Debug\UDC.exe
 C:\Users\Vince\Documents\UDC\UDC\UDC\obj\Debug\UDC.pdb
+C:\Users\avggo\Documents\UDC\UDC\UDC\bin\Debug\UDC.exe.config
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.exe
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.pdb
+C:\Users\avggo\Documents\UDC\UDC\UDC\bin\Debug\UDC.exe
+C:\Users\avggo\Documents\UDC\UDC\UDC\bin\Debug\UDC.pdb
+C:\Users\avggo\Documents\UDC\UDC\UDC\bin\Debug\MySql.Data.dll
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.csprojResolveAssemblyReference.cache
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.ClientView.resources
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.DoctorView.resources
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.Properties.Resources.resources
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.SecretaryView.resources
+C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.csproj.GenerateResource.Cache

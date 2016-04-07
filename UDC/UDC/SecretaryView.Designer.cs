@@ -25,7 +25,6 @@
         private void InitializeComponent() {
             this.calendarViewBtn = new System.Windows.Forms.Button();
             this.agendaViewBtn = new System.Windows.Forms.Button();
-            this.appointBtn = new System.Windows.Forms.Button();
             this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
             this.dateLabel = new System.Windows.Forms.Label();
             this.todayButton = new System.Windows.Forms.Button();
@@ -60,20 +59,6 @@
             this.agendaViewBtn.Text = "Agenda";
             this.agendaViewBtn.UseVisualStyleBackColor = true;
             this.agendaViewBtn.Click += new System.EventHandler(this.agendaViewBtn_Click);
-            // 
-            // appointBtn
-            // 
-            this.appointBtn.BackColor = System.Drawing.Color.Firebrick;
-            this.appointBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.appointBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.appointBtn.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.appointBtn.Location = new System.Drawing.Point(59, 45);
-            this.appointBtn.Name = "appointBtn";
-            this.appointBtn.Size = new System.Drawing.Size(131, 33);
-            this.appointBtn.TabIndex = 2;
-            this.appointBtn.Text = "Set Appointment";
-            this.appointBtn.UseVisualStyleBackColor = false;
-            this.appointBtn.Click += new System.EventHandler(this.createViewBtn_Click);
             // 
             // monthCalendar1
             // 
@@ -171,7 +156,6 @@
             this.Controls.Add(this.todayButton);
             this.Controls.Add(this.dateLabel);
             this.Controls.Add(this.monthCalendar1);
-            this.Controls.Add(this.appointBtn);
             this.Controls.Add(this.agendaViewBtn);
             this.Controls.Add(this.calendarViewBtn);
             this.Name = "SecretaryView";
@@ -186,7 +170,6 @@
 
         private System.Windows.Forms.Button calendarViewBtn;
         private System.Windows.Forms.Button agendaViewBtn;
-        private System.Windows.Forms.Button appointBtn;
         private System.Windows.Forms.MonthCalendar monthCalendar1;
         private System.Windows.Forms.Label dateLabel;
         private System.Windows.Forms.Button todayButton;

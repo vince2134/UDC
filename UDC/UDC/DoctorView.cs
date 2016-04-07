@@ -13,14 +13,14 @@ using System.Windows.Forms;
 namespace UDC {
     public partial class DoctorView : Form, ListView {
         private ListController controller;
+        private SubViewList subViews;
         private SubView currentView;
         private Panel currentPanel;
         private List<String> doctors;
         private List<DateTime> dates;
         public const String DOCTOR_VIEW = "DoctorView";
-        MySqlConnection myConn;
-        MySqlDataReader reader;
-        DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
+        private DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
+        private Boolean deleteAdded = false;
 
         public DoctorView(ListController c) {
             this.controller = c;
@@ -30,9 +30,10 @@ namespace UDC {
         }
 
         void ListView.InitializeView() {
+            this.subViews = new SubViewList();
             this.doctors = new List<String>();
             this.dates = new List<DateTime>();
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             addDelete();
@@ -95,10 +96,9 @@ namespace UDC {
         private void dayViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            addDelete();
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, false);
         }
@@ -106,10 +106,13 @@ namespace UDC {
         private void agendaViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.AGENDA_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            addDelete();
+            if (!deleteAdded) {
+                addDelete();
+                deleteAdded = true;
+            }
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, false);
         }
@@ -323,6 +326,22 @@ namespace UDC {
             }
             else
                 MessageBox.Show("Please fill up all the fields.");
+        }
+
+        private void todayBtn_Click(object sender, EventArgs e) {
+            monthCalendar.SetDate(DateTime.Today);
+            if (dailyBtn.Checked)
+                currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
+            else if (weeklyBtn.Checked)
+                currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar.SelectionRange.Start).ToString();
+            ((ListView)this).Update();
+        }
+
+        private void discard_Click(object sender, EventArgs e) {
+            startHourCB.SelectedIndex = -1;
+            startMinuteCB.SelectedIndex = -1;
+            endHourCB.SelectedIndex = -1;
+            endMinuteCB.SelectedIndex = -1;
         }
     }
 }

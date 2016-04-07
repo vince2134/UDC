@@ -90,7 +90,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(16, 20);
+            this.label1.Location = new System.Drawing.Point(63, 21);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(32, 22);
@@ -103,7 +103,7 @@
             this.doctorName.AutoSize = true;
             this.doctorName.Font = new System.Drawing.Font("Trebuchet MS", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.doctorName.ForeColor = System.Drawing.Color.Blue;
-            this.doctorName.Location = new System.Drawing.Point(43, 20);
+            this.doctorName.Location = new System.Drawing.Point(90, 21);
             this.doctorName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.doctorName.Name = "doctorName";
             this.doctorName.Size = new System.Drawing.Size(102, 22);
@@ -112,7 +112,7 @@
             // 
             // monthCalendar
             // 
-            this.monthCalendar.Location = new System.Drawing.Point(18, 83);
+            this.monthCalendar.Location = new System.Drawing.Point(14, 137);
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 6;
             // 
@@ -128,7 +128,7 @@
             // 
             this.dailyBtn.AutoSize = true;
             this.dailyBtn.Checked = true;
-            this.dailyBtn.Location = new System.Drawing.Point(42, 257);
+            this.dailyBtn.Location = new System.Drawing.Point(48, 311);
             this.dailyBtn.Name = "dailyBtn";
             this.dailyBtn.Size = new System.Drawing.Size(63, 26);
             this.dailyBtn.TabIndex = 16;
@@ -140,7 +140,7 @@
             // weeklyBtn
             // 
             this.weeklyBtn.AutoSize = true;
-            this.weeklyBtn.Location = new System.Drawing.Point(138, 257);
+            this.weeklyBtn.Location = new System.Drawing.Point(130, 311);
             this.weeklyBtn.Name = "weeklyBtn";
             this.weeklyBtn.Size = new System.Drawing.Size(80, 26);
             this.weeklyBtn.TabIndex = 17;
@@ -167,6 +167,7 @@
             this.todayBtn.TabIndex = 19;
             this.todayBtn.Text = "Today";
             this.todayBtn.UseVisualStyleBackColor = true;
+            this.todayBtn.Click += new System.EventHandler(this.todayBtn_Click);
             // 
             // loginPanel
             // 
@@ -175,9 +176,9 @@
             this.loginPanel.Controls.Add(this.username);
             this.loginPanel.Controls.Add(this.label3);
             this.loginPanel.Controls.Add(this.label2);
-            this.loginPanel.Location = new System.Drawing.Point(-1, 3);
+            this.loginPanel.Location = new System.Drawing.Point(-1, 4);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(732, 445);
+            this.loginPanel.Size = new System.Drawing.Size(732, 441);
             this.loginPanel.TabIndex = 20;
             // 
             // loginBtn
@@ -231,7 +232,7 @@
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(158, 16);
+            this.button1.Location = new System.Drawing.Point(94, 84);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 21;
@@ -348,6 +349,7 @@
             this.discard.TabIndex = 25;
             this.discard.Text = "Discard";
             this.discard.UseVisualStyleBackColor = false;
+            this.discard.Click += new System.EventHandler(this.discard_Click);
             // 
             // save
             // 
@@ -366,7 +368,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(23, 336);
+            this.label8.Location = new System.Drawing.Point(17, 381);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(82, 22);
             this.label8.TabIndex = 26;
@@ -374,7 +376,7 @@
             // 
             // recurringText
             // 
-            this.recurringText.Location = new System.Drawing.Point(109, 332);
+            this.recurringText.Location = new System.Drawing.Point(103, 377);
             this.recurringText.Name = "recurringText";
             this.recurringText.Size = new System.Drawing.Size(36, 26);
             this.recurringText.TabIndex = 27;

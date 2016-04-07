@@ -114,9 +114,7 @@ namespace UDC {
         }
 
         public AppointmentList GetAppointments() {
-
             return appointments;
-
         }
 
         public int GetAppointmentSize() {

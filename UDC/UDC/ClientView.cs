@@ -13,6 +13,7 @@ using System.Windows.Forms;
 namespace UDC {
     public partial class ClientView : Form, ListView {
         private ListController controller;
+        private SubViewList subViews;
         private SubView currentView;
         private Panel currentPanel;
         private List<String> doctors;
@@ -20,8 +21,9 @@ namespace UDC {
         public const String CLIENT_VIEW = "ClientView";
         MySqlConnection myConn;
         MySqlDataReader reader;
-        List<String> names = new List<string>();
-        DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
+        private List<String> names = new List<string>();
+        private DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
+        private Boolean deleteAdded = false;
 
         public ClientView(ListController c) {
             this.controller = c;
@@ -31,9 +33,10 @@ namespace UDC {
         }
 
         void ListView.InitializeView() {
+            this.subViews = new SubViewList();
             this.doctors = new List<String>();
             this.dates = new List<DateTime>();
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             addDelete();
@@ -116,10 +119,9 @@ namespace UDC {
 
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = this.currentView = subViews.GenerateSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            addDelete();
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, true);
         }
@@ -132,10 +134,13 @@ namespace UDC {
 
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.AGENDA_VIEW);
+            this.currentView = this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            addDelete();
+            if (!deleteAdded) {
+                addDelete();
+                deleteAdded = true;
+            }
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, true);
         }

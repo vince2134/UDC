@@ -13,6 +13,7 @@ using System.Windows.Forms;
 namespace UDC {
     public partial class SecretaryView : Form, ListView {
         private ListController controller;
+        private SubViewList subViews;
         private SubView currentView;
         private Panel currentPanel;
         private List<String> doctors;
@@ -20,9 +21,8 @@ namespace UDC {
         public const String SECRETARY_VIEW = "SecretaryView";
         MySqlConnection myConn;
         MySqlDataReader reader;
-        private int doctCount = 0;
-        List<String> names = new List<string>();
-        DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
+        private List<String> names = new List<string>();
+        private DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
 
         public SecretaryView(ListController c) {
             this.controller = c;
@@ -32,9 +32,10 @@ namespace UDC {
         }
 
         void ListView.InitializeView() {
+            this.subViews = new SubViewList();
             this.doctors = new List<String>();
             this.dates = new List<DateTime>();
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
@@ -115,7 +116,7 @@ namespace UDC {
 
             /*ACTION LISTENER FOR DAY VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.CALENDAR_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.CALENDAR_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
@@ -126,7 +127,7 @@ namespace UDC {
 
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
-            this.currentView = ((AppointmentModelController)controller).MakeSubView(controller, SubView.AGENDA_VIEW);
+            this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();

@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 namespace UDC {
     public class Appointment {
         private String title;
-        private Color DEFAULT_COLOR;
         private Color color;
         private DateTime startTime;
         private DateTime endTime;
@@ -25,7 +24,7 @@ namespace UDC {
         public Appointment(String title, DateTime startTime, DateTime endTime) {
             this.title = title;
             this.available = true;
-            setColor();
+            SetColor();
             this.startTime = startTime;
             this.endTime = endTime;
         }
@@ -80,17 +79,16 @@ namespace UDC {
 
         public void SetAvailability(Boolean a) {
             this.available = a;
-            setColor();
+            SetColor();
             
         }
-        public void setColor()
+
+        public void SetColor()
         {
             if (this.available)
                 this.color = Color.RoyalBlue;
             else
                 this.color = Color.Firebrick;
         }
-        
-       
     }
 }

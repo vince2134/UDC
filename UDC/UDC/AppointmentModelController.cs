@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace UDC {
     public class AppointmentModelController : ListController {
-        private SubView calendarView;
-        private SubView agendaView;
-
         public AppointmentModelController() {
             this.model = new AppointmentModel();
             this.AttachViews();
@@ -106,23 +103,6 @@ namespace UDC {
 
         public int GetAppointmentSize() {
             return ((AppointmentModel)this.model).GetAppointmentSize();
-        }
-
-        public SubView MakeSubView(ListController c, String subView) {
-            if (subView.Equals(SubView.CALENDAR_VIEW)) {
-                if (this.calendarView == null)
-                    this.calendarView = SubView.MakeView(c, subView);
-
-                return calendarView;
-            }
-            else if (subView.Equals(SubView.AGENDA_VIEW)) {
-                if (this.agendaView == null)
-                    this.agendaView = SubView.MakeView(c, subView);
-
-                return agendaView;
-            }
-
-            return null;
         }
     }
 }
