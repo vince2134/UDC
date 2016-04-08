@@ -103,27 +103,20 @@ namespace UDC {
             this.currentView.Update(doctors, dates, false);
         }
 
-        private void agendaViewBtn_Click(object sender, EventArgs e) {
+        private void agendaViewBtn_Click(object sender, EventArgs e)
+        {
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            if (!deleteAdded) {
+            if (!deleteAdded)
+            {
                 addDelete();
                 deleteAdded = true;
             }
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, false);
-        }
-
-        private void createViewBtn_Click(object sender, EventArgs e) {
-            /*ACTION LISTENER FOR CREATE VIEW*/
-            this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, SubView.CREATE_VIEW);
-            this.currentPanel = this.currentView.GetPanel();
-            this.Controls.Add(currentPanel);
-            this.currentPanel.Show();
         }
 
         private void label1_Click(object sender, EventArgs e) {
@@ -334,7 +327,9 @@ namespace UDC {
                 currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             else if (weeklyBtn.Checked)
                 currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar.SelectionRange.Start).ToString();
+            UpdateDate();
             ((ListView)this).Update();
+            
         }
 
         private void discard_Click(object sender, EventArgs e) {

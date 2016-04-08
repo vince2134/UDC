@@ -145,7 +145,7 @@
             this.weekRadioBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weekRadioBtn.Location = new System.Drawing.Point(12, 323);
             this.weekRadioBtn.Name = "weekRadioBtn";
-            this.weekRadioBtn.Size = new System.Drawing.Size(63, 24);
+            this.weekRadioBtn.Size = new System.Drawing.Size(64, 24);
             this.weekRadioBtn.TabIndex = 26;
             this.weekRadioBtn.TabStop = true;
             this.weekRadioBtn.Text = "Week";
