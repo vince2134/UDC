@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace UDC {
     public class Appointment {
         private String title;
+        private String slot_Number;
         private Color color;
         private DateTime startTime;
         private DateTime endTime;
