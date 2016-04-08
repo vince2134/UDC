@@ -77,7 +77,7 @@ namespace UDC {
         }
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
-            this.currentView.Update(doctors, dates, true);
+            this.currentView.Update(doctors, dates, false);
             Console.WriteLine("Update");
         }
 
@@ -104,7 +104,7 @@ namespace UDC {
                 Console.Write(t);
             }
 
-            this.currentView.Update(doctors, dates, true);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void ClientView_FormClosed(object sender, FormClosedEventArgs e) {
@@ -123,7 +123,7 @@ namespace UDC {
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates, true);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
@@ -142,7 +142,7 @@ namespace UDC {
                 deleteAdded = true;
             }
             this.currentPanel.Show();
-            this.currentView.Update(doctors, dates, true);
+            this.currentView.Update(doctors, dates, false);
         }
 
     
@@ -178,7 +178,7 @@ namespace UDC {
 
         private void dayRadioBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates, true);
+            this.currentView.Update(doctors, dates, false);
 
             if (dayRadioBtn.Checked) {
                 this.monthCalendar.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar_DateSelected);
@@ -193,7 +193,7 @@ namespace UDC {
 
         private void weekRadioBtn_CheckedChanged(object sender, EventArgs e) {
             UpdateDate();
-            this.currentView.Update(doctors, dates, true);
+            this.currentView.Update(doctors, dates, false);
         }
 
         private void addDelete() {
