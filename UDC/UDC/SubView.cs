@@ -17,12 +17,14 @@ namespace UDC {
         public const String CREATE_VIEW = "CreateView";
         private List<String> doctors;
         private List<DateTime> dates;
+        private Boolean availableOnly;
         protected abstract void InitializeView();
 
         public void Update(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
             AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, availableOnly);
             this.doctors = doctors;
             this.dates = dates;
+           this.availableOnly = availableOnly;
             int k = 1;
 
             if (this is CalendarView) {
@@ -55,7 +57,6 @@ namespace UDC {
 
                     foreach (Appointment t in apList1.GetAppointments()) {
                         String startTime = t.GetStartTime().ToString("HH:mm");
-
                         for (int i = 0; i < 48; i++) {
 
                             if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) {
@@ -204,9 +205,7 @@ namespace UDC {
             else if (subView.Equals(AGENDA_VIEW)) {
                 return new AgendaView(c);
             }
-            else if (subView.Equals(CREATE_VIEW)) {
-                return new CreateView(c);
-            }
+         
 
             return null;
         }
@@ -226,7 +225,7 @@ namespace UDC {
             for (int j = 1; j < 48; j += 2) {
                 tableView.Rows[j].Cells[0].Style.ForeColor = Color.White;
 
-                AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
+                AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, availableOnly);
 
                 foreach (Appointment t in apList1.GetAppointments()) {
                     String day = t.GetStartTime().ToString("ddd");

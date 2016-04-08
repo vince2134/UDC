@@ -23,6 +23,7 @@ namespace UDC {
         MySqlDataReader reader;
         private List<String> names = new List<string>();
         private DatabaseSingleton dbSettings = DatabaseSingleton.GetInstance();
+        private Boolean deleteAdded = false;
 
         public SecretaryView(ListController c) {
             this.controller = c;
@@ -40,6 +41,7 @@ namespace UDC {
             this.Controls.Add(currentPanel);
             this.currentPanel.Show();
             this.dayRadio.Checked = true;
+            addDelete();
             dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMM d, yyyy");
             InitializeDoctors();
 
@@ -130,17 +132,13 @@ namespace UDC {
             this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
+            if (!deleteAdded)
+            {
+                addDelete();
+                deleteAdded = true;
+            }
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, false);
-        }
-
-        private void createViewBtn_Click(object sender, EventArgs e) {
-            /*ACTION LISTENER FOR CREATE VIEW*/
-            this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, SubView.CREATE_VIEW);
-            this.currentPanel = this.currentView.GetPanel();
-            this.Controls.Add(currentPanel);
-            this.currentPanel.Show();
         }
 
         private void todayButton_Click(object sender, EventArgs e) {
@@ -152,16 +150,68 @@ namespace UDC {
             ((ListView)this).Update();
         }
 
-        private void filter_Click(object sender, EventArgs e) {
-
-        }
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e) {
             dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMM d, yyyy");
         }
 
-        private void drListBox_SelectedIndexChanged(object sender, EventArgs e) {
+        private void addDelete()
+        {
+            foreach (Control c in this.currentPanel.Controls)
+            {
+                if (c is DataGridView)
+                    ((DataGridView)c).CellDoubleClick += new DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
+            }
+        }
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
+            foreach (Control c in this.currentPanel.Controls)
+            {
+                if (c is DataGridView)
+                {
+                   
+                    foreach (Appointment t in apList1.GetAppointments())
+                    {
+
+                 
+                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/dd/yyy")) || (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("MM/dd/yyy"))))
+                        {
+                            if (t.Available())
+                            {
+                                t.SetAvailability(false);
+                                ((AppointmentModelController)controller).UpdateDatabase(t,"Occupied");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " Confirmed :)");
+                            }
+                            else {
+                                t.SetAvailability(true);
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
+                                MessageBox.Show("Appointment with " + t.GetTitle() +" Canceled");
+                            }
+                        ((ListView)this).Update();
+                        
+                        }
+                        else if (((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("MM/dd/yyy")) ||(((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/dd/yyy"))) && ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm"))) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle()))
+                        {
+                            if (t.Available())
+                            {
+                                t.SetAvailability(false);
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " Confirmed :)");
+                            }
+                            else {
+                                t.SetAvailability(true);
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " Canceled");
+                            }
+                        ((ListView)this).Update();
+
+                        }
+                    }
 
 
+                }
+                 
+            }
         }
 
         private void dayRadio_CheckedChanged(object sender, EventArgs e) {

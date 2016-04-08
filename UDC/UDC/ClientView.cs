@@ -145,14 +145,7 @@ namespace UDC {
             this.currentView.Update(doctors, dates, true);
         }
 
-        private void createViewBtn_Click(object sender, EventArgs e) {
-            /*ACTION LISTENER FOR CREATE VIEW*/
-            this.Controls.Remove(currentPanel);
-            this.currentView = SubView.MakeView(controller, SubView.CREATE_VIEW);
-            this.currentPanel = this.currentView.GetPanel();
-            this.Controls.Add(currentPanel);
-            this.currentPanel.Show();
-        }
+    
 
         private void todayBtn_Click(object sender, EventArgs e) {
             monthCalendar.SetDate(DateTime.Today);

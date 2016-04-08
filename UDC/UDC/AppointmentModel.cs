@@ -67,7 +67,7 @@ namespace UDC {
                     }
                 }
             }
-
+        
             this.Notify();
         }
 
@@ -103,6 +103,44 @@ namespace UDC {
                 myConn.Close();
             }
             catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+
+            this.Notify();
+        }
+        public void UpdateDatabase(Appointment a,String status)
+        {
+            try
+            {
+                myConn.Close();
+                String docID = null;
+
+                MySqlCommand command = myConn.CreateCommand();
+                command.CommandText = "select * from doctors where name = " + "'" + a.GetTitle() + "';";
+                myConn.Open();
+
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    docID = reader["doctorid"].ToString();
+                }
+
+                Console.WriteLine(docID);
+                myConn.Close();
+
+                Console.WriteLine(docID);
+
+
+                command.CommandText = "Update time_slots set status =  '"+ status+ "' where doctorID = '"+docID+"';";
+                
+           
+                myConn.Open();
+                reader = command.ExecuteReader();
+
+                myConn.Close();
+            }
+            catch (Exception e)
+            {
                 Console.WriteLine(e.Message);
             }
 

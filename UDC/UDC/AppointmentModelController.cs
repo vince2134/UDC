@@ -29,6 +29,10 @@ namespace UDC {
         public void AddToDatabase(Appointment a) {
             ((AppointmentModel)this.model).AddToDatabase(a);
         }
+        public void UpdateDatabase(Appointment a, String status)
+        {
+            ((AppointmentModel)this.model).UpdateDatabase(a,status);
+        }
 
         public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
             DateTime curDate;

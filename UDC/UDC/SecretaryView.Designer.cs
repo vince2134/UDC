@@ -62,10 +62,11 @@
             // 
             // monthCalendar1
             // 
-            this.monthCalendar1.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.monthCalendar1.ForeColor = System.Drawing.Color.Firebrick;
             this.monthCalendar1.Location = new System.Drawing.Point(9, 84);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 3;
+            this.monthCalendar1.TitleForeColor = System.Drawing.Color.Firebrick;
             this.monthCalendar1.DateSelected += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateSelected);
             // 
             // dateLabel
@@ -98,6 +99,7 @@
             // 
             this.dayRadio.AutoSize = true;
             this.dayRadio.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dayRadio.ForeColor = System.Drawing.Color.Firebrick;
             this.dayRadio.Location = new System.Drawing.Point(12, 294);
             this.dayRadio.Name = "dayRadio";
             this.dayRadio.Size = new System.Drawing.Size(51, 24);
@@ -111,9 +113,10 @@
             // 
             this.weekRadio.AutoSize = true;
             this.weekRadio.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.weekRadio.ForeColor = System.Drawing.Color.Firebrick;
             this.weekRadio.Location = new System.Drawing.Point(12, 317);
             this.weekRadio.Name = "weekRadio";
-            this.weekRadio.Size = new System.Drawing.Size(63, 24);
+            this.weekRadio.Size = new System.Drawing.Size(64, 24);
             this.weekRadio.TabIndex = 8;
             this.weekRadio.TabStop = true;
             this.weekRadio.Text = "Week";
@@ -126,7 +129,7 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(29, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(162, 27);
+            this.label1.Size = new System.Drawing.Size(163, 27);
             this.label1.TabIndex = 10;
             this.label1.Text = "Secretary View";
             // 
@@ -158,6 +161,7 @@
             this.Controls.Add(this.monthCalendar1);
             this.Controls.Add(this.agendaViewBtn);
             this.Controls.Add(this.calendarViewBtn);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "SecretaryView";
             this.Text = "SecretaryView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SecretaryView_FormClosed);
