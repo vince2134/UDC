@@ -14,12 +14,13 @@ namespace UDC {
         private DateTime endTime;
         private Boolean available;
 
-        public Appointment(String title, String color, DateTime startTime, DateTime endTime) {
+        public Appointment(String title, String color, DateTime startTime, DateTime endTime,String num) {
             this.title = title;
             this.available = true;
             this.color = Color.FromName(color);
             this.startTime = startTime;
             this.endTime = endTime;
+            this.slot_Number = num;
         }
 
         public Appointment(String title, DateTime startTime, DateTime endTime) {
@@ -91,5 +92,16 @@ namespace UDC {
             else
                 this.color = Color.Firebrick;
         }
+        public String GetSlotNum()
+        {
+            return this.slot_Number;
+        }
+
+        public void SetSlotNumber(String slotNum)
+        { 
+
+            this.slot_Number = slotNum;
+        }
+        
     }
 }

@@ -224,7 +224,7 @@ namespace UDC {
                             else {
                                 t.SetAvailability(true);
                                 ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Canceled");
+                                MessageBox.Show("Appointment with " + t.GetSlotNum() + " Canceled");
                             }
                         ((ListView)this).Update();
 

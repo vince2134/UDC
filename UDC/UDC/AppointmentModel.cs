@@ -87,6 +87,7 @@ namespace UDC {
 
                 Console.WriteLine(docID);
                 myConn.Close();
+              
 
                 DateTime start = a.GetStartTime();
                 DateTime end = a.GetEndTime();
@@ -96,10 +97,11 @@ namespace UDC {
 
                 command.CommandText = "INSERT INTO time_slots (doctorid,startTime,endTime,status) values ('" + docID + "','" + startTime + "','" + endTime + "','" + available + "');";
 
-                Add(a);
+
                 myConn.Open();
                 reader = command.ExecuteReader();
-
+                a.SetSlotNumber(dbSettings.GetMaxSlotNo().ToString());
+                Add(a);
                 myConn.Close();
             }
             catch (Exception e) {
@@ -118,7 +120,7 @@ namespace UDC {
                 MySqlCommand command = myConn.CreateCommand();
                 command.CommandText = "select * from doctors where name = " + "'" + a.GetTitle() + "';";
                 myConn.Open();
-
+                
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
@@ -130,8 +132,7 @@ namespace UDC {
 
                 Console.WriteLine(docID);
 
-
-                command.CommandText = "Update time_slots set status =  '"+ status+ "' where doctorID = '"+docID+"';";
+                command.CommandText = "Update time_slots set status =  '"+ status+ "' where doctorID = '"+docID+"' AND  slotno = '"+ a.GetSlotNum()+"';";
                 
            
                 myConn.Open();
@@ -181,9 +182,10 @@ namespace UDC {
                     DateTime.TryParse(reader["startTime"].ToString(), out startTime);
                     DateTime endTime = new DateTime();
                     DateTime.TryParse(reader["endTime"].ToString(), out endTime);
+                  
 
+                    Appointment appointment = new Appointment(reader["name"].ToString(), "blue", startTime, endTime,reader["slotno"].ToString());
 
-                    Appointment appointment = new Appointment(reader["name"].ToString(), "blue", startTime, endTime);
 
 
                     if (reader["status"].ToString().Equals("Occupied"))

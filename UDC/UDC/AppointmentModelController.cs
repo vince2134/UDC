@@ -28,6 +28,7 @@ namespace UDC {
 
         public void AddToDatabase(Appointment a) {
             ((AppointmentModel)this.model).AddToDatabase(a);
+         
         }
         public void UpdateDatabase(Appointment a, String status)
         {
