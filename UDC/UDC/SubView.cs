@@ -12,6 +12,7 @@ namespace UDC {
         protected ListController controller;
         protected Panel panel;
         protected DataGridView tableView;
+     
         public const String CALENDAR_VIEW = "CalendarView";
         public const String AGENDA_VIEW = "AgendaView";
         public const String CREATE_VIEW = "CreateView";
@@ -172,6 +173,10 @@ namespace UDC {
                 dt.Columns.Add("Todo");
 
                 tableView.GridColor = Color.White;
+                if (apList1.Count() == 0)
+                {
+                    dt.Rows.Add("No Appointments to show");
+                }
 
                 foreach (Appointment t in apList1.GetAppointments()) {
                     dt.Rows.Add("  ");

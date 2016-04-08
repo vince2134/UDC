@@ -327,7 +327,9 @@ namespace UDC {
                 currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMM d, yyyy");
             else if (weeklyBtn.Checked)
                 currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar.SelectionRange.Start).ToString();
+            UpdateDate();
             ((ListView)this).Update();
+            
         }
 
         private void discard_Click(object sender, EventArgs e) {
