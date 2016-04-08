@@ -138,10 +138,14 @@ namespace UDC {
                                 }
 
                                 tableView.Rows[i].Cells[k].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
-                                int j = i;
+                                tableView.Rows[i].Cells[k].Style.BackColor = t.GetColor();
+                                int j = i+1;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
                                 while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString())) {
+
                                     tableView.Rows[j].Cells[k].Style.BackColor = t.GetColor();
+                                    tableView.Rows[j].Cells[k].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                                    tableView.Rows[j].Cells[k].Style.ForeColor = t.GetColor();
                                     j++;
                                     if (j == 48)
                                         break;

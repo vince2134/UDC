@@ -209,15 +209,10 @@ namespace UDC {
             {
                 if (c is DataGridView)
                 {
-
+                  
                     foreach (Appointment t in apList1.GetAppointments())
                     {
-                        Console.WriteLine(t.GetStartTime().ToString("HH:mm"));
-                        Console.WriteLine(t.GetEndTime().ToString("HH:mm"));
-                        Console.WriteLine(t.GetStartTime().ToString("MM/dd/yyy"));
-                        Console.WriteLine(t.GetTitle());
-                        Console.WriteLine(t.Available());
-                        Console.WriteLine((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()));
+              
                         if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")))
                         {
                             if (t.Available())
