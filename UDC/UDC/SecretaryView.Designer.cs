@@ -39,7 +39,7 @@
             this.calendarViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calendarViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calendarViewBtn.ForeColor = System.Drawing.Color.Firebrick;
-            this.calendarViewBtn.Location = new System.Drawing.Point(519, 13);
+            this.calendarViewBtn.Location = new System.Drawing.Point(526, 12);
             this.calendarViewBtn.Name = "calendarViewBtn";
             this.calendarViewBtn.Size = new System.Drawing.Size(75, 35);
             this.calendarViewBtn.TabIndex = 0;
@@ -116,7 +116,7 @@
             this.weekRadio.ForeColor = System.Drawing.Color.Firebrick;
             this.weekRadio.Location = new System.Drawing.Point(12, 317);
             this.weekRadio.Name = "weekRadio";
-            this.weekRadio.Size = new System.Drawing.Size(64, 24);
+            this.weekRadio.Size = new System.Drawing.Size(63, 24);
             this.weekRadio.TabIndex = 8;
             this.weekRadio.TabStop = true;
             this.weekRadio.Text = "Week";
@@ -129,7 +129,7 @@
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
             this.label1.Location = new System.Drawing.Point(12, 24);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(210, 35);
+            this.label1.Size = new System.Drawing.Size(209, 35);
             this.label1.TabIndex = 10;
             this.label1.Text = "Secretary View";
             // 

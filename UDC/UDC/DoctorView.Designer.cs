@@ -143,7 +143,7 @@
             this.weeklyBtn.AutoSize = true;
             this.weeklyBtn.Location = new System.Drawing.Point(130, 311);
             this.weeklyBtn.Name = "weeklyBtn";
-            this.weeklyBtn.Size = new System.Drawing.Size(81, 26);
+            this.weeklyBtn.Size = new System.Drawing.Size(80, 26);
             this.weeklyBtn.TabIndex = 17;
             this.weeklyBtn.Text = "Weekly";
             this.weeklyBtn.UseVisualStyleBackColor = true;
@@ -163,7 +163,7 @@
             // todayBtn
             // 
             this.todayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.todayBtn.Location = new System.Drawing.Point(264, 14);
+            this.todayBtn.Location = new System.Drawing.Point(251, 14);
             this.todayBtn.Name = "todayBtn";
             this.todayBtn.Size = new System.Drawing.Size(80, 37);
             this.todayBtn.TabIndex = 19;
@@ -178,9 +178,9 @@
             this.loginPanel.Controls.Add(this.username);
             this.loginPanel.Controls.Add(this.label3);
             this.loginPanel.Controls.Add(this.label2);
-            this.loginPanel.Location = new System.Drawing.Point(-1, -7);
+            this.loginPanel.Location = new System.Drawing.Point(-1, 137);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(732, 455);
+            this.loginPanel.Size = new System.Drawing.Size(732, 311);
             this.loginPanel.TabIndex = 20;
             // 
             // loginBtn
@@ -216,7 +216,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(238, 202);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 22);
+            this.label3.Size = new System.Drawing.Size(81, 22);
             this.label3.TabIndex = 1;
             this.label3.Text = "Password:";
             // 
@@ -372,7 +372,7 @@
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(17, 381);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 22);
+            this.label8.Size = new System.Drawing.Size(82, 22);
             this.label8.TabIndex = 26;
             this.label8.Text = "Recurring:";
             // 
