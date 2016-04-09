@@ -10,3 +10,6 @@ C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.SecretaryView.resources
 C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.csproj.GenerateResource.Cache
 C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.exe
 C:\Users\avggo\Documents\UDC\UDC\UDC\obj\Debug\UDC.pdb
+H:\Term 5\SWDESPA\UDC\UDC\UDC\bin\Debug\UDC.exe.config
+H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.exe
+H:\Term 5\SWDESPA\UDC\UDC\UDC\obj\Debug\UDC.pdb

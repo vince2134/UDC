@@ -124,24 +124,9 @@ namespace UDC {
         }
 
         public void DeleteToDatabase(Appointment a) {
-            DateTime startTime = a.GetStartTime();
-            DateTime endTime = a.GetEndTime();
-            String start = startTime.Year + "-" + startTime.Month + "-" + startTime.Day + " " + startTime.Hour + ":" + startTime.Minute + ":" + startTime.Second;
-            String end = endTime.Year + "-" + endTime.Month + "-" + endTime.Day + " " + endTime.Hour + ":" + endTime.Minute + ":" + endTime.Second;
-            Console.WriteLine(start);
-            Console.WriteLine(end);
             try {
-                myConn.Close();
-                String slotno = null;
+                String slotno = a.GetSlotNum();
                 MySqlCommand command = myConn.CreateCommand();
-                command.CommandText = "select slotno from time_slots where startTime = '" + start + "' and endTime = '" + end + "';";
-                myConn.Open();
-                reader = command.ExecuteReader();
-                while (reader.Read()) {
-                    slotno = reader["slotno"].ToString();
-                }
-                Console.WriteLine(slotno);
-                myConn.Close();
                 command.CommandText = "delete from time_slots where slotno = '" + slotno + "';";
                 myConn.Open();
                 reader = command.ExecuteReader();
