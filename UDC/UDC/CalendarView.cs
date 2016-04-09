@@ -55,8 +55,6 @@ namespace UDC {
             this.tableView.TabIndex = 14;
             this.tableView.SelectionChanged += new System.EventHandler(this.tableView_SelectionChanged);
             this.tableView.RowTemplate.Height = 31;
-
-
             this.panel.Controls.Add(this.tableView);
             this.panel.Location = new System.Drawing.Point(251, 66);
             this.panel.Name = "dayPanel";
@@ -68,7 +66,7 @@ namespace UDC {
             tableView.ClearSelection();
         }
 
-        public DataGridView getDataGrid() {
+        public DataGridView GetDataGrid() {
             return this.tableView;
         }
     }

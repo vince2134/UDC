@@ -17,8 +17,6 @@ namespace UDC {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-           
-           
 
             this.panel = new System.Windows.Forms.Panel();
             this.tableView = new System.Windows.Forms.DataGridView();
@@ -26,7 +24,6 @@ namespace UDC {
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).BeginInit();
             this.panel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tableView)).EndInit();
-
             this.tableView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.tableView.BackgroundColor = System.Drawing.Color.White;
             this.tableView.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -46,12 +43,7 @@ namespace UDC {
             this.tableView.Size = new System.Drawing.Size(458, 316);
             this.tableView.TabIndex = 0;
             this.tableView.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-   
-         
-          
-           
             this.panel.Controls.Add(this.tableView);
-    
             this.panel.Location = new System.Drawing.Point(251, 66);
             this.panel.Name = "dayPanel";
             this.panel.Size = new System.Drawing.Size(458, 316);
