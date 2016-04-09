@@ -60,7 +60,6 @@
     <Compile Include="ClientView.Designer.cs">
       <DependentUpon>ClientView.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateView.cs" />
     <Compile Include="CalendarView.cs" />
     <Compile Include="DatabaseSingleton.cs" />
     <Compile Include="DoctorView.cs">

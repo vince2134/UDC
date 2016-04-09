@@ -30,7 +30,6 @@ namespace UDC {
 
             if (this is CalendarView) {
                 if (dates.Count == 1) {
-
                     this.tableView.ColumnHeadersVisible = false;
                     DataTable dt = new DataTable();
                     DateTime curDate = dates[0];
@@ -61,7 +60,6 @@ namespace UDC {
                         for (int i = 0; i < 48; i++) {
 
                             if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) {
-                                //tableView.Rows[i].Cells[1].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                 int j = i;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
                                 int show = j;
@@ -90,7 +88,6 @@ namespace UDC {
                     this.tableView.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.tableView_CellPainting_1);
 
                     DateTime d = dates[0];
-
 
                     dt.Columns.Add("Time");
 
@@ -214,7 +211,6 @@ namespace UDC {
             else if (subView.Equals(AGENDA_VIEW)) {
                 return new AgendaView(c);
             }
-         
 
             return null;
         }

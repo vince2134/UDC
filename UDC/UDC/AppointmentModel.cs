@@ -67,7 +67,7 @@ namespace UDC {
                     }
                 }
             }
-        
+
             this.Notify();
         }
 
@@ -77,7 +77,7 @@ namespace UDC {
                 String docID = null;
 
                 MySqlCommand command = myConn.CreateCommand();
-                command.CommandText = "select * from doctors where name = "+ "'" + a.GetTitle() + "';";
+                command.CommandText = "select * from doctors where name = " + "'" + a.GetTitle() + "';";
                 myConn.Open();
 
                 reader = command.ExecuteReader();
@@ -87,7 +87,7 @@ namespace UDC {
 
                 Console.WriteLine(docID);
                 myConn.Close();
-              
+
 
                 DateTime start = a.GetStartTime();
                 DateTime end = a.GetEndTime();
@@ -111,37 +111,33 @@ namespace UDC {
             this.Notify();
         }
 
-        public void Delete(String slotno)
-        {
+        public void Delete(String slotno) {
             int index = 0;
-            foreach (Appointment a in this.appointments.GetAppointments())
-            {
-                if (a.GetSlotNum() == slotno)
-                {
+
+            foreach (Appointment a in this.appointments.GetAppointments()) {
+                if (a.GetSlotNum() == slotno) {
                     index = this.appointments.IndexOf(a);
                 }
             }
+
             this.appointments.RemoveAt(index);
         }
 
-        public void DeleteToDatabase(Appointment a)
-        {
+        public void DeleteToDatabase(Appointment a) {
             DateTime startTime = a.GetStartTime();
             DateTime endTime = a.GetEndTime();
             String start = startTime.Year + "-" + startTime.Month + "-" + startTime.Day + " " + startTime.Hour + ":" + startTime.Minute + ":" + startTime.Second;
             String end = endTime.Year + "-" + endTime.Month + "-" + endTime.Day + " " + endTime.Hour + ":" + endTime.Minute + ":" + endTime.Second;
             Console.WriteLine(start);
             Console.WriteLine(end);
-            try
-            {
+            try {
                 myConn.Close();
                 String slotno = null;
                 MySqlCommand command = myConn.CreateCommand();
                 command.CommandText = "select slotno from time_slots where startTime = '" + start + "' and endTime = '" + end + "';";
                 myConn.Open();
                 reader = command.ExecuteReader();
-                while (reader.Read())
-                {
+                while (reader.Read()) {
                     slotno = reader["slotno"].ToString();
                 }
                 Console.WriteLine(slotno);
@@ -152,27 +148,24 @@ namespace UDC {
                 myConn.Close();
                 Delete(slotno);
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Console.WriteLine(e.Message);
             }
+
             this.Notify();
         }
 
-        public void UpdateDatabase(Appointment a,String status)
-        {
-            try
-            {
+        public void UpdateDatabase(Appointment a, String status) {
+            try {
                 myConn.Close();
                 String docID = null;
 
                 MySqlCommand command = myConn.CreateCommand();
                 command.CommandText = "select * from doctors where name = " + "'" + a.GetTitle() + "';";
                 myConn.Open();
-                
+
                 reader = command.ExecuteReader();
-                while (reader.Read())
-                {
+                while (reader.Read()) {
                     docID = reader["doctorid"].ToString();
                 }
 
@@ -181,24 +174,19 @@ namespace UDC {
 
                 Console.WriteLine(docID);
 
-                command.CommandText = "Update time_slots set status =  '"+ status+ "' where doctorID = '"+docID+"' AND  slotno = '"+ a.GetSlotNum()+"';";
-                
-           
+                command.CommandText = "Update time_slots set status =  '" + status + "' where doctorID = '" + docID + "' AND  slotno = '" + a.GetSlotNum() + "';";
+
+
                 myConn.Open();
                 reader = command.ExecuteReader();
 
                 myConn.Close();
             }
-            catch (Exception e)
-            {
+            catch (Exception e) {
                 Console.WriteLine(e.Message);
             }
 
             this.Notify();
-        }
-
-        public void ToggleAvailability() {
-
         }
 
         public AppointmentList GetAppointments() {
@@ -231,9 +219,9 @@ namespace UDC {
                     DateTime.TryParse(reader["startTime"].ToString(), out startTime);
                     DateTime endTime = new DateTime();
                     DateTime.TryParse(reader["endTime"].ToString(), out endTime);
-                  
 
-                    Appointment appointment = new Appointment(reader["name"].ToString(), "blue", startTime, endTime,reader["slotno"].ToString());
+
+                    Appointment appointment = new Appointment(reader["name"].ToString(), "blue", startTime, endTime, reader["slotno"].ToString());
 
 
 

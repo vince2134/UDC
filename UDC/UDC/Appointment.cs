@@ -14,7 +14,7 @@ namespace UDC {
         private DateTime endTime;
         private Boolean available;
 
-        public Appointment(String title, String color, DateTime startTime, DateTime endTime,String num) {
+        public Appointment(String title, String color, DateTime startTime, DateTime endTime, String num) {
             this.title = title;
             this.available = true;
             this.color = Color.FromName(color);
@@ -58,7 +58,7 @@ namespace UDC {
             if (startTime.Date == a2.GetStartTime().Date) {
                 DateTime endTime = a1.GetEndTime();
 
-                if (DateTime.Compare(a2.GetStartTime(), startTime) == 0 || (DateTime.Compare(startTime, a2.GetStartTime()) > 0 && DateTime.Compare(startTime, a2.GetEndTime()) < 0) || (DateTime.Compare(endTime, a2.GetStartTime()) > 0 && DateTime.Compare(endTime, a2.GetEndTime()) < 0))
+                if (DateTime.Compare(a2.GetStartTime(), startTime) == 0 || DateTime.Compare(a2.GetEndTime(), endTime) == 0 || (DateTime.Compare(startTime, a2.GetStartTime()) < 0 && DateTime.Compare(endTime, a2.GetEndTime()) > 0) ||(DateTime.Compare(startTime, a2.GetStartTime()) > 0 && DateTime.Compare(startTime, a2.GetEndTime()) < 0) || (DateTime.Compare(endTime, a2.GetStartTime()) > 0 && DateTime.Compare(endTime, a2.GetEndTime()) < 0))
                     return true;
                 if (endTime.Hour == 0 && a2.GetEndTime().Hour != 0)
                     if (DateTime.Compare(startTime, a2.GetEndTime()) < 0)
@@ -82,26 +82,23 @@ namespace UDC {
         public void SetAvailability(Boolean a) {
             this.available = a;
             SetColor();
-            
+
         }
 
-        public void SetColor()
-        {
+        public void SetColor() {
             if (this.available)
                 this.color = Color.RoyalBlue;
             else
                 this.color = Color.Firebrick;
         }
-        public String GetSlotNum()
-        {
+
+        public String GetSlotNum() {
             return this.slot_Number;
         }
 
-        public void SetSlotNumber(String slotNum)
-        { 
+        public void SetSlotNumber(String slotNum) {
 
             this.slot_Number = slotNum;
         }
-        
     }
 }
