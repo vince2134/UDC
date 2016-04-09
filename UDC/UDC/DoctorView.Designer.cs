@@ -178,9 +178,9 @@
             this.loginPanel.Controls.Add(this.username);
             this.loginPanel.Controls.Add(this.label3);
             this.loginPanel.Controls.Add(this.label2);
-            this.loginPanel.Location = new System.Drawing.Point(-1, 8);
+            this.loginPanel.Location = new System.Drawing.Point(-1, 12);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(732, 440);
+            this.loginPanel.Size = new System.Drawing.Size(732, 436);
             this.loginPanel.TabIndex = 20;
             // 
             // loginBtn
