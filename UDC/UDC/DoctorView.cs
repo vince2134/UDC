@@ -167,8 +167,63 @@ namespace UDC {
             }
         }
 
-        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
-            MessageBox.Show("DELEETE");
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
+            foreach (Control c in this.currentPanel.Controls)
+            {
+                if (c is DataGridView)
+                {
+                    foreach (Appointment t in apList1.GetAppointments())
+                    {
+                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")))
+                        {
+                            if (t.Available())
+                            {
+
+                                DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    ((AppointmentModelController)controller).DeleteToDatabase(t);
+                                    MessageBox.Show("Slot deleted");
+                                }
+                                else if (dialogResult == DialogResult.No)
+                                {
+                                    //do something else
+                                }
+                                
+                            }
+                            else
+                            {
+                                MessageBox.Show("Slot cannot be deleted");
+                            }
+                        ((ListView)this).Update();
+                        }
+                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle()))
+                        {
+                            if (t.Available())
+                            {
+                                DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
+                                if (dialogResult == DialogResult.Yes)
+                                {
+                                    ((AppointmentModelController)controller).DeleteToDatabase(t);
+                                    MessageBox.Show("Slot deleted");
+                                }
+                                else if (dialogResult == DialogResult.No)
+                                {
+                                    //do something else
+                                }
+                            }
+                            else
+                            {
+
+                                MessageBox.Show("Slot cannot be deleted");
+                            }
+                        ((ListView)this).Update();
+                        }
+                    }
+                }
+            }
         }
 
         static int GetWeekNumberOfMonth(DateTime date) {

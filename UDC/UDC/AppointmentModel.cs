@@ -110,6 +110,55 @@ namespace UDC {
 
             this.Notify();
         }
+
+        public void Delete(String slotno)
+        {
+            int index = 0;
+            foreach (Appointment a in this.appointments.GetAppointments())
+            {
+                if (a.GetSlotNum() == slotno)
+                {
+                    index = this.appointments.IndexOf(a);
+                }
+            }
+            this.appointments.RemoveAt(index);
+        }
+
+        public void DeleteToDatabase(Appointment a)
+        {
+            DateTime startTime = a.GetStartTime();
+            DateTime endTime = a.GetEndTime();
+            String start = startTime.Year + "-" + startTime.Month + "-" + startTime.Day + " " + startTime.Hour + ":" + startTime.Minute + ":" + startTime.Second;
+            String end = endTime.Year + "-" + endTime.Month + "-" + endTime.Day + " " + endTime.Hour + ":" + endTime.Minute + ":" + endTime.Second;
+            Console.WriteLine(start);
+            Console.WriteLine(end);
+            try
+            {
+                myConn.Close();
+                String slotno = null;
+                MySqlCommand command = myConn.CreateCommand();
+                command.CommandText = "select slotno from time_slots where startTime = '" + start + "' and endTime = '" + end + "';";
+                myConn.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    slotno = reader["slotno"].ToString();
+                }
+                Console.WriteLine(slotno);
+                myConn.Close();
+                command.CommandText = "delete from time_slots where slotno = '" + slotno + "';";
+                myConn.Open();
+                reader = command.ExecuteReader();
+                myConn.Close();
+                Delete(slotno);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+            this.Notify();
+        }
+
         public void UpdateDatabase(Appointment a,String status)
         {
             try

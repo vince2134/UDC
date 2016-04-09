@@ -35,6 +35,11 @@ namespace UDC {
             ((AppointmentModel)this.model).UpdateDatabase(a,status);
         }
 
+        public void DeleteToDatabase(Appointment a)
+        {
+            ((AppointmentModel)this.model).DeleteToDatabase(a);
+        }
+
         public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
             DateTime curDate;
             AppointmentList filteredAppointments = new AppointmentList();
