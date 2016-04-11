@@ -328,8 +328,8 @@ namespace UDC {
 
                 DateTime endDate = new DateTime(yearEnd, monthEnd, dayEnd, hourEnd, minutesEnd, 0);
 
-                if (DateTime.Compare(endDate, startDate) > 0 && endDate.Hour != 0 || endDate.Hour == 0 || DateTime.Compare(endDate, startDate) != 0 || startDate.Hour == 0 && endDate.Hour == 0 && startDate.Minute == 0 && endDate.Minute == 0) {
-                    if (recurringText.Text.ToString().Length == 0) {
+                if (endDate.Hour == 0 || DateTime.Compare(endDate, startDate) != 0 && DateTime.Compare(endDate, startDate) > 0 && endDate.Hour != 0 || startDate.Hour == 0 && endDate.Hour == 0 && startDate.Minute == 0 && endDate.Minute == 0) {
+                    if (recurringText.Text.ToString().Length == 0 || recurringText.Text.ToString().Equals("0")) {
                         app = new Appointment(doctorName.Text, startDate, endDate);
 
                         if (app != null && !((AppointmentModelController)controller).Overlap(app)) {
@@ -341,20 +341,23 @@ namespace UDC {
                     }
                     else {
                         try {
-                            Int32.Parse(recurringText.Text.ToString());
-                            DateTime tempStartDate = startDate;
-                            DateTime tempEndDate = endDate;
+                            if (Int32.Parse(recurringText.Text.ToString()) > -1) {
+                                DateTime tempStartDate = startDate;
+                                DateTime tempEndDate = endDate;
 
-                            for (int i = 0; i < Int32.Parse(recurringText.Text.ToString()); i++) {
-                                app = new Appointment(doctorName.Text, tempStartDate, tempEndDate);
+                                for (int i = 0; i < Int32.Parse(recurringText.Text.ToString()); i++) {
+                                    app = new Appointment(doctorName.Text, tempStartDate, tempEndDate);
 
-                                if (app != null && !((AppointmentModelController)controller).Overlap(app)) {
-                                    ((AppointmentModelController)controller).AddToDatabase(app);
+                                    if (app != null && !((AppointmentModelController)controller).Overlap(app)) {
+                                        ((AppointmentModelController)controller).AddToDatabase(app);
+                                    }
+
+                                    tempStartDate = tempStartDate.AddDays(7);
+                                    tempEndDate = tempEndDate.AddDays(7);
                                 }
-
-                                tempStartDate = tempStartDate.AddDays(7);
-                                tempEndDate = tempEndDate.AddDays(7);
                             }
+                            else
+                                MessageBox.Show("Invalid input.");
                         }
                         catch (Exception ex) {
                             MessageBox.Show("Invalid input.");
