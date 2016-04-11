@@ -56,17 +56,18 @@ namespace UDC {
                     tableView.AllowUserToAddRows = false;
 
                     foreach (Appointment t in apList1.GetAppointments()) {
+                   
                         String startTime = t.GetStartTime().ToString("HH:mm");
                         for (int i = 0; i < 48; i++) {
-
+                          
                             if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) {
-                                int j = i;
+                                tableView.Rows[i].Cells[k].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                                tableView.Rows[i].Cells[k].Style.BackColor = t.GetColor();
+                                int j = i + 1;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
-                                int show = j;
                                 while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString())) {
                                     tableView.Rows[j].Cells[1].Style.BackColor = t.GetColor();
                                     tableView.Rows[j].Cells[1].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
-                                    if(j != show)
                                         tableView.Rows[j].Cells[1].Style.ForeColor = t.GetColor();
 
                                     j++;
