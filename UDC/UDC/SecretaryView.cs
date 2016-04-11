@@ -126,17 +126,16 @@ namespace UDC {
         }
 
         private void agendaViewBtn_Click(object sender, EventArgs e) {
-
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            if (!deleteAdded)
-            {
+            if (!deleteAdded) {
                 addDelete();
                 deleteAdded = true;
             }
+
             this.currentPanel.Show();
             this.currentView.Update(doctors, dates, false);
         }
@@ -149,68 +148,47 @@ namespace UDC {
                 dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar1.SelectionRange.Start).ToString();
             UpdateDate();
             ((ListView)this).Update();
-       
-           
         }
 
         private void monthCalendar1_DateSelected(object sender, DateRangeEventArgs e) {
             dateLabel.Text = monthCalendar1.SelectionRange.Start.ToString("MMM d, yyyy");
         }
 
-        private void addDelete()
-        {
-            foreach (Control c in this.currentPanel.Controls)
-            {
+        private void addDelete() {
+            foreach (Control c in this.currentPanel.Controls) {
                 if (c is DataGridView)
                     ((DataGridView)c).CellDoubleClick += new DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
             }
         }
-        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
-            foreach (Control c in this.currentPanel.Controls)
-            {
-                if (c is DataGridView)
-                {
-                   
-                    foreach (Appointment t in apList1.GetAppointments())
-                    {
 
-                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")))
-                        {
-                            if (t.Available())
-                            {
-                                t.SetAvailability(false);
-                                ((AppointmentModelController)controller).UpdateDatabase(t,"Occupied");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Confirmed :)");
-                                ((ListView)this).Update();
-                            }
-                            else {
-                                MessageBox.Show("Unable to cancel appointment with " + t.GetTitle());
-                            }
-                   
-                        
-                        }
-                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle()))
-                        { 
-                            if (t.Available())
-                            {
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
+            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView) {
+
+                    foreach (Appointment t in apList1.GetAppointments()) {
+                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
+                            if (t.Available()) {
                                 t.SetAvailability(false);
                                 ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Confirmed :)");
-                                ((ListView)this).Update();
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
                             }
                             else {
-                                MessageBox.Show("Unable to cancel appointment with " + t.GetTitle());
+                                MessageBox.Show("Unable to cancel appointment with " + t.GetTitle() + ".");
                             }
-                       
-
+                        }
+                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
+                            if (t.Available()) {
+                                t.SetAvailability(false);
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
+                            }
+                            else {
+                                MessageBox.Show("Unable to cancel appointment with " + t.GetTitle() + ".");
+                            }
                         }
                     }
-
-
                 }
-                 
             }
         }
 
@@ -260,7 +238,7 @@ namespace UDC {
         }
 
         private void drListBox_SelectedIndexChanged_1(object sender, ItemCheckEventArgs e) {
-            if (e.NewValue == CheckState.Checked) 
+            if (e.NewValue == CheckState.Checked)
                 names.Add(drListBox.Items[e.Index].ToString());
 
             if (e.NewValue == CheckState.Unchecked) {

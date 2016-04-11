@@ -224,7 +224,6 @@ namespace UDC {
             }
 
             this.Notify();
-
         }
 
         public void AddFromDatabase(Appointment a) {

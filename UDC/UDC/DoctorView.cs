@@ -86,7 +86,6 @@ namespace UDC {
             this.doctors.Clear();
             doctors.Add(doctorName.Text);
             this.currentView.Update(doctors, dates, false);
-
         }
 
         private void DoctorView_FormClosed(object sender, FormClosedEventArgs e) {
@@ -103,15 +102,13 @@ namespace UDC {
             this.currentView.Update(doctors, dates, false);
         }
 
-        private void agendaViewBtn_Click(object sender, EventArgs e)
-        {
+        private void agendaViewBtn_Click(object sender, EventArgs e) {
             /*ACTION LISTENER FOR AGENDA VIEW*/
             this.Controls.Remove(currentPanel);
             this.currentView = subViews.GenerateSubView(controller, SubView.AGENDA_VIEW);
             this.currentPanel = this.currentView.GetPanel();
             this.Controls.Add(currentPanel);
-            if (!deleteAdded)
-            {
+            if (!deleteAdded) {
                 addDelete();
                 deleteAdded = true;
             }
@@ -167,59 +164,42 @@ namespace UDC {
             }
         }
 
-        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
-            foreach (Control c in this.currentPanel.Controls)
-            {
-                if (c is DataGridView)
-                {
-                    foreach (Appointment t in apList1.GetAppointments())
-                    {
-                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")))
-                        {
-                            if (t.Available())
-                            {
 
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView) {
+                    foreach (Appointment t in apList1.GetAppointments()) {
+                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
+                            if (t.Available()) {
                                 DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
-                                if (dialogResult == DialogResult.Yes)
-                                {
+
+                                if (dialogResult == DialogResult.Yes) {
                                     ((AppointmentModelController)controller).DeleteToDatabase(t);
-                                    MessageBox.Show("Slot deleted");
+                                    MessageBox.Show("Slot deleted!");
                                 }
-                                else if (dialogResult == DialogResult.No)
-                                {
+                                else if (dialogResult == DialogResult.No) {
                                     //do something else
                                 }
-                                
                             }
-                            else
-                            {
-                                MessageBox.Show("Slot cannot be deleted");
+                            else {
+                                MessageBox.Show("Slot cannot be deleted.");
                             }
-                        ((ListView)this).Update();
                         }
-                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle()))
-                        {
-                            if (t.Available())
-                            {
+                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
+                            if (t.Available()) {
                                 DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
-                                if (dialogResult == DialogResult.Yes)
-                                {
+                                if (dialogResult == DialogResult.Yes) {
                                     ((AppointmentModelController)controller).DeleteToDatabase(t);
-                                    MessageBox.Show("Slot deleted");
+                                    MessageBox.Show("Slot deleted!");
                                 }
-                                else if (dialogResult == DialogResult.No)
-                                {
+                                else if (dialogResult == DialogResult.No) {
                                     //do something else
                                 }
                             }
-                            else
-                            {
-
-                                MessageBox.Show("Slot cannot be deleted");
+                            else {
+                                MessageBox.Show("Slot cannot be deleted.");
                             }
-                        ((ListView)this).Update();
                         }
                     }
                 }
@@ -244,7 +224,19 @@ namespace UDC {
         }
 
         private void endHourCB_SelectedIndexChanged(object sender, EventArgs e) {
-            if (endHourCB.SelectedIndex == 0) {//remove
+            if (endHourCB.SelectedIndex == 0 && startHourCB.SelectedIndex != 0) {//remove
+                endMinuteCB.Items.Clear();
+                endMinuteCB.Items.Add("00");
+            }
+            else {
+                endMinuteCB.Items.Clear();
+                endMinuteCB.Items.Add("00");
+                endMinuteCB.Items.Add("30");
+            }
+        }
+
+        private void startHourCB_SelectedIndexChanged(object sender, EventArgs e) {
+            if (endHourCB.SelectedIndex == 0 && startHourCB.SelectedIndex != 0) {//remove
                 endMinuteCB.Items.Clear();
                 endMinuteCB.Items.Add("00");
             }
@@ -336,7 +328,7 @@ namespace UDC {
 
                 DateTime endDate = new DateTime(yearEnd, monthEnd, dayEnd, hourEnd, minutesEnd, 0);
 
-                if (DateTime.Compare(endDate, startDate) > 0 && endDate.Hour != 0 || endDate.Hour == 0) {
+                if (DateTime.Compare(endDate, startDate) > 0 && endDate.Hour != 0 || endDate.Hour == 0 || DateTime.Compare(endDate, startDate) != 0 || startDate.Hour == 0 && endDate.Hour == 0 && startDate.Minute == 0 && endDate.Minute == 0) {
                     if (recurringText.Text.ToString().Length == 0) {
                         app = new Appointment(doctorName.Text, startDate, endDate);
 
@@ -370,7 +362,7 @@ namespace UDC {
                     }
                 }
                 else
-                    MessageBox.Show("Invalid time. End time should be later than start time.");
+                    MessageBox.Show("Invalid time.");
             }
             else
                 MessageBox.Show("Please fill up all the fields.");
@@ -384,7 +376,6 @@ namespace UDC {
                 currentDate.Text = monthCalendar.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar.SelectionRange.Start).ToString();
             UpdateDate();
             ((ListView)this).Update();
-            
         }
 
         private void discard_Click(object sender, EventArgs e) {

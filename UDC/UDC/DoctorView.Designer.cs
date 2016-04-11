@@ -200,7 +200,7 @@
             // 
             this.password.Location = new System.Drawing.Point(325, 202);
             this.password.Name = "password";
-            this.password.PasswordChar = '*';
+            this.password.PasswordChar = '●';
             this.password.Size = new System.Drawing.Size(135, 26);
             this.password.TabIndex = 3;
             // 
@@ -311,6 +311,7 @@
             this.startHourCB.Name = "startHourCB";
             this.startHourCB.Size = new System.Drawing.Size(40, 28);
             this.startHourCB.TabIndex = 4;
+            this.startHourCB.SelectedIndexChanged += new System.EventHandler(this.startHourCB_SelectedIndexChanged);
             // 
             // label7
             // 

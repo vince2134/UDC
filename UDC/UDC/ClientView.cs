@@ -145,7 +145,7 @@ namespace UDC {
             this.currentView.Update(doctors, dates, false);
         }
 
-    
+
 
         private void todayBtn_Click(object sender, EventArgs e) {
             monthCalendar.SetDate(DateTime.Today);
@@ -155,7 +155,7 @@ namespace UDC {
                 dateLabel.Text = monthCalendar.SelectionRange.Start.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(monthCalendar.SelectionRange.Start).ToString();
             UpdateDate();
             ((ListView)this).Update();
-        
+
         }
 
         private void monthCalendar_DateSelected(object sender, DateRangeEventArgs e) {
@@ -205,51 +205,37 @@ namespace UDC {
 
         private void tableView_CellDoubleClick(object sender, DataGridViewCellEventArgs e) {
             AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
-            foreach (Control c in this.currentPanel.Controls)
-            {
-                if (c is DataGridView)
-                {
-                  
-                    foreach (Appointment t in apList1.GetAppointments())
-                    {
-              
-                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")))
-                        {
-                            if (t.Available())
-                            {
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView) {
+
+                    foreach (Appointment t in apList1.GetAppointments()) {
+
+                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
+                            if (t.Available()) {
                                 t.SetAvailability(false);
                                 ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Confirmed :)");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
                             }
                             else {
                                 t.SetAvailability(true);
                                 ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Canceled");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " canceled" + ".");
                             }
-                        ((ListView)this).Update();
-
                         }
-                        else if  ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle()))
-                            {
-                            if (t.Available())
-                            {
+                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
+                            if (t.Available()) {
                                 t.SetAvailability(false);
                                 ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Confirmed :)");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!!");
                             }
                             else {
                                 t.SetAvailability(true);
                                 ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
-                                MessageBox.Show("Appointment with " + t.GetTitle() + " Canceled");
+                                MessageBox.Show("Appointment with " + t.GetTitle() + " canceled" + ".");
                             }
-                        ((ListView)this).Update();
-
                         }
                     }
-
-
                 }
-
             }
         }
 
