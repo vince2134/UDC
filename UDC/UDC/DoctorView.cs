@@ -328,7 +328,7 @@ namespace UDC {
 
                 DateTime endDate = new DateTime(yearEnd, monthEnd, dayEnd, hourEnd, minutesEnd, 0);
 
-                if (endDate.Hour == 0 || DateTime.Compare(endDate, startDate) != 0 && DateTime.Compare(endDate, startDate) > 0 && endDate.Hour != 0 || startDate.Hour == 0 && endDate.Hour == 0 && startDate.Minute == 0 && endDate.Minute == 0) {
+                if (ValidTime(startDate, endDate)) {
                     if (recurringText.Text.ToString().Length == 0 || recurringText.Text.ToString().Equals("0")) {
                         app = new Appointment(doctorName.Text, startDate, endDate);
 
@@ -369,6 +369,15 @@ namespace UDC {
             }
             else
                 MessageBox.Show("Please fill up all the fields.");
+        }
+
+        private Boolean ValidTime(DateTime startDate, DateTime endDate) {
+            if (endDate.Hour == 0 && endDate.Minute == 30 && DateTime.Compare(endDate, startDate) > 0 || DateTime.Compare(endDate, startDate) != 0 && DateTime.Compare(endDate, startDate) > 0 && endDate.Hour != 0 || startDate.Hour == 0 && endDate.Hour == 0 && startDate.Minute == 0 && endDate.Minute == 0)
+                return true;
+            if (endDate.Hour == 0 && endDate.Minute == 0 && DateTime.Compare(startDate, endDate) > 0)
+                return true;
+
+            return false;
         }
 
         private void todayBtn_Click(object sender, EventArgs e) {
