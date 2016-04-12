@@ -706,6 +706,8 @@
             this.Controls.Add(this.createNewSlot);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(772, 487);
+            this.MinimumSize = new System.Drawing.Size(772, 487);
             this.Name = "DoctorView";
             this.Text = "Doctor View";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DoctorView_FormClosed);

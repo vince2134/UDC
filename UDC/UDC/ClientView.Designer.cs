@@ -168,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(756, 411);
+            this.ClientSize = new System.Drawing.Size(756, 448);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.weekRadioBtn);
             this.Controls.Add(this.dayRadioBtn);
@@ -180,6 +180,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.monthCalendar);
+            this.MaximumSize = new System.Drawing.Size(772, 487);
+            this.MinimumSize = new System.Drawing.Size(772, 487);
             this.Name = "ClientView";
             this.Text = "ClientView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientView_FormClosed);
