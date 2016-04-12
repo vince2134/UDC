@@ -162,6 +162,8 @@
             this.Controls.Add(this.agendaViewBtn);
             this.Controls.Add(this.calendarViewBtn);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.MaximumSize = new System.Drawing.Size(772, 450);
+            this.MinimumSize = new System.Drawing.Size(772, 450);
             this.Name = "SecretaryView";
             this.Text = "SecretaryView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SecretaryView_FormClosed);

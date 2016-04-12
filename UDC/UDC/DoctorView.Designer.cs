@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.editPanel = new System.Windows.Forms.Panel();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label17 = new System.Windows.Forms.Label();
             this.newDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -76,8 +78,6 @@
             this.recurringText = new System.Windows.Forms.TextBox();
             this.editBtn = new System.Windows.Forms.Button();
             this.createNewSlot = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.loginPanel.SuspendLayout();
             this.editPanel.SuspendLayout();
             this.timePanel.SuspendLayout();
@@ -281,6 +281,23 @@
             this.editPanel.Name = "editPanel";
             this.editPanel.Size = new System.Drawing.Size(361, 291);
             this.editPanel.TabIndex = 5;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Enabled = false;
+            this.dateTimePicker1.Location = new System.Drawing.Point(84, 35);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(259, 26);
+            this.dateTimePicker1.TabIndex = 34;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(32, 36);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(49, 22);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Date:";
             // 
             // newDatePicker
             // 
@@ -659,23 +676,6 @@
             this.createNewSlot.UseVisualStyleBackColor = false;
             this.createNewSlot.Click += new System.EventHandler(this.createNewSlot_Click);
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 36);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 22);
-            this.label17.TabIndex = 33;
-            this.label17.Text = "Date:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(84, 35);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(259, 26);
-            this.dateTimePicker1.TabIndex = 34;
-            // 
             // DoctorView
             // 
             this.AcceptButton = this.loginBtn;
@@ -706,6 +706,8 @@
             this.Controls.Add(this.createNewSlot);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(772, 487);
+            this.MinimumSize = new System.Drawing.Size(772, 487);
             this.Name = "DoctorView";
             this.Text = "Doctor View";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DoctorView_FormClosed);
