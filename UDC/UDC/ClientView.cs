@@ -145,8 +145,6 @@ namespace UDC {
             this.currentView.Update(doctors, dates, false);
         }
 
-
-
         private void todayBtn_Click(object sender, EventArgs e) {
             monthCalendar.SetDate(DateTime.Today);
             if (dayRadioBtn.Checked)
@@ -239,7 +237,7 @@ namespace UDC {
             }
         }
 
-        static int GetWeekNumberOfMonth(DateTime date) {
+        private int GetWeekNumberOfMonth(DateTime date) {
             date = date.Date;
             DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
             DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Sunday + 7 - firstMonthDay.DayOfWeek) % 7);

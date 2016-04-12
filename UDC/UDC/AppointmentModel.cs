@@ -111,6 +111,29 @@ namespace UDC {
             this.Notify();
         }
 
+        public void UpdateAppInDatabase(Appointment a) {
+            try {
+                String slotno = a.GetSlotNum();
+                MySqlCommand command = myConn.CreateCommand();
+
+                DateTime start = a.GetStartTime();
+                DateTime end = a.GetEndTime();
+                String startTime = start.Year + "-" + start.Month + "-" + start.Day + " " + start.Hour + ":" + start.Minute + ":" + start.Second;
+                String endTime = end.Year + "-" + end.Month + "-" + end.Day + " " + end.Hour + ":" + end.Minute + ":" + end.Second;
+
+                command.CommandText = "update time_slots set startTime = '" + startTime + "', endTime = '" + endTime + "' where slotno = " + slotno + ";";
+
+                myConn.Open();
+                reader = command.ExecuteReader();
+                myConn.Close();
+            }
+            catch (Exception e) {
+                Console.WriteLine(e.Message);
+            }
+
+            this.Notify();
+        }
+
         public void Delete(String slotno) {
             int index = 0;
 

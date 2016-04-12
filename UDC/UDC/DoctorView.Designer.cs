@@ -75,6 +75,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.recurringText = new System.Windows.Forms.TextBox();
             this.editBtn = new System.Windows.Forms.Button();
+            this.createNewSlot = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.editPanel.SuspendLayout();
             this.timePanel.SuspendLayout();
@@ -96,7 +97,7 @@
             // 
             // dayViewBtn
             // 
-            this.dayViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.dayViewBtn.BackColor = System.Drawing.Color.White;
             this.dayViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dayViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dayViewBtn.Location = new System.Drawing.Point(558, 12);
@@ -135,7 +136,7 @@
             // 
             // monthCalendar
             // 
-            this.monthCalendar.Location = new System.Drawing.Point(14, 137);
+            this.monthCalendar.Location = new System.Drawing.Point(14, 123);
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 6;
             // 
@@ -151,7 +152,7 @@
             // 
             this.dailyBtn.AutoSize = true;
             this.dailyBtn.Checked = true;
-            this.dailyBtn.Location = new System.Drawing.Point(48, 311);
+            this.dailyBtn.Location = new System.Drawing.Point(48, 293);
             this.dailyBtn.Name = "dailyBtn";
             this.dailyBtn.Size = new System.Drawing.Size(63, 26);
             this.dailyBtn.TabIndex = 16;
@@ -163,7 +164,7 @@
             // weeklyBtn
             // 
             this.weeklyBtn.AutoSize = true;
-            this.weeklyBtn.Location = new System.Drawing.Point(130, 311);
+            this.weeklyBtn.Location = new System.Drawing.Point(130, 293);
             this.weeklyBtn.Name = "weeklyBtn";
             this.weeklyBtn.Size = new System.Drawing.Size(80, 26);
             this.weeklyBtn.TabIndex = 17;
@@ -195,7 +196,6 @@
             // 
             // loginPanel
             // 
-            this.loginPanel.Controls.Add(this.editPanel);
             this.loginPanel.Controls.Add(this.loginBtn);
             this.loginPanel.Controls.Add(this.password);
             this.loginPanel.Controls.Add(this.username);
@@ -203,7 +203,7 @@
             this.loginPanel.Controls.Add(this.label2);
             this.loginPanel.Location = new System.Drawing.Point(-1, 12);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(732, 366);
+            this.loginPanel.Size = new System.Drawing.Size(732, 436);
             this.loginPanel.TabIndex = 20;
             // 
             // editPanel
@@ -227,7 +227,7 @@
             this.editPanel.Controls.Add(this.label9);
             this.editPanel.Controls.Add(this.oldStartMinCB);
             this.editPanel.Controls.Add(this.oldStartHourCB);
-            this.editPanel.Location = new System.Drawing.Point(325, 72);
+            this.editPanel.Location = new System.Drawing.Point(301, 64);
             this.editPanel.Name = "editPanel";
             this.editPanel.Size = new System.Drawing.Size(361, 291);
             this.editPanel.TabIndex = 5;
@@ -244,17 +244,17 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(108, 121);
+            this.label16.Location = new System.Drawing.Point(108, 119);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(141, 20);
+            this.label16.Size = new System.Drawing.Size(128, 20);
             this.label16.TabIndex = 32;
-            this.label16.Text = "Edited Appointment";
+            this.label16.Text = "New Appointment";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(102, 28);
+            this.label15.Location = new System.Drawing.Point(108, 25);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(150, 20);
             this.label15.TabIndex = 31;
@@ -474,8 +474,9 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(94, 84);
+            this.button1.Location = new System.Drawing.Point(94, 77);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 21;
@@ -640,8 +641,23 @@
             this.editBtn.Visible = false;
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
+            // createNewSlot
+            // 
+            this.createNewSlot.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.createNewSlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createNewSlot.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createNewSlot.ForeColor = System.Drawing.Color.White;
+            this.createNewSlot.Location = new System.Drawing.Point(60, 328);
+            this.createNewSlot.Name = "createNewSlot";
+            this.createNewSlot.Size = new System.Drawing.Size(134, 32);
+            this.createNewSlot.TabIndex = 29;
+            this.createNewSlot.Text = "Create New Slot";
+            this.createNewSlot.UseVisualStyleBackColor = false;
+            this.createNewSlot.Click += new System.EventHandler(this.createNewSlot_Click);
+            // 
             // DoctorView
             // 
+            this.AcceptButton = this.loginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
@@ -651,6 +667,7 @@
             this.Controls.Add(this.recurringText);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.save);
+            this.Controls.Add(this.editPanel);
             this.Controls.Add(this.timePanel);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.discard);
@@ -665,6 +682,7 @@
             this.Controls.Add(this.dayViewBtn);
             this.Controls.Add(this.agendaViewBtn);
             this.Controls.Add(this.label4);
+            this.Controls.Add(this.createNewSlot);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "DoctorView";
@@ -738,6 +756,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker newDatePicker;
+        private System.Windows.Forms.Button createNewSlot;
     }
 }
 

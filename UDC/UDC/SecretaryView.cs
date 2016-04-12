@@ -225,7 +225,7 @@ namespace UDC {
             dateLabel.Text = date.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(date).ToString();
         }
 
-        static int GetWeekNumberOfMonth(DateTime date) {
+        private int GetWeekNumberOfMonth(DateTime date) {
             date = date.Date;
             DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
             DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Sunday + 7 - firstMonthDay.DayOfWeek) % 7);

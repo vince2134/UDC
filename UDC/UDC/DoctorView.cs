@@ -83,7 +83,6 @@ namespace UDC {
             newEndMinCB.Items.Add("30");
             oldStartMinCB.Items.Add("30");
             oldEndMinCB.Items.Add("30");
-
         }
 
         void ListView.Update() {
@@ -184,30 +183,23 @@ namespace UDC {
 
         private void addDelete() {
             foreach (Control c in this.currentPanel.Controls) {
-                if (c is DataGridView)
-                {
+                if (c is DataGridView) {
                     ((DataGridView)c).CellDoubleClick += new DataGridViewCellEventHandler(this.tableView_CellDoubleClick);
                     ((DataGridView)c).CellClick += new DataGridViewCellEventHandler(this.tableView_CellClick);
                 }
-                    
             }
         }
-        
-        private void tableView_CellClick (object sender, DataGridViewCellEventArgs e) {
+
+        private void tableView_CellClick(object sender, DataGridViewCellEventArgs e) {
             // display dun lol (display app info) HHHAHAHAHA
 
             AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
 
-            foreach (Control c in this.currentPanel.Controls)
-            {
-                if (c is DataGridView)
-                {
-                    foreach (Appointment t in apList1.GetAppointments())
-                    {
-                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")))
-                        {
-                            if (t.Available())
-                            {
+            foreach (Control c in this.currentPanel.Controls) {
+                if (c is DataGridView) {
+                    foreach (Appointment t in apList1.GetAppointments()) {
+                        if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
+                            if (t.Available()) {
                                 save.Visible = false;
                                 editBtn.Visible = true;
 
@@ -224,31 +216,18 @@ namespace UDC {
                                     endMinuteCB.SelectedIndex = 0;
                                 else if (EM.Equals("30"))
                                     endMinuteCB.SelectedIndex = 1;
-
-                                //endMinuteCB.SelectedIndex = t.GetEndTime().Minute;
-
-
-                                //startHourCB.SelectedIndex = startHourCB.FindStringExact(t.GetStartTime().Hour.ToString());
-                                //startMinuteCB.SelectedIndex = startMinuteCB.FindStringExact(t.GetStartTime().Minute.ToString());
-                                //endHourCB.SelectedIndex = endHourCB.FindStringExact(t.GetEndTime().Hour.ToString());
-                                //endMinuteCB.SelectedIndex = endMinuteCB.FindStringExact(t.GetEndTime().Minute.ToString());
-
                             }
-                            else
-                            {
+                            else {
                                 MessageBox.Show("Slot cannot be edited.");
                             }
                         }
-                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle()))
-                        {
-                            if (t.Available())
-                            {
+                        else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
+                            if (t.Available()) {
                                 save.Visible = false;
                                 editBtn.Visible = true;
 
                             }
-                            else
-                            {
+                            else {
                                 MessageBox.Show("Slot cannot be edited."); //cannot edit
                             }
                         }
@@ -275,9 +254,6 @@ namespace UDC {
                                 else if (dialogResult == DialogResult.No) {
                                     //do something else
                                 }
-                                
-
-
                             }
                             else {
                                 MessageBox.Show("Slot cannot be deleted.");
@@ -303,7 +279,7 @@ namespace UDC {
             }
         }
 
-        static int GetWeekNumberOfMonth(DateTime date) {
+        private int GetWeekNumberOfMonth(DateTime date) {
             date = date.Date;
             DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
             DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Sunday + 7 - firstMonthDay.DayOfWeek) % 7);
@@ -494,8 +470,7 @@ namespace UDC {
             endMinuteCB.SelectedIndex = -1;
         }
 
-        private void editBtn_Click(object sender, EventArgs e)
-        {
+        private void editBtn_Click(object sender, EventArgs e) {
             // get values
             // change to database
             // sort all
@@ -504,18 +479,27 @@ namespace UDC {
             oldEndHourCB.SelectedIndex = endHourCB.SelectedIndex;
             oldEndMinCB.SelectedIndex = endMinuteCB.SelectedIndex;
 
+            newStartHourCB.SelectedIndex = -1;
+            newStartMinCB.SelectedIndex = -1;
+            newEndHourCB.SelectedIndex = -1;
+            newEndMinCB.SelectedIndex = -1;
+
+            startHourCB.SelectedIndex = -1;
+            startMinuteCB.SelectedIndex = -1;
+            endHourCB.SelectedIndex = -1;
+            endMinuteCB.SelectedIndex = -1;
+
             //editPanel.Visible = true;
             this.Controls.Remove(currentPanel);
-            this.Controls.Add(editPanel);
+            this.currentPanel = editPanel;
+            this.Controls.Add(currentPanel);
             editPanel.Show();
-
 
             editBtn.Visible = false;
             save.Visible = true;
         }
 
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
+        private void btnConfirm_Click(object sender, EventArgs e) {
             AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
             Appointment chosenApp = null;
             String chosenSlotNum = null; //slot num needs to be the same
@@ -526,37 +510,26 @@ namespace UDC {
             var oldStartDate = new DateTime(year, month, day, Int32.Parse(oldStartHourCB.Text), Int32.Parse(oldStartMinCB.Text), 0);
             var oldEndDate = new DateTime(year, month, day, Int32.Parse(oldEndHourCB.Text), Int32.Parse(oldEndMinCB.Text), 0);
 
-
             Console.WriteLine("oldDate: " + oldStartDate + " - " + oldEndDate);
 
-
-
-            if (newStartHourCB.SelectedItem == null || newStartMinCB.SelectedItem == null || newEndHourCB.SelectedItem == null || newEndMinCB.SelectedItem == null)
-            {
-                MessageBox.Show("Please enter a new timeslot");
+            if (newStartHourCB.SelectedItem == null || newStartMinCB.SelectedItem == null || newEndHourCB.SelectedItem == null || newEndMinCB.SelectedItem == null) {
+                MessageBox.Show("Please fill in all the fields.");
             }
-            else
-            {
+            else {
                 //look for the matching appointment
-                for (int i = 0; i < apList1.Count(); i++)
-                {
+                for (int i = 0; i < apList1.Count(); i++) {
                     Appointment a = apList1.GetByIndex(i);
                     DateTime tempStart = a.GetStartTime();
                     DateTime tempEnd = a.GetEndTime();
                     int result1 = DateTime.Compare(tempStart, oldStartDate);
                     int result2 = DateTime.Compare(tempEnd, oldEndDate);
-                    if (result1 == 0 && result2 == 0)
-                    {
+                    if (result1 == 0 && result2 == 0) {
                         chosenApp = a;
                         break;
                     }
                 }
-                Console.WriteLine("current Appoint: " + chosenApp.GetStartTime() + " - " + chosenApp.GetEndTime()); //appointment that was clicked
+
                 chosenSlotNum = chosenApp.GetSlotNum();
-
-                //delete
-                ((AppointmentModelController)controller).DeleteToDatabase(chosenApp);
-
                 //add but same slot num (use chosenSlotNum then set it at the end)
                 Appointment app = null;
 
@@ -571,7 +544,7 @@ namespace UDC {
                 else
                     hourStart = Int32.Parse(newStartHourCB.SelectedItem.ToString());
 
-                if (startMinuteCB.SelectedItem.ToString()[0] == '0')
+                if (newStartMinCB.SelectedItem.ToString()[0] == '0')
                     minutesStart = Int32.Parse(newStartMinCB.SelectedItem.ToString().Substring(1, 1));
                 else
                     minutesStart = Int32.Parse(newStartMinCB.SelectedItem.ToString());
@@ -584,89 +557,50 @@ namespace UDC {
                 int hourEnd = 0;
                 int minutesEnd = 0;
 
-                if (endHourCB.SelectedItem.ToString()[0] == '0')
+                if (newEndHourCB.SelectedItem.ToString()[0] == '0')
                     hourEnd = Int32.Parse(newEndHourCB.SelectedItem.ToString().Substring(1, 1));
                 else
                     hourEnd = Int32.Parse(newEndHourCB.SelectedItem.ToString());
 
-                if (endMinuteCB.SelectedItem.ToString()[0] == '0')
+                if (newEndMinCB.SelectedItem.ToString()[0] == '0')
                     minutesEnd = Int32.Parse(newEndMinCB.SelectedItem.ToString().Substring(1, 1));
                 else
                     minutesEnd = Int32.Parse(newEndMinCB.SelectedItem.ToString());
 
                 DateTime endDate = new DateTime(yearEnd, monthEnd, dayEnd, hourEnd, minutesEnd, 0);
 
-                if (ValidTime(startDate, endDate))
-                {
-                    if (recurringText.Text.ToString().Length == 0 || recurringText.Text.ToString().Equals("0"))
-                    {
-                        app = new Appointment(doctorName.Text, startDate, endDate);
-                        app.SetSlotNumber(chosenSlotNum); //copy original slot num
+                if (ValidTime(startDate, endDate)) {
+                    app = new Appointment(doctorName.Text, startDate, endDate);
+                    app.SetSlotNumber(chosenSlotNum); //copy original slot num
 
-                        if (app != null && !((AppointmentModelController)controller).Overlap(app))
-                        {
-                            ((AppointmentModelController)controller).AddToDatabase(app);
-                            //MessageBox.Show("Time slot added!");
-                        }
-                        else
-                            MessageBox.Show("Overlap task.");
+                    //delete
+                    ((AppointmentModelController)controller).Delete(chosenApp);
+
+                    if (app != null && !((AppointmentModelController)controller).Overlap(app)) {
+                        ((AppointmentModelController)controller).UpdateAppInDatabase(app);
+                        ((AppointmentModelController)controller).Add(app);
+                        dayViewBtn_Click(null, null);
+
+                        MessageBox.Show("Appointment edited successfully.");
                     }
-                    else
-                    {
-                        try
-                        {
-                            if (Int32.Parse(recurringText.Text.ToString()) > -1)
-                            {
-                                DateTime tempStartDate = startDate;
-                                DateTime tempEndDate = endDate;
-
-                                for (int i = 0; i < Int32.Parse(recurringText.Text.ToString()); i++)
-                                {
-                                    app = new Appointment(doctorName.Text, tempStartDate, tempEndDate);
-                                    app.SetSlotNumber(chosenSlotNum); //copy original slot num
-
-
-                                    if (app != null && !((AppointmentModelController)controller).Overlap(app))
-                                    {
-                                        ((AppointmentModelController)controller).AddToDatabase(app);
-                                    }
-
-                                    tempStartDate = tempStartDate.AddDays(7);
-                                    tempEndDate = tempEndDate.AddDays(7);
-                                }
-                            }
-                            else
-                                MessageBox.Show("Invalid input.");
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Invalid input.");
-                        }
+                    else {
+                        ((AppointmentModelController)controller).Add(chosenApp);
+                        MessageBox.Show("Overlap task.");
                     }
                 }
                 else
                     MessageBox.Show("Invalid time.");
-
-
-
-
-                //go back to grid view
-                this.Controls.Remove(editPanel);
-                this.Controls.Add(currentPanel);
-                this.currentView.Update(doctors, dates, false);
-                editPanel.Hide();
-
-                MessageBox.Show("Appointment Edited");
             }
-            
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            this.Controls.Remove(editPanel);
-            this.Controls.Add(currentPanel);
-            this.currentView.Update(doctors, dates, false);
-            editPanel.Hide();
+        private void btnCancel_Click(object sender, EventArgs e) {
+            dayViewBtn_Click(null, null);
+        }
+
+        private void createNewSlot_Click(object sender, EventArgs e) {
+            editBtn.Visible = false;
+            save.Visible = true;
+            discard_Click(null, null);
         }
     }
 }

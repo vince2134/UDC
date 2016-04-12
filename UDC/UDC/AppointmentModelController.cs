@@ -28,16 +28,22 @@ namespace UDC {
 
         public void AddToDatabase(Appointment a) {
             ((AppointmentModel)this.model).AddToDatabase(a);
-         
+
         }
-        public void UpdateDatabase(Appointment a, String status)
-        {
-            ((AppointmentModel)this.model).UpdateDatabase(a,status);
+        public void UpdateDatabase(Appointment a, String status) {
+            ((AppointmentModel)this.model).UpdateDatabase(a, status);
         }
 
-        public void DeleteToDatabase(Appointment a)
-        {
+        public void DeleteToDatabase(Appointment a) {
             ((AppointmentModel)this.model).DeleteToDatabase(a);
+        }
+
+        public void UpdateAppInDatabase(Appointment a) {
+            ((AppointmentModel)this.model).UpdateAppInDatabase(a);
+        }
+
+        public void Delete(Appointment a) {
+            ((AppointmentModel)this.model).Delete(a.GetSlotNum());
         }
 
         public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
