@@ -34,6 +34,26 @@
             this.currentDate = new System.Windows.Forms.Label();
             this.todayBtn = new System.Windows.Forms.Button();
             this.loginPanel = new System.Windows.Forms.Panel();
+            this.editPanel = new System.Windows.Forms.Panel();
+            this.newDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.newEndMinCB = new System.Windows.Forms.ComboBox();
+            this.newEndHourCB = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.newStartMinCB = new System.Windows.Forms.ComboBox();
+            this.newStartHourCB = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.oldEndMinCB = new System.Windows.Forms.ComboBox();
+            this.oldEndHourCB = new System.Windows.Forms.ComboBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.oldStartMinCB = new System.Windows.Forms.ComboBox();
+            this.oldStartHourCB = new System.Windows.Forms.ComboBox();
             this.loginBtn = new System.Windows.Forms.Button();
             this.password = new System.Windows.Forms.TextBox();
             this.username = new System.Windows.Forms.TextBox();
@@ -54,7 +74,9 @@
             this.save = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.recurringText = new System.Windows.Forms.TextBox();
+            this.editBtn = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
+            this.editPanel.SuspendLayout();
             this.timePanel.SuspendLayout();
             this.endTimePanel.SuspendLayout();
             this.SuspendLayout();
@@ -173,6 +195,7 @@
             // 
             // loginPanel
             // 
+            this.loginPanel.Controls.Add(this.editPanel);
             this.loginPanel.Controls.Add(this.loginBtn);
             this.loginPanel.Controls.Add(this.password);
             this.loginPanel.Controls.Add(this.username);
@@ -180,8 +203,226 @@
             this.loginPanel.Controls.Add(this.label2);
             this.loginPanel.Location = new System.Drawing.Point(-1, 12);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(732, 436);
+            this.loginPanel.Size = new System.Drawing.Size(732, 366);
             this.loginPanel.TabIndex = 20;
+            // 
+            // editPanel
+            // 
+            this.editPanel.Controls.Add(this.newDatePicker);
+            this.editPanel.Controls.Add(this.label16);
+            this.editPanel.Controls.Add(this.label15);
+            this.editPanel.Controls.Add(this.btnCancel);
+            this.editPanel.Controls.Add(this.btnConfirm);
+            this.editPanel.Controls.Add(this.label12);
+            this.editPanel.Controls.Add(this.newEndMinCB);
+            this.editPanel.Controls.Add(this.newEndHourCB);
+            this.editPanel.Controls.Add(this.label13);
+            this.editPanel.Controls.Add(this.label14);
+            this.editPanel.Controls.Add(this.newStartMinCB);
+            this.editPanel.Controls.Add(this.newStartHourCB);
+            this.editPanel.Controls.Add(this.label11);
+            this.editPanel.Controls.Add(this.oldEndMinCB);
+            this.editPanel.Controls.Add(this.oldEndHourCB);
+            this.editPanel.Controls.Add(this.label10);
+            this.editPanel.Controls.Add(this.label9);
+            this.editPanel.Controls.Add(this.oldStartMinCB);
+            this.editPanel.Controls.Add(this.oldStartHourCB);
+            this.editPanel.Location = new System.Drawing.Point(325, 72);
+            this.editPanel.Name = "editPanel";
+            this.editPanel.Size = new System.Drawing.Size(361, 291);
+            this.editPanel.TabIndex = 5;
+            // 
+            // newDatePicker
+            // 
+            this.newDatePicker.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newDatePicker.Location = new System.Drawing.Point(47, 204);
+            this.newDatePicker.Name = "newDatePicker";
+            this.newDatePicker.Size = new System.Drawing.Size(262, 25);
+            this.newDatePicker.TabIndex = 29;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(108, 121);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(141, 20);
+            this.label16.TabIndex = 32;
+            this.label16.Text = "Edited Appointment";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(102, 28);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(150, 20);
+            this.label15.TabIndex = 31;
+            this.label15.Text = "Current Appointment";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancel.ForeColor = System.Drawing.Color.White;
+            this.btnCancel.Location = new System.Drawing.Point(234, 244);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(86, 32);
+            this.btnCancel.TabIndex = 30;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.ForeColor = System.Drawing.Color.White;
+            this.btnConfirm.Location = new System.Drawing.Point(142, 244);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(86, 32);
+            this.btnConfirm.TabIndex = 29;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = false;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(260, 157);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(15, 20);
+            this.label12.TabIndex = 23;
+            this.label12.Text = ":";
+            // 
+            // newEndMinCB
+            // 
+            this.newEndMinCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newEndMinCB.FormattingEnabled = true;
+            this.newEndMinCB.Location = new System.Drawing.Point(281, 154);
+            this.newEndMinCB.Name = "newEndMinCB";
+            this.newEndMinCB.Size = new System.Drawing.Size(40, 28);
+            this.newEndMinCB.TabIndex = 22;
+            // 
+            // newEndHourCB
+            // 
+            this.newEndHourCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newEndHourCB.FormattingEnabled = true;
+            this.newEndHourCB.Location = new System.Drawing.Point(209, 154);
+            this.newEndHourCB.Name = "newEndHourCB";
+            this.newEndHourCB.Size = new System.Drawing.Size(40, 28);
+            this.newEndHourCB.TabIndex = 21;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(164, 156);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(23, 20);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "to";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(85, 157);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(15, 20);
+            this.label14.TabIndex = 19;
+            this.label14.Text = ":";
+            // 
+            // newStartMinCB
+            // 
+            this.newStartMinCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newStartMinCB.FormattingEnabled = true;
+            this.newStartMinCB.Location = new System.Drawing.Point(106, 154);
+            this.newStartMinCB.Name = "newStartMinCB";
+            this.newStartMinCB.Size = new System.Drawing.Size(40, 28);
+            this.newStartMinCB.TabIndex = 20;
+            // 
+            // newStartHourCB
+            // 
+            this.newStartHourCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newStartHourCB.FormattingEnabled = true;
+            this.newStartHourCB.Location = new System.Drawing.Point(34, 154);
+            this.newStartHourCB.Name = "newStartHourCB";
+            this.newStartHourCB.Size = new System.Drawing.Size(40, 28);
+            this.newStartHourCB.TabIndex = 17;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(260, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(15, 20);
+            this.label11.TabIndex = 16;
+            this.label11.Text = ":";
+            // 
+            // oldEndMinCB
+            // 
+            this.oldEndMinCB.Enabled = false;
+            this.oldEndMinCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldEndMinCB.FormattingEnabled = true;
+            this.oldEndMinCB.Location = new System.Drawing.Point(281, 63);
+            this.oldEndMinCB.Name = "oldEndMinCB";
+            this.oldEndMinCB.Size = new System.Drawing.Size(40, 28);
+            this.oldEndMinCB.TabIndex = 15;
+            // 
+            // oldEndHourCB
+            // 
+            this.oldEndHourCB.Enabled = false;
+            this.oldEndHourCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldEndHourCB.FormattingEnabled = true;
+            this.oldEndHourCB.Location = new System.Drawing.Point(209, 63);
+            this.oldEndHourCB.Name = "oldEndHourCB";
+            this.oldEndHourCB.Size = new System.Drawing.Size(40, 28);
+            this.oldEndHourCB.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(164, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(23, 20);
+            this.label10.TabIndex = 11;
+            this.label10.Text = "to";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(85, 66);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(15, 20);
+            this.label9.TabIndex = 13;
+            this.label9.Text = ":";
+            // 
+            // oldStartMinCB
+            // 
+            this.oldStartMinCB.Enabled = false;
+            this.oldStartMinCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldStartMinCB.FormattingEnabled = true;
+            this.oldStartMinCB.Location = new System.Drawing.Point(106, 63);
+            this.oldStartMinCB.Name = "oldStartMinCB";
+            this.oldStartMinCB.Size = new System.Drawing.Size(40, 28);
+            this.oldStartMinCB.TabIndex = 13;
+            // 
+            // oldStartHourCB
+            // 
+            this.oldStartHourCB.Enabled = false;
+            this.oldStartHourCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldStartHourCB.FormattingEnabled = true;
+            this.oldStartHourCB.Location = new System.Drawing.Point(34, 63);
+            this.oldStartHourCB.Name = "oldStartHourCB";
+            this.oldStartHourCB.Size = new System.Drawing.Size(40, 28);
+            this.oldStartHourCB.TabIndex = 5;
             // 
             // loginBtn
             // 
@@ -384,6 +625,21 @@
             this.recurringText.Size = new System.Drawing.Size(36, 26);
             this.recurringText.TabIndex = 27;
             // 
+            // editBtn
+            // 
+            this.editBtn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.editBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.editBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.editBtn.ForeColor = System.Drawing.Color.White;
+            this.editBtn.Location = new System.Drawing.Point(565, 404);
+            this.editBtn.Name = "editBtn";
+            this.editBtn.Size = new System.Drawing.Size(63, 32);
+            this.editBtn.TabIndex = 28;
+            this.editBtn.Text = "Edit";
+            this.editBtn.UseVisualStyleBackColor = false;
+            this.editBtn.Visible = false;
+            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
+            // 
             // DoctorView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
@@ -391,6 +647,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(728, 448);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.editBtn);
             this.Controls.Add(this.recurringText);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.save);
@@ -416,6 +673,8 @@
             this.Load += new System.EventHandler(this.DoctorView_Load);
             this.loginPanel.ResumeLayout(false);
             this.loginPanel.PerformLayout();
+            this.editPanel.ResumeLayout(false);
+            this.editPanel.PerformLayout();
             this.timePanel.ResumeLayout(false);
             this.timePanel.PerformLayout();
             this.endTimePanel.ResumeLayout(false);
@@ -438,11 +697,6 @@
         private System.Windows.Forms.Label currentDate;
         private System.Windows.Forms.Button todayBtn;
         private System.Windows.Forms.Panel loginPanel;
-        private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.TextBox username;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button loginBtn;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Panel timePanel;
         private System.Windows.Forms.Panel endTimePanel;
@@ -458,6 +712,32 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox recurringText;
+        private System.Windows.Forms.Button editBtn;
+        private System.Windows.Forms.Button loginBtn;
+        private System.Windows.Forms.TextBox password;
+        private System.Windows.Forms.TextBox username;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel editPanel;
+        private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox newEndMinCB;
+        private System.Windows.Forms.ComboBox newEndHourCB;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox newStartMinCB;
+        private System.Windows.Forms.ComboBox newStartHourCB;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox oldEndMinCB;
+        private System.Windows.Forms.ComboBox oldEndHourCB;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox oldStartMinCB;
+        private System.Windows.Forms.ComboBox oldStartHourCB;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.DateTimePicker newDatePicker;
     }
 }
 
