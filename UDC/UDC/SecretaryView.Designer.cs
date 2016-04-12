@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(756, 411);
+            this.ClientSize = new System.Drawing.Size(756, 448);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.weekRadio);
@@ -162,8 +162,13 @@
             this.Controls.Add(this.agendaViewBtn);
             this.Controls.Add(this.calendarViewBtn);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
+<<<<<<< HEAD
             this.MaximumSize = new System.Drawing.Size(772, 450);
             this.MinimumSize = new System.Drawing.Size(772, 450);
+=======
+            this.MaximumSize = new System.Drawing.Size(772, 487);
+            this.MinimumSize = new System.Drawing.Size(772, 487);
+>>>>>>> 98e93a734695764e633c3445ad1c26a84aa51013
             this.Name = "SecretaryView";
             this.Text = "SecretaryView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SecretaryView_FormClosed);
