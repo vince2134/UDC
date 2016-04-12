@@ -97,8 +97,17 @@ namespace UDC {
         }
 
         public void SetSlotNumber(String slotNum) {
-
             this.slot_Number = slotNum;
+        }
+
+        public void SetStartTime(DateTime startTime)
+        {
+            this.startTime = startTime;
+        }
+
+        public void SetEndTime(DateTime endTime)
+        {
+            this.endTime = endTime;
         }
     }
 }
