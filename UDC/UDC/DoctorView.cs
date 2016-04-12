@@ -226,6 +226,19 @@ namespace UDC {
                                 save.Visible = false;
                                 editBtn.Visible = true;
 
+                                //set comboboxes
+                                startHourCB.SelectedIndex = t.GetStartTime().Hour;
+                                endHourCB.SelectedIndex = t.GetEndTime().Hour;
+                                String SM = t.GetStartTime().Minute.ToString();
+                                if (SM.Equals("0"))
+                                    startMinuteCB.SelectedIndex = 0;
+                                else if (SM.Equals("30"))
+                                    startMinuteCB.SelectedIndex = 1;
+                                String EM = t.GetEndTime().Minute.ToString();
+                                if (EM.Equals("0"))
+                                    endMinuteCB.SelectedIndex = 0;
+                                else if (EM.Equals("30"))
+                                    endMinuteCB.SelectedIndex = 1;
                             }
                             else {
                                 MessageBox.Show("Slot cannot be edited."); //cannot edit
@@ -248,6 +261,9 @@ namespace UDC {
 
                                 if (dialogResult == DialogResult.Yes) {
                                     ((AppointmentModelController)controller).DeleteToDatabase(t);
+                                    discard_Click(null, null);
+                                    save.Visible = true;
+                                    editBtn.Visible = false;
                                     MessageBox.Show("Slot deleted!");
                                 }
                                 //else if (dialogResult)
@@ -264,6 +280,9 @@ namespace UDC {
                                 DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
                                 if (dialogResult == DialogResult.Yes) {
                                     ((AppointmentModelController)controller).DeleteToDatabase(t);
+                                    discard_Click(null, null);
+                                    save.Visible = true;
+                                    editBtn.Visible = false;
                                     MessageBox.Show("Slot deleted!");
                                 }
                                 else if (dialogResult == DialogResult.No) {
