@@ -180,13 +180,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.monthCalendar);
-<<<<<<< HEAD
             this.MaximumSize = new System.Drawing.Size(772, 450);
             this.MinimumSize = new System.Drawing.Size(772, 450);
-=======
-            this.MaximumSize = new System.Drawing.Size(772, 487);
-            this.MinimumSize = new System.Drawing.Size(772, 487);
->>>>>>> 98e93a734695764e633c3445ad1c26a84aa51013
             this.Name = "ClientView";
             this.Text = "ClientView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientView_FormClosed);
