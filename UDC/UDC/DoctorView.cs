@@ -88,6 +88,10 @@ namespace UDC {
         void ListView.Update() {
             /*CALLED WHEN NOTIFY() IS CALLED, UPDATES SUBVIEWS*/
             this.currentView.Update(doctors, dates, false);
+            createNewSlot_Click(null, null);
+
+            if (this.currentPanel == editPanel)
+                dayViewBtn_Click(null, null);
         }
 
         private void UpdateDate() {
@@ -200,8 +204,12 @@ namespace UDC {
                     foreach (Appointment t in apList1.GetAppointments()) {
                         if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
                             if (t.Available()) {
+                                timePanel.Enabled = false;
+                                discard.Enabled = false;
                                 save.Visible = false;
                                 editBtn.Visible = true;
+
+                                dateTimePicker1.Value = t.GetStartTime();
 
                                 //set comboboxes
                                 startHourCB.SelectedIndex = t.GetStartTime().Hour;
@@ -223,6 +231,8 @@ namespace UDC {
                         }
                         else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
                             if (t.Available()) {
+                                timePanel.Enabled = false;
+                                discard.Enabled = false;
                                 save.Visible = false;
                                 editBtn.Visible = true;
 
@@ -261,7 +271,7 @@ namespace UDC {
 
                                 if (dialogResult == DialogResult.Yes) {
                                     ((AppointmentModelController)controller).DeleteToDatabase(t);
-                                    discard_Click(null, null);
+                                    createNewSlot_Click(null, null);
                                     save.Visible = true;
                                     editBtn.Visible = false;
                                     MessageBox.Show("Slot deleted!");
@@ -280,7 +290,7 @@ namespace UDC {
                                 DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
                                 if (dialogResult == DialogResult.Yes) {
                                     ((AppointmentModelController)controller).DeleteToDatabase(t);
-                                    discard_Click(null, null);
+                                    createNewSlot_Click(null, null);
                                     save.Visible = true;
                                     editBtn.Visible = false;
                                     MessageBox.Show("Slot deleted!");
@@ -378,6 +388,8 @@ namespace UDC {
             this.loginPanel.Show();
             this.username.Text = "";
             this.password.Text = "";
+
+            createNewSlot_Click(null, null);
         }
 
         private void save_Click(object sender, EventArgs e) {
@@ -493,6 +505,11 @@ namespace UDC {
             // get values
             // change to database
             // sort all
+            editBtn.Visible = false;
+            save.Visible = true;
+            timePanel.Enabled = true;
+            discard.Enabled = true;
+
             oldStartHourCB.SelectedIndex = startHourCB.SelectedIndex;
             oldStartMinCB.SelectedIndex = startMinuteCB.SelectedIndex;
             oldEndHourCB.SelectedIndex = endHourCB.SelectedIndex;
@@ -519,12 +536,12 @@ namespace UDC {
         }
 
         private void btnConfirm_Click(object sender, EventArgs e) {
-            AppointmentList apList1 = ((AppointmentModelController)controller).GetAppointments(doctors, dates, false);
+            AppointmentList apList1 = ((AppointmentModelController)controller).GetAllAppointments();
             Appointment chosenApp = null;
             String chosenSlotNum = null; //slot num needs to be the same
-            int year = dateTimePicker.Value.Year;
-            int month = dateTimePicker.Value.Month;
-            int day = dateTimePicker.Value.Day;
+            int year = dateTimePicker1.Value.Year;
+            int month = dateTimePicker1.Value.Month;
+            int day = dateTimePicker1.Value.Day;
 
             var oldStartDate = new DateTime(year, month, day, Int32.Parse(oldStartHourCB.Text), Int32.Parse(oldStartMinCB.Text), 0);
             var oldEndDate = new DateTime(year, month, day, Int32.Parse(oldEndHourCB.Text), Int32.Parse(oldEndMinCB.Text), 0);
@@ -619,6 +636,8 @@ namespace UDC {
         private void createNewSlot_Click(object sender, EventArgs e) {
             editBtn.Visible = false;
             save.Visible = true;
+            timePanel.Enabled = true;
+            discard.Enabled = true;
             discard_Click(null, null);
         }
     }

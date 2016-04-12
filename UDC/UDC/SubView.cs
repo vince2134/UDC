@@ -49,7 +49,7 @@ namespace UDC {
                     tableView.Columns[1].DefaultCellStyle.ForeColor = Color.White;
                     tableView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                     tableView.Columns[0].Width = 70;
-                    tableView.Columns[1].Width = 360;
+                    tableView.Columns[1].Width = 400;
                     tableView.Columns["Time"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
                     tableView.AllowUserToResizeColumns = false;
                     tableView.AllowUserToResizeRows = false;
@@ -61,13 +61,13 @@ namespace UDC {
                         for (int i = 0; i < 48; i++) {
                           
                             if ((startTime.Equals(tableView.Rows[i].Cells[0].Value.ToString()))) {
-                                tableView.Rows[i].Cells[k].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                                tableView.Rows[i].Cells[k].Value = "Slot No. " + t.GetSlotNum() + " | " + t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                 tableView.Rows[i].Cells[k].Style.BackColor = t.GetColor();
                                 int j = i + 1;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
                                 while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString())) {
                                     tableView.Rows[j].Cells[1].Style.BackColor = t.GetColor();
-                                    tableView.Rows[j].Cells[1].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                                    tableView.Rows[j].Cells[1].Value = "Slot No. " + t.GetSlotNum() + " | " + t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                         tableView.Rows[j].Cells[1].Style.ForeColor = t.GetColor();
 
                                     j++;
@@ -135,14 +135,14 @@ namespace UDC {
                                     k++;
                                 }
 
-                                tableView.Rows[i].Cells[k].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                                tableView.Rows[i].Cells[k].Value = "Slot No. " + t.GetSlotNum() + " | " + t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                 tableView.Rows[i].Cells[k].Style.BackColor = t.GetColor();
                                 int j = i+1;
                                 String endTime = (t.GetEndTime().ToString("HH:mm"));
                                 while (!endTime.Equals(tableView.Rows[j].Cells[0].Value.ToString())) {
 
                                     tableView.Rows[j].Cells[k].Style.BackColor = t.GetColor();
-                                    tableView.Rows[j].Cells[k].Value = t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                                    tableView.Rows[j].Cells[k].Value = "Slot No. " + t.GetSlotNum() + " | " + t.GetTitle() + " | " + t.GetStartTime().ToString("M/d/yyyy") + " | " + t.GetStartTime().ToString("HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                                     tableView.Rows[j].Cells[k].Style.ForeColor = t.GetColor();
                                     j++;
                                     if (j == 48)
@@ -186,9 +186,11 @@ namespace UDC {
 
                 tableView.DataSource = dt;
 
+                tableView.Columns[0].Width = 260;
+
                 int i = 0;
                 foreach (Appointment t in apList1.GetAppointments()) {
-                    tableView.Rows[i].Cells[0].Value = t.GetStartTime().ToString("M/d/yyyy HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
+                    tableView.Rows[i].Cells[0].Value = "Slot " + t.GetSlotNum() + " " + t.GetStartTime().ToString("M/d/yyyy HH:mm") + " - " + t.GetEndTime().ToString("HH:mm");
                     tableView.Rows[i].Cells[1].Value = t.GetTitle();
 
                     Console.WriteLine(t.GetStartTime());

@@ -39,7 +39,7 @@
             this.calendarViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.calendarViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.calendarViewBtn.ForeColor = System.Drawing.Color.Firebrick;
-            this.calendarViewBtn.Location = new System.Drawing.Point(526, 12);
+            this.calendarViewBtn.Location = new System.Drawing.Point(593, 12);
             this.calendarViewBtn.Name = "calendarViewBtn";
             this.calendarViewBtn.Size = new System.Drawing.Size(75, 35);
             this.calendarViewBtn.TabIndex = 0;
@@ -52,7 +52,7 @@
             this.agendaViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.agendaViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agendaViewBtn.ForeColor = System.Drawing.Color.Firebrick;
-            this.agendaViewBtn.Location = new System.Drawing.Point(600, 12);
+            this.agendaViewBtn.Location = new System.Drawing.Point(667, 12);
             this.agendaViewBtn.Name = "agendaViewBtn";
             this.agendaViewBtn.Size = new System.Drawing.Size(75, 35);
             this.agendaViewBtn.TabIndex = 1;
@@ -74,7 +74,7 @@
             this.dateLabel.AutoSize = true;
             this.dateLabel.Font = new System.Drawing.Font("Trebuchet MS", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateLabel.ForeColor = System.Drawing.Color.Firebrick;
-            this.dateLabel.Location = new System.Drawing.Point(356, 24);
+            this.dateLabel.Location = new System.Drawing.Point(359, 23);
             this.dateLabel.Name = "dateLabel";
             this.dateLabel.Size = new System.Drawing.Size(51, 24);
             this.dateLabel.TabIndex = 4;
@@ -87,7 +87,7 @@
             this.todayButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.todayButton.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.todayButton.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.todayButton.Location = new System.Drawing.Point(251, 16);
+            this.todayButton.Location = new System.Drawing.Point(249, 16);
             this.todayButton.Name = "todayButton";
             this.todayButton.Size = new System.Drawing.Size(75, 32);
             this.todayButton.TabIndex = 5;
@@ -127,7 +127,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Trebuchet MS", 20.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Firebrick;
-            this.label1.Location = new System.Drawing.Point(12, 24);
+            this.label1.Location = new System.Drawing.Point(26, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(209, 35);
             this.label1.TabIndex = 10;
@@ -151,7 +151,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(728, 411);
+            this.ClientSize = new System.Drawing.Size(756, 411);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.weekRadio);

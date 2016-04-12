@@ -51,14 +51,14 @@ namespace UDC {
             this.tableView.ReadOnly = true;
             this.tableView.RowHeadersVisible = false;
             this.tableView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.tableView.Size = new System.Drawing.Size(458, 316);
+            this.tableView.Size = new System.Drawing.Size(490, 316);
             this.tableView.TabIndex = 14;
             this.tableView.SelectionChanged += new System.EventHandler(this.tableView_SelectionChanged);
             this.tableView.RowTemplate.Height = 31;
             this.panel.Controls.Add(this.tableView);
             this.panel.Location = new System.Drawing.Point(251, 66);
             this.panel.Name = "dayPanel";
-            this.panel.Size = new System.Drawing.Size(457, 316);
+            this.panel.Size = new System.Drawing.Size(490, 316);
             this.panel.TabIndex = 1;
         }
 

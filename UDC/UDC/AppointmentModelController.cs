@@ -109,6 +109,10 @@ namespace UDC {
             return filteredAppointments;
         }
 
+        public AppointmentList GetAllAppointments() {
+            return ((AppointmentModel)this.model).GetAppointments();
+        }
+
         public Boolean Overlap(Appointment a) {
             return ((AppointmentModel)this.model).Overlap(a);
         }
