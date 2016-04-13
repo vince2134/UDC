@@ -275,14 +275,18 @@ namespace UDC {
                                     save.Visible = true;
                                     editBtn.Visible = false;
                                     MessageBox.Show("Slot deleted!");
+
+                                    break;
                                 }
                                 //else if (dialogResult)
                                 else if (dialogResult == DialogResult.No) {
                                     //do something else
+                                    break;
                                 }
                             }
                             else {
                                 MessageBox.Show("Slot cannot be deleted.");
+                                break;
                             }
                         }
                         else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
@@ -294,13 +298,17 @@ namespace UDC {
                                     save.Visible = true;
                                     editBtn.Visible = false;
                                     MessageBox.Show("Slot deleted!");
+
+                                    break;
                                 }
                                 else if (dialogResult == DialogResult.No) {
                                     //do something else
+                                    break;
                                 }
                             }
                             else {
                                 MessageBox.Show("Slot cannot be deleted.");
+                                break;
                             }
                         }
                     }
@@ -454,11 +462,11 @@ namespace UDC {
 
                                     if (app != null && !((AppointmentModelController)controller).Overlap(app)) {
                                         ((AppointmentModelController)controller).AddToDatabase(app);
-                                        MessageBox.Show("Time slot " + "for " + tempStartDate.ToString("M/dd/yyyy") + " " + tempStartDate.ToString("HH:mm") + "-" + tempEndDate.ToString("HH:mm") + " added");
+                                        MessageBox.Show("Time slot " + "for " + tempStartDate.ToString("M/dd/yyyy") + " " + tempStartDate.ToString("HH:mm") + "-" + tempEndDate.ToString("HH:mm") + " added.");
 
                                     }
                                     else
-                                        MessageBox.Show("Time slot " + "for " + tempStartDate.ToString("M/dd/yyyy") + " " +tempStartDate.ToString("HH:mm") + "-" + tempEndDate.ToString("HH:mm") + " not added");
+                                        MessageBox.Show("Time slot " + "for " + tempStartDate.ToString("M/dd/yyyy") + " " +tempStartDate.ToString("HH:mm") + "-" + tempEndDate.ToString("HH:mm") + " not added.");
                                     tempStartDate = tempStartDate.AddDays(7);
                                     tempEndDate = tempEndDate.AddDays(7);
                                 }

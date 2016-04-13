@@ -28,7 +28,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.doctorName = new System.Windows.Forms.Label();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
-            this.label4 = new System.Windows.Forms.Label();
             this.dailyBtn = new System.Windows.Forms.RadioButton();
             this.weeklyBtn = new System.Windows.Forms.RadioButton();
             this.currentDate = new System.Windows.Forms.Label();
@@ -78,6 +77,7 @@
             this.recurringText = new System.Windows.Forms.TextBox();
             this.editBtn = new System.Windows.Forms.Button();
             this.createNewSlot = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             this.loginPanel.SuspendLayout();
             this.editPanel.SuspendLayout();
             this.timePanel.SuspendLayout();
@@ -141,14 +141,6 @@
             this.monthCalendar.Location = new System.Drawing.Point(14, 123);
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Location = new System.Drawing.Point(-1, -7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(768, 68);
-            this.label4.TabIndex = 14;
             // 
             // dailyBtn
             // 
@@ -676,6 +668,14 @@
             this.createNewSlot.UseVisualStyleBackColor = false;
             this.createNewSlot.Click += new System.EventHandler(this.createNewSlot_Click);
             // 
+            // label4
+            // 
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label4.Location = new System.Drawing.Point(-13, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(780, 2);
+            this.label4.TabIndex = 30;
+            // 
             // DoctorView
             // 
             this.AcceptButton = this.loginBtn;
@@ -684,6 +684,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(756, 448);
             this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.recurringText);
             this.Controls.Add(this.label8);
@@ -702,7 +703,6 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dayViewBtn);
             this.Controls.Add(this.agendaViewBtn);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.createNewSlot);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -732,7 +732,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label doctorName;
         private System.Windows.Forms.MonthCalendar monthCalendar;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton dailyBtn;
         private System.Windows.Forms.RadioButton weeklyBtn;
         private System.Windows.Forms.Label currentDate;
@@ -782,6 +781,7 @@
         private System.Windows.Forms.Button createNewSlot;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label4;
     }
 }
 
