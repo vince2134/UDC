@@ -211,13 +211,13 @@ namespace UDC {
                         if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
                             if (t.Available()) {
                                 t.SetAvailability(false);
-                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
+                                ((AppointmentModelController)controller).SetAvailability(t, "Occupied");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
                                 break;
                             }
                             else {
                                 t.SetAvailability(true);
-                                ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
+                                ((AppointmentModelController)controller).SetAvailability(t, "Available");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " canceled" + ".");
                                 break;
                             }
@@ -225,13 +225,13 @@ namespace UDC {
                         else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
                             if (t.Available()) {
                                 t.SetAvailability(false);
-                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
+                                ((AppointmentModelController)controller).SetAvailability(t, "Occupied");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!!");
                                 break;
                             }
                             else {
                                 t.SetAvailability(true);
-                                ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
+                                ((AppointmentModelController)controller).SetAvailability(t, "Available");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " canceled" + ".");
                                 break;
                             }

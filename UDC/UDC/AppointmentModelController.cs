@@ -30,12 +30,12 @@ namespace UDC {
             ((AppointmentModel)this.model).AddToDatabase(a);
 
         }
-        public void UpdateDatabase(Appointment a, String status) {
-            ((AppointmentModel)this.model).UpdateDatabase(a, status);
+        public void SetAvailability(Appointment a, String status) {
+            ((AppointmentModel)this.model).SetAvailability(a, status);
         }
 
-        public void DeleteToDatabase(Appointment a) {
-            ((AppointmentModel)this.model).DeleteToDatabase(a);
+        public void DeleteInDatabase(Appointment a) {
+            ((AppointmentModel)this.model).DeleteInDatabase(a);
         }
 
         public void UpdateAppInDatabase(Appointment a) {

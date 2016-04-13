@@ -146,7 +146,7 @@ namespace UDC {
             this.appointments.RemoveAt(index);
         }
 
-        public void DeleteToDatabase(Appointment a) {
+        public void DeleteInDatabase(Appointment a) {
             try {
                 String slotno = a.GetSlotNum();
                 MySqlCommand command = myConn.CreateCommand();
@@ -163,7 +163,7 @@ namespace UDC {
             this.Notify();
         }
 
-        public void UpdateDatabase(Appointment a, String status) {
+        public void SetAvailability(Appointment a, String status) {
             try {
                 myConn.Close();
                 String docID = null;

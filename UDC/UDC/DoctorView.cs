@@ -270,7 +270,7 @@ namespace UDC {
                                 DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
 
                                 if (dialogResult == DialogResult.Yes) {
-                                    ((AppointmentModelController)controller).DeleteToDatabase(t);
+                                    ((AppointmentModelController)controller).DeleteInDatabase(t);
                                     createNewSlot_Click(null, null);
                                     save.Visible = true;
                                     editBtn.Visible = false;
@@ -293,7 +293,7 @@ namespace UDC {
                             if (t.Available()) {
                                 DialogResult dialogResult = MessageBox.Show("Are you sure?", "Delete Appointment", MessageBoxButtons.YesNo);
                                 if (dialogResult == DialogResult.Yes) {
-                                    ((AppointmentModelController)controller).DeleteToDatabase(t);
+                                    ((AppointmentModelController)controller).DeleteInDatabase(t);
                                     createNewSlot_Click(null, null);
                                     save.Visible = true;
                                     editBtn.Visible = false;
