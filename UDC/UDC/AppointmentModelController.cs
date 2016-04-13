@@ -28,22 +28,16 @@ namespace UDC {
 
         public void AddToDatabase(Appointment a) {
             ((AppointmentModel)this.model).AddToDatabase(a);
-
+         
         }
-        public void SetAvailability(Appointment a, String status) {
-            ((AppointmentModel)this.model).SetAvailability(a, status);
-        }
-
-        public void DeleteInDatabase(Appointment a) {
-            ((AppointmentModel)this.model).DeleteInDatabase(a);
+        public void UpdateDatabase(Appointment a, String status)
+        {
+            ((AppointmentModel)this.model).UpdateDatabase(a,status);
         }
 
-        public void UpdateAppInDatabase(Appointment a) {
-            ((AppointmentModel)this.model).UpdateAppInDatabase(a);
-        }
-
-        public void Delete(Appointment a) {
-            ((AppointmentModel)this.model).Delete(a.GetSlotNum());
+        public void DeleteToDatabase(Appointment a)
+        {
+            ((AppointmentModel)this.model).DeleteToDatabase(a);
         }
 
         public AppointmentList GetAppointments(List<String> doctors, List<DateTime> dates, Boolean availableOnly) {
@@ -107,10 +101,6 @@ namespace UDC {
             }
 
             return filteredAppointments;
-        }
-
-        public AppointmentList GetAllAppointments() {
-            return ((AppointmentModel)this.model).GetAppointments();
         }
 
         public Boolean Overlap(Appointment a) {

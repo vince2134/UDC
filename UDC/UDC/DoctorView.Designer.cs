@@ -28,19 +28,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.doctorName = new System.Windows.Forms.Label();
             this.monthCalendar = new System.Windows.Forms.MonthCalendar();
+            this.label4 = new System.Windows.Forms.Label();
             this.dailyBtn = new System.Windows.Forms.RadioButton();
             this.weeklyBtn = new System.Windows.Forms.RadioButton();
             this.currentDate = new System.Windows.Forms.Label();
             this.todayBtn = new System.Windows.Forms.Button();
             this.loginPanel = new System.Windows.Forms.Panel();
-            this.loginBtn = new System.Windows.Forms.Button();
-            this.password = new System.Windows.Forms.TextBox();
-            this.username = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.editPanel = new System.Windows.Forms.Panel();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label17 = new System.Windows.Forms.Label();
             this.newDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -60,6 +54,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.oldStartMinCB = new System.Windows.Forms.ComboBox();
             this.oldStartHourCB = new System.Windows.Forms.ComboBox();
+            this.loginBtn = new System.Windows.Forms.Button();
+            this.password = new System.Windows.Forms.TextBox();
+            this.username = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.timePanel = new System.Windows.Forms.Panel();
             this.endTimePanel = new System.Windows.Forms.Panel();
@@ -76,8 +75,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.recurringText = new System.Windows.Forms.TextBox();
             this.editBtn = new System.Windows.Forms.Button();
-            this.createNewSlot = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.Cancel = new System.Windows.Forms.Button();
             this.loginPanel.SuspendLayout();
             this.editPanel.SuspendLayout();
             this.timePanel.SuspendLayout();
@@ -88,7 +86,7 @@
             // 
             this.agendaViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.agendaViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.agendaViewBtn.Location = new System.Drawing.Point(653, 12);
+            this.agendaViewBtn.Location = new System.Drawing.Point(631, 12);
             this.agendaViewBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.agendaViewBtn.Name = "agendaViewBtn";
             this.agendaViewBtn.Size = new System.Drawing.Size(87, 39);
@@ -99,10 +97,10 @@
             // 
             // dayViewBtn
             // 
-            this.dayViewBtn.BackColor = System.Drawing.Color.White;
+            this.dayViewBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.dayViewBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dayViewBtn.Font = new System.Drawing.Font("Trebuchet MS", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dayViewBtn.Location = new System.Drawing.Point(580, 12);
+            this.dayViewBtn.Location = new System.Drawing.Point(558, 12);
             this.dayViewBtn.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dayViewBtn.Name = "dayViewBtn";
             this.dayViewBtn.Size = new System.Drawing.Size(80, 39);
@@ -138,15 +136,23 @@
             // 
             // monthCalendar
             // 
-            this.monthCalendar.Location = new System.Drawing.Point(14, 123);
+            this.monthCalendar.Location = new System.Drawing.Point(14, 137);
             this.monthCalendar.Name = "monthCalendar";
             this.monthCalendar.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Location = new System.Drawing.Point(-1, -7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(732, 68);
+            this.label4.TabIndex = 14;
             // 
             // dailyBtn
             // 
             this.dailyBtn.AutoSize = true;
             this.dailyBtn.Checked = true;
-            this.dailyBtn.Location = new System.Drawing.Point(48, 293);
+            this.dailyBtn.Location = new System.Drawing.Point(48, 311);
             this.dailyBtn.Name = "dailyBtn";
             this.dailyBtn.Size = new System.Drawing.Size(63, 26);
             this.dailyBtn.TabIndex = 16;
@@ -158,7 +164,7 @@
             // weeklyBtn
             // 
             this.weeklyBtn.AutoSize = true;
-            this.weeklyBtn.Location = new System.Drawing.Point(130, 293);
+            this.weeklyBtn.Location = new System.Drawing.Point(130, 311);
             this.weeklyBtn.Name = "weeklyBtn";
             this.weeklyBtn.Size = new System.Drawing.Size(80, 26);
             this.weeklyBtn.TabIndex = 17;
@@ -190,6 +196,7 @@
             // 
             // loginPanel
             // 
+            this.loginPanel.Controls.Add(this.editPanel);
             this.loginPanel.Controls.Add(this.loginBtn);
             this.loginPanel.Controls.Add(this.password);
             this.loginPanel.Controls.Add(this.username);
@@ -197,59 +204,11 @@
             this.loginPanel.Controls.Add(this.label2);
             this.loginPanel.Location = new System.Drawing.Point(-1, 12);
             this.loginPanel.Name = "loginPanel";
-            this.loginPanel.Size = new System.Drawing.Size(768, 436);
+            this.loginPanel.Size = new System.Drawing.Size(732, 366);
             this.loginPanel.TabIndex = 20;
-            // 
-            // loginBtn
-            // 
-            this.loginBtn.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.loginBtn.ForeColor = System.Drawing.Color.White;
-            this.loginBtn.Location = new System.Drawing.Point(365, 234);
-            this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(89, 36);
-            this.loginBtn.TabIndex = 4;
-            this.loginBtn.Text = "Login";
-            this.loginBtn.UseVisualStyleBackColor = false;
-            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
-            // 
-            // password
-            // 
-            this.password.Location = new System.Drawing.Point(340, 202);
-            this.password.Name = "password";
-            this.password.PasswordChar = '●';
-            this.password.Size = new System.Drawing.Size(135, 26);
-            this.password.TabIndex = 3;
-            // 
-            // username
-            // 
-            this.username.Location = new System.Drawing.Point(340, 170);
-            this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(135, 26);
-            this.username.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(253, 202);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 22);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Password:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(249, 173);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(85, 22);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Username:";
             // 
             // editPanel
             // 
-            this.editPanel.Controls.Add(this.dateTimePicker1);
-            this.editPanel.Controls.Add(this.label17);
             this.editPanel.Controls.Add(this.newDatePicker);
             this.editPanel.Controls.Add(this.label16);
             this.editPanel.Controls.Add(this.label15);
@@ -269,27 +228,10 @@
             this.editPanel.Controls.Add(this.label9);
             this.editPanel.Controls.Add(this.oldStartMinCB);
             this.editPanel.Controls.Add(this.oldStartHourCB);
-            this.editPanel.Location = new System.Drawing.Point(301, 64);
+            this.editPanel.Location = new System.Drawing.Point(325, 72);
             this.editPanel.Name = "editPanel";
             this.editPanel.Size = new System.Drawing.Size(361, 291);
             this.editPanel.TabIndex = 5;
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Enabled = false;
-            this.dateTimePicker1.Location = new System.Drawing.Point(84, 35);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(259, 26);
-            this.dateTimePicker1.TabIndex = 34;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 36);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(49, 22);
-            this.label17.TabIndex = 33;
-            this.label17.Text = "Date:";
             // 
             // newDatePicker
             // 
@@ -303,17 +245,17 @@
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(30, 116);
+            this.label16.Location = new System.Drawing.Point(108, 121);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(128, 20);
+            this.label16.Size = new System.Drawing.Size(141, 20);
             this.label16.TabIndex = 32;
-            this.label16.Text = "New Appointment";
+            this.label16.Text = "Edited Appointment";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(30, 5);
+            this.label15.Location = new System.Drawing.Point(102, 28);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(150, 20);
             this.label15.TabIndex = 31;
@@ -417,7 +359,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(260, 76);
+            this.label11.Location = new System.Drawing.Point(260, 66);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(15, 20);
             this.label11.TabIndex = 16;
@@ -428,7 +370,7 @@
             this.oldEndMinCB.Enabled = false;
             this.oldEndMinCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldEndMinCB.FormattingEnabled = true;
-            this.oldEndMinCB.Location = new System.Drawing.Point(281, 73);
+            this.oldEndMinCB.Location = new System.Drawing.Point(281, 63);
             this.oldEndMinCB.Name = "oldEndMinCB";
             this.oldEndMinCB.Size = new System.Drawing.Size(40, 28);
             this.oldEndMinCB.TabIndex = 15;
@@ -438,7 +380,7 @@
             this.oldEndHourCB.Enabled = false;
             this.oldEndHourCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldEndHourCB.FormattingEnabled = true;
-            this.oldEndHourCB.Location = new System.Drawing.Point(209, 73);
+            this.oldEndHourCB.Location = new System.Drawing.Point(209, 63);
             this.oldEndHourCB.Name = "oldEndHourCB";
             this.oldEndHourCB.Size = new System.Drawing.Size(40, 28);
             this.oldEndHourCB.TabIndex = 14;
@@ -447,7 +389,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(164, 75);
+            this.label10.Location = new System.Drawing.Point(164, 65);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(23, 20);
             this.label10.TabIndex = 11;
@@ -457,7 +399,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(85, 76);
+            this.label9.Location = new System.Drawing.Point(85, 66);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(15, 20);
             this.label9.TabIndex = 13;
@@ -468,7 +410,7 @@
             this.oldStartMinCB.Enabled = false;
             this.oldStartMinCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldStartMinCB.FormattingEnabled = true;
-            this.oldStartMinCB.Location = new System.Drawing.Point(106, 73);
+            this.oldStartMinCB.Location = new System.Drawing.Point(106, 63);
             this.oldStartMinCB.Name = "oldStartMinCB";
             this.oldStartMinCB.Size = new System.Drawing.Size(40, 28);
             this.oldStartMinCB.TabIndex = 13;
@@ -478,18 +420,63 @@
             this.oldStartHourCB.Enabled = false;
             this.oldStartHourCB.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.oldStartHourCB.FormattingEnabled = true;
-            this.oldStartHourCB.Location = new System.Drawing.Point(34, 73);
+            this.oldStartHourCB.Location = new System.Drawing.Point(34, 63);
             this.oldStartHourCB.Name = "oldStartHourCB";
             this.oldStartHourCB.Size = new System.Drawing.Size(40, 28);
             this.oldStartHourCB.TabIndex = 5;
+            // 
+            // loginBtn
+            // 
+            this.loginBtn.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.loginBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.loginBtn.ForeColor = System.Drawing.Color.White;
+            this.loginBtn.Location = new System.Drawing.Point(350, 234);
+            this.loginBtn.Name = "loginBtn";
+            this.loginBtn.Size = new System.Drawing.Size(89, 36);
+            this.loginBtn.TabIndex = 4;
+            this.loginBtn.Text = "Login";
+            this.loginBtn.UseVisualStyleBackColor = false;
+            this.loginBtn.Click += new System.EventHandler(this.loginBtn_Click);
+            // 
+            // password
+            // 
+            this.password.Location = new System.Drawing.Point(325, 202);
+            this.password.Name = "password";
+            this.password.PasswordChar = '●';
+            this.password.Size = new System.Drawing.Size(135, 26);
+            this.password.TabIndex = 3;
+            // 
+            // username
+            // 
+            this.username.Location = new System.Drawing.Point(325, 170);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(135, 26);
+            this.username.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(238, 202);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 22);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Password:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(234, 173);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(85, 22);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Username:";
             // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.SystemColors.HotTrack;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(94, 77);
+            this.button1.Location = new System.Drawing.Point(94, 84);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 32);
             this.button1.TabIndex = 21;
@@ -654,42 +641,33 @@
             this.editBtn.Visible = false;
             this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
-            // createNewSlot
+            // Cancel
             // 
-            this.createNewSlot.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.createNewSlot.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createNewSlot.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createNewSlot.ForeColor = System.Drawing.Color.White;
-            this.createNewSlot.Location = new System.Drawing.Point(60, 328);
-            this.createNewSlot.Name = "createNewSlot";
-            this.createNewSlot.Size = new System.Drawing.Size(134, 32);
-            this.createNewSlot.TabIndex = 29;
-            this.createNewSlot.Text = "Create New Slot";
-            this.createNewSlot.UseVisualStyleBackColor = false;
-            this.createNewSlot.Click += new System.EventHandler(this.createNewSlot_Click);
-            // 
-            // label4
-            // 
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label4.Location = new System.Drawing.Point(-13, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(780, 2);
-            this.label4.TabIndex = 30;
+            this.Cancel.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.Cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Cancel.ForeColor = System.Drawing.Color.White;
+            this.Cancel.Location = new System.Drawing.Point(630, 404);
+            this.Cancel.Name = "Cancel";
+            this.Cancel.Size = new System.Drawing.Size(86, 32);
+            this.Cancel.TabIndex = 33;
+            this.Cancel.Text = "Cancel";
+            this.Cancel.UseVisualStyleBackColor = false;
+            this.Cancel.Visible = false;
+            this.Cancel.Click += new System.EventHandler(this.Cancel_Click);
             // 
             // DoctorView
             // 
-            this.AcceptButton = this.loginBtn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(756, 448);
+            this.ClientSize = new System.Drawing.Size(728, 448);
+            this.Controls.Add(this.Cancel);
             this.Controls.Add(this.loginPanel);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.editBtn);
             this.Controls.Add(this.recurringText);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.save);
-            this.Controls.Add(this.editPanel);
             this.Controls.Add(this.timePanel);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.discard);
@@ -703,11 +681,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dayViewBtn);
             this.Controls.Add(this.agendaViewBtn);
-            this.Controls.Add(this.createNewSlot);
+            this.Controls.Add(this.label4);
             this.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MaximumSize = new System.Drawing.Size(772, 487);
-            this.MinimumSize = new System.Drawing.Size(772, 487);
             this.Name = "DoctorView";
             this.Text = "Doctor View";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DoctorView_FormClosed);
@@ -732,6 +708,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label doctorName;
         private System.Windows.Forms.MonthCalendar monthCalendar;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.RadioButton dailyBtn;
         private System.Windows.Forms.RadioButton weeklyBtn;
         private System.Windows.Forms.Label currentDate;
@@ -778,10 +755,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DateTimePicker newDatePicker;
-        private System.Windows.Forms.Button createNewSlot;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button Cancel;
     }
 }
 

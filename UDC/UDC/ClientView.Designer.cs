@@ -41,7 +41,7 @@
             this.label4.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.label4.Location = new System.Drawing.Point(-7, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(780, 2);
+            this.label4.Size = new System.Drawing.Size(732, 2);
             this.label4.TabIndex = 24;
             // 
             // agendaBtn
@@ -50,7 +50,7 @@
             this.agendaBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.agendaBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.agendaBtn.ForeColor = System.Drawing.Color.Black;
-            this.agendaBtn.Location = new System.Drawing.Point(658, 10);
+            this.agendaBtn.Location = new System.Drawing.Point(630, 10);
             this.agendaBtn.Name = "agendaBtn";
             this.agendaBtn.Size = new System.Drawing.Size(82, 33);
             this.agendaBtn.TabIndex = 23;
@@ -66,7 +66,7 @@
             this.dayBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.dayBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dayBtn.ForeColor = System.Drawing.Color.Black;
-            this.dayBtn.Location = new System.Drawing.Point(577, 10);
+            this.dayBtn.Location = new System.Drawing.Point(549, 10);
             this.dayBtn.Name = "dayBtn";
             this.dayBtn.Size = new System.Drawing.Size(82, 33);
             this.dayBtn.TabIndex = 22;
@@ -145,7 +145,7 @@
             this.weekRadioBtn.Font = new System.Drawing.Font("Trebuchet MS", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.weekRadioBtn.Location = new System.Drawing.Point(12, 323);
             this.weekRadioBtn.Name = "weekRadioBtn";
-            this.weekRadioBtn.Size = new System.Drawing.Size(63, 24);
+            this.weekRadioBtn.Size = new System.Drawing.Size(64, 24);
             this.weekRadioBtn.TabIndex = 26;
             this.weekRadioBtn.TabStop = true;
             this.weekRadioBtn.Text = "Week";
@@ -168,7 +168,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(756, 448);
+            this.ClientSize = new System.Drawing.Size(728, 411);
             this.Controls.Add(this.drListBox);
             this.Controls.Add(this.weekRadioBtn);
             this.Controls.Add(this.dayRadioBtn);
@@ -180,8 +180,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.monthCalendar);
-            this.MaximumSize = new System.Drawing.Size(772, 450);
-            this.MinimumSize = new System.Drawing.Size(772, 450);
             this.Name = "ClientView";
             this.Text = "ClientView";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ClientView_FormClosed);

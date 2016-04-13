@@ -170,25 +170,21 @@ namespace UDC {
                         if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
                             if (t.Available()) {
                                 t.SetAvailability(false);
-                                ((AppointmentModelController)controller).SetAvailability(t, "Occupied");
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
-                                break;
                             }
                             else {
                                 MessageBox.Show("Unable to cancel appointment with " + t.GetTitle() + ".");
-                                break;
                             }
                         }
                         else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
                             if (t.Available()) {
                                 t.SetAvailability(false);
-                                ((AppointmentModelController)controller).SetAvailability(t, "Occupied");
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
-                                break;
                             }
                             else {
                                 MessageBox.Show("Unable to cancel appointment with " + t.GetTitle() + ".");
-                                break;
                             }
                         }
                     }
@@ -229,7 +225,7 @@ namespace UDC {
             dateLabel.Text = date.ToString("MMMM") + " - Week " + GetWeekNumberOfMonth(date).ToString();
         }
 
-        private int GetWeekNumberOfMonth(DateTime date) {
+        static int GetWeekNumberOfMonth(DateTime date) {
             date = date.Date;
             DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
             DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Sunday + 7 - firstMonthDay.DayOfWeek) % 7);

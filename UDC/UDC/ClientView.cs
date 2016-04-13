@@ -145,6 +145,8 @@ namespace UDC {
             this.currentView.Update(doctors, dates, false);
         }
 
+
+
         private void todayBtn_Click(object sender, EventArgs e) {
             monthCalendar.SetDate(DateTime.Today);
             if (dayRadioBtn.Checked)
@@ -211,29 +213,25 @@ namespace UDC {
                         if ((((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy"))) {
                             if (t.Available()) {
                                 t.SetAvailability(false);
-                                ((AppointmentModelController)controller).SetAvailability(t, "Occupied");
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!");
-                                break;
                             }
                             else {
                                 t.SetAvailability(true);
-                                ((AppointmentModelController)controller).SetAvailability(t, "Available");
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " canceled" + ".");
-                                break;
                             }
                         }
                         else if ((((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetEndTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("HH:mm")) && (((DataGridView)c).Rows[e.RowIndex].Cells[0].Value.ToString()).Contains(t.GetStartTime().ToString("M/d/yyyy")) && (((DataGridView)c).Rows[e.RowIndex].Cells[1].Value.ToString()).Contains(t.GetTitle())) {
                             if (t.Available()) {
                                 t.SetAvailability(false);
-                                ((AppointmentModelController)controller).SetAvailability(t, "Occupied");
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Occupied");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " confirmed!!");
-                                break;
                             }
                             else {
                                 t.SetAvailability(true);
-                                ((AppointmentModelController)controller).SetAvailability(t, "Available");
+                                ((AppointmentModelController)controller).UpdateDatabase(t, "Available");
                                 MessageBox.Show("Appointment with " + t.GetTitle() + " canceled" + ".");
-                                break;
                             }
                         }
                     }
@@ -241,7 +239,7 @@ namespace UDC {
             }
         }
 
-        private int GetWeekNumberOfMonth(DateTime date) {
+        static int GetWeekNumberOfMonth(DateTime date) {
             date = date.Date;
             DateTime firstMonthDay = new DateTime(date.Year, date.Month, 1);
             DateTime firstMonthMonday = firstMonthDay.AddDays((DayOfWeek.Sunday + 7 - firstMonthDay.DayOfWeek) % 7);
