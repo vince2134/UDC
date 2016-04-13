@@ -454,8 +454,11 @@ namespace UDC {
 
                                     if (app != null && !((AppointmentModelController)controller).Overlap(app)) {
                                         ((AppointmentModelController)controller).AddToDatabase(app);
-                                    }
+                                        MessageBox.Show("Time slot " + "for " + tempStartDate.ToString("M/dd/yyyy") + " " + tempStartDate.ToString("HH:mm") + "-" + tempEndDate.ToString("HH:mm") + " added");
 
+                                    }
+                                    else
+                                        MessageBox.Show("Time slot " + "for " + tempStartDate.ToString("M/dd/yyyy") + " " +tempStartDate.ToString("HH:mm") + "-" + tempEndDate.ToString("HH:mm") + " not added");
                                     tempStartDate = tempStartDate.AddDays(7);
                                     tempEndDate = tempEndDate.AddDays(7);
                                 }
